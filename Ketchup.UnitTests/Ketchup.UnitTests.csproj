@@ -33,17 +33,26 @@
     <Reference Include="JamesDibble.ApplicationFramework.Data.Persistence">
       <HintPath>..\Dependencies\JamesDibble.ApplicationFramework.Data.Persistence.dll</HintPath>
     </Reference>
+    <Reference Include="JamesDibble.ApplicationFramework.Data.Persistence.1.0.0.0.Fakes">
+      <HintPath>FakesAssemblies\JamesDibble.ApplicationFramework.Data.Persistence.1.0.0.0.Fakes.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Microsoft.QualityTools.Testing.Fakes, Version=11.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" />
     <Reference Include="Microsoft.VisualStudio.QualityTools.UnitTestFramework, Version=10.1.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" />
     <Reference Include="System" />
     <Reference Include="System.Core" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Api\ProductManagerTests.cs" />
     <Compile Include="Model\ProductSpecificationTests.cs" />
     <Compile Include="Model\ProductTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Ketchup.Api\Ketchup.Api.csproj">
+      <Project>{4FB190D1-87BF-47E7-85C3-1617C5283429}</Project>
+      <Name>Ketchup.Api</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Ketchup.Model\Ketchup.Model.csproj">
       <Project>{c84b7c9c-aaf9-4197-935b-6880c5f39ab0}</Project>
       <Name>Ketchup.Model</Name>
@@ -51,6 +60,9 @@
   </ItemGroup>
   <ItemGroup>
     <Service Include="{82A7F48D-3B50-4B1E-B82E-3ADA8210C358}" />
+  </ItemGroup>
+  <ItemGroup>
+    <Fakes Include="Fakes\JamesDibble.ApplicationFramework.Data.Persistence.fakes" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

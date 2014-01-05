@@ -31,11 +31,22 @@
     <DocumentationFile>..\Release\Ketchup.Api.XML</DocumentationFile>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="JamesDibble.ApplicationFramework.Data.Persistence">
+      <HintPath>..\Dependencies\JamesDibble.ApplicationFramework.Data.Persistence.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="IProductManager.cs" />
+    <Compile Include="ProductManager.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Ketchup.Model\Ketchup.Model.csproj">
+      <Project>{c84b7c9c-aaf9-4197-935b-6880c5f39ab0}</Project>
+      <Name>Ketchup.Model</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

@@ -8,6 +8,8 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Dependencies", "Dependencies", "{2A121D94-DF50-41B5-96D8-69DFE9C77BA2}"
 	ProjectSection(SolutionItems) = preProject
 		Dependencies\JamesDibble.ApplicationFramework.Data.Persistence.dll = Dependencies\JamesDibble.ApplicationFramework.Data.Persistence.dll
+		Dependencies\JamesDibble.ApplicationFramework.Data.Persistence.EntityFrameworkCodeFirst.dll = Dependencies\JamesDibble.ApplicationFramework.Data.Persistence.EntityFrameworkCodeFirst.dll
+		Dependencies\JamesDibble.ApplicationFramework.Data.Persistence.EntityFrameworkCodeFirst.XML = Dependencies\JamesDibble.ApplicationFramework.Data.Persistence.EntityFrameworkCodeFirst.XML
 		Dependencies\JamesDibble.ApplicationFramework.Data.Persistence.xml = Dependencies\JamesDibble.ApplicationFramework.Data.Persistence.xml
 	EndProjectSection
 EndProject
