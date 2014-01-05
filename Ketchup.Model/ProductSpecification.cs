@@ -8,10 +8,19 @@ namespace Ketchup.Model
     using System;
     using System.Collections.Generic;
     using System.Dynamic;
+    using System.Globalization;
     using System.Linq;
 
+    /// <summary>
+    /// The attributes of a <see cref="Product"/>.
+    /// </summary>
     public class ProductSpecification : DynamicObject
     {
+        /// <summary>
+        /// Get a <see langword="dynamic" /> representation of this <see cref="ProductSpecification"/>
+        /// so that attributes can be retrieved without having to dig into the specification too far with
+        /// <see langword="string" />s.
+        /// </summary>
         public dynamic Attributes
         {
             get
@@ -20,14 +29,29 @@ namespace Ketchup.Model
             }
         }
 
+        /// <summary>
+        /// Gets or sets the <see cref="System.DateTime"/> this <see cref="ProductSpecification"/> was created.
+        /// </summary>
         public DateTime Created { get; set; }
 
+        /// <summary>
+        /// Gets or sets the <see cref="System.DateTime"/> this <see cref="ProductSpecification"/> is relevant from.
+        /// </summary>
         public DateTime ActiveFrom { get; set; }
 
+        /// <summary>
+        /// Gets or sets the <see cref="System.DateTime"/> this <see cref="ProductSpecification"/> is relevant till.
+        /// </summary>
         public DateTime ActiveUntil { get; set; }
 
+        /// <summary>
+        /// Gets or sets the specification values for the parent <see cref="Product"/>.
+        /// </summary>
         public ICollection<ProductAttribute> ProductAttributes { get; set; }
 
+        /// <summary>
+        /// Gets or sets the <see cref="Image"/>s for the parent <see cref="Product"/>.
+        /// </summary>
         public ICollection<Image> ProductImages { get; set; }
 
         /// <summary>
@@ -39,7 +63,8 @@ namespace Ketchup.Model
         /// <param name="binder">Provides information about the object that called the dynamic operation. The binder.Name property provides the name of the member on which the dynamic operation is performed. For example, for the Console.WriteLine(sampleObject.SampleProperty) statement, where sampleObject is an instance of the class derived from the <see cref="T:System.Dynamic.DynamicObject"/> class, binder.Name returns "SampleProperty". The binder.IgnoreCase property specifies whether the member name is case-sensitive.</param><param name="result">The result of the get operation. For example, if the method is called for a property, you can assign the property value to <paramref name="result"/>.</param>
         public override bool TryGetMember(GetMemberBinder binder, out object result)
         {
-            if (this.ProductAttributes.All(pa => pa.AttributeType.Name.ToLowerInvariant() != binder.Name.ToLowerInvariant()))
+            if (this.ProductAttributes.All(
+                pa => pa.AttributeType.Name.ToLower(CultureInfo.CurrentCulture) != binder.Name.ToLower(CultureInfo.CurrentCulture)))
             {
                 return base.TryGetMember(binder, out result);
             }
