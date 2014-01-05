@@ -1,0 +1,452 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>JamesDibble.ApplicationFramework.Data.Persistence</name>
+    </assembly>
+    <members>
+        <member name="T:JamesDibble.ApplicationFramework.Data.Persistence.Constants">
+            <summary>
+            The constants.
+            </summary>
+        </member>
+        <member name="F:JamesDibble.ApplicationFramework.Data.Persistence.Constants.NoLimitQuery">
+            <summary>
+            A value for a query to be executed with no limit;
+            </summary>
+        </member>
+        <member name="T:JamesDibble.ApplicationFramework.Data.Persistence.IPersistedObject">
+            <summary>
+            Implementing classes represent an object to be managed by an <see cref="T:JamesDibble.ApplicationFramework.Data.Persistence.IPersistenceManager"/>.
+            </summary>
+        </member>
+        <member name="T:JamesDibble.ApplicationFramework.Data.Persistence.IPersistenceCollectionSearcher`1">
+            <summary>
+            Implementing classes define an object to search a persistence source for a collection.
+            </summary>
+            <typeparam name="T">
+            The type to search for.
+            </typeparam>
+        </member>
+        <member name="T:JamesDibble.ApplicationFramework.Data.Persistence.IPersistenceSearcher`1">
+            <summary>
+            Implementing classes define an object to search a persistence source.
+            </summary>
+            <typeparam name="T">
+            The type to search for.
+            </typeparam>
+        </member>
+        <member name="P:JamesDibble.ApplicationFramework.Data.Persistence.IPersistenceSearcher`1.Predicate">
+            <summary>
+            Gets the search criteria.
+            </summary>
+        </member>
+        <member name="P:JamesDibble.ApplicationFramework.Data.Persistence.IPersistenceSearcher`1.Includes">
+            <summary>
+            Gets the objects that should also be loaded as part of the persistence query.
+            </summary>
+        </member>
+        <member name="P:JamesDibble.ApplicationFramework.Data.Persistence.IPersistenceCollectionSearcher`1.Limit">
+            <summary>
+            Gets the maximum number of records to return.
+            </summary>
+        </member>
+        <member name="T:JamesDibble.ApplicationFramework.Data.Persistence.IPersistenceManager">
+            <summary>
+            Implementing classes contain methods for interacting with persisted data.
+            </summary>
+        </member>
+        <member name="M:JamesDibble.ApplicationFramework.Data.Persistence.IPersistenceManager.Find``1(JamesDibble.ApplicationFramework.Data.Persistence.IPersistenceSearcher{``0})">
+            <summary>
+            Find an <see cref="T:JamesDibble.ApplicationFramework.Data.Persistence.IPersistedObject"/>
+            </summary>
+            <param name="searchCriteria">
+            An object defining how to find the <typeparamref name="T"/>.
+            </param>
+            <typeparam name="T">
+            The type of <see cref="T:JamesDibble.ApplicationFramework.Data.Persistence.IPersistedObject"/>.
+            </typeparam>
+            <returns>
+            An <see cref="T:JamesDibble.ApplicationFramework.Data.Persistence.IPersistedObject"/> retrieved from the persistence source.
+            </returns>
+        </member>
+        <member name="M:JamesDibble.ApplicationFramework.Data.Persistence.IPersistenceManager.Find``1(JamesDibble.ApplicationFramework.Data.Persistence.IPersistenceCollectionSearcher{``0})">
+            <summary>
+            Find a collection of <see cref="T:JamesDibble.ApplicationFramework.Data.Persistence.IPersistedObject"/>
+            </summary>
+            <param name="searchCriteria">
+            An object defining how to find the collection of <typeparamref name="T"/>.
+            </param>
+            <typeparam name="T">
+            The type of <see cref="T:JamesDibble.ApplicationFramework.Data.Persistence.IPersistedObject"/>.
+            </typeparam>
+            <returns>
+            An <see cref="T:System.Collections.Generic.IEnumerable`1"/> of <see cref="T:JamesDibble.ApplicationFramework.Data.Persistence.IPersistedObject"/> retrieved from the persistence source.
+            </returns>
+        </member>
+        <member name="M:JamesDibble.ApplicationFramework.Data.Persistence.IPersistenceManager.Change``1(``0)">
+            <summary>
+            Update an object that already exists in the persistence source.
+            </summary>
+            <param name="updatedObject">
+            The object that has changed.
+            </param>
+            <typeparam name="T">
+            The type of <see cref="T:JamesDibble.ApplicationFramework.Data.Persistence.IPersistedObject"/>.
+            </typeparam>
+        </member>
+        <member name="M:JamesDibble.ApplicationFramework.Data.Persistence.IPersistenceManager.Add``1(``0)">
+            <summary>
+            Insert a new object into the persistence source.
+            </summary>
+            <param name="newObject">
+            The new object.
+            </param>
+            <typeparam name="T">
+            The type of <see cref="T:JamesDibble.ApplicationFramework.Data.Persistence.IPersistedObject"/>.
+            </typeparam>
+        </member>
+        <member name="M:JamesDibble.ApplicationFramework.Data.Persistence.IPersistenceManager.Remove``1(``0)">
+            <summary>
+            Delete an object from the persistence source.
+            </summary>
+            <param name="objectToRemove">
+            The object to remove.
+            </param>
+            <typeparam name="T">
+            The type of <see cref="T:JamesDibble.ApplicationFramework.Data.Persistence.IPersistedObject"/>.
+            </typeparam>
+        </member>
+        <member name="M:JamesDibble.ApplicationFramework.Data.Persistence.IPersistenceManager.Commit">
+            <summary>
+            Save changes that have been added to the <see cref="T:JamesDibble.ApplicationFramework.Data.Persistence.IPersistenceManager"/>.
+            </summary>
+        </member>
+        <member name="T:JamesDibble.ApplicationFramework.Data.Persistence.IUniqueObject`1">
+            <summary>
+            Implementing classes represent an object that can be identified by a single primary key.
+            </summary>
+            <typeparam name="T">
+            The type of the unique identifier.
+            </typeparam>
+        </member>
+        <member name="M:JamesDibble.ApplicationFramework.Data.Persistence.IUniqueObject`1.SetNewId(`0)">
+            <summary>
+            Set the unique identifier of this <see cref="T:JamesDibble.ApplicationFramework.Data.Persistence.IUniqueObject`1"/>.
+            </summary>
+            <param name="newId">
+            The new identifier.
+            </param>
+        </member>
+        <member name="P:JamesDibble.ApplicationFramework.Data.Persistence.IUniqueObject`1.Id">
+            <summary>
+            Gets unique identifier of this <see cref="T:System.Object"/>.
+            </summary>
+        </member>
+        <member name="T:JamesDibble.ApplicationFramework.Data.Persistence.PersistenceCollectionSearcher`1">
+            <summary>
+            The persistence collection searcher.
+            </summary>
+            <typeparam name="T">
+            The collection of <see cref="T:JamesDibble.ApplicationFramework.Data.Persistence.IPersistedObject"/> to search for.
+            </typeparam>
+        </member>
+        <member name="T:JamesDibble.ApplicationFramework.Data.Persistence.PersistenceSearcher`1">
+            <summary>
+            The persistence searcher.
+            </summary>
+            <typeparam name="T">
+            The <see cref="T:JamesDibble.ApplicationFramework.Data.Persistence.IPersistedObject"/> to search for.
+            </typeparam>
+        </member>
+        <member name="M:JamesDibble.ApplicationFramework.Data.Persistence.PersistenceSearcher`1.#ctor(System.Func{`0,System.Boolean},System.Linq.Expressions.Expression{System.Func{`0,System.Object}}[])">
+            <summary>
+            Initialises a new instance of the <see cref="T:JamesDibble.ApplicationFramework.Data.Persistence.PersistenceSearcher`1"/> class.
+            </summary>
+            <param name="predicate">
+            The predicate.
+            </param>
+            <param name="includeProperties">
+            The include properties.
+            </param>
+        </member>
+        <member name="P:JamesDibble.ApplicationFramework.Data.Persistence.PersistenceSearcher`1.Predicate">
+            <summary>
+            Gets the search criteria.
+            </summary>
+        </member>
+        <member name="P:JamesDibble.ApplicationFramework.Data.Persistence.PersistenceSearcher`1.Includes">
+            <summary>
+            Gets the objects that should also be loaded as part of the persistence query.
+            </summary>
+        </member>
+        <member name="M:JamesDibble.ApplicationFramework.Data.Persistence.PersistenceCollectionSearcher`1.#ctor(System.Linq.Expressions.Expression{System.Func{`0,System.Object}}[])">
+            <summary>
+            Initialises a new instance of the <see cref="T:JamesDibble.ApplicationFramework.Data.Persistence.PersistenceCollectionSearcher`1"/> class.
+            </summary>
+            <param name="includeProperties">
+            The include properties.
+            </param>
+        </member>
+        <member name="M:JamesDibble.ApplicationFramework.Data.Persistence.PersistenceCollectionSearcher`1.#ctor(System.Func{`0,System.Boolean},System.Linq.Expressions.Expression{System.Func{`0,System.Object}}[])">
+            <summary>
+            Initialises a new instance of the <see cref="T:JamesDibble.ApplicationFramework.Data.Persistence.PersistenceCollectionSearcher`1"/> class.
+            </summary>
+            <param name="predicate">
+            The predicate.
+            </param>
+            <param name="includeProperties">
+            The include properties.
+            </param>
+        </member>
+        <member name="M:JamesDibble.ApplicationFramework.Data.Persistence.PersistenceCollectionSearcher`1.#ctor(JamesDibble.ApplicationFramework.Data.Persistence.IPersistenceSearcher{`0})">
+            <summary>
+            Initialises a new instance of the <see cref="T:JamesDibble.ApplicationFramework.Data.Persistence.PersistenceCollectionSearcher`1"/> class.
+            </summary>
+            <param name="searcher">
+            The searcher.
+            </param>
+        </member>
+        <member name="M:JamesDibble.ApplicationFramework.Data.Persistence.PersistenceCollectionSearcher`1.#ctor(System.Int32,JamesDibble.ApplicationFramework.Data.Persistence.IPersistenceSearcher{`0})">
+            <summary>
+            Initialises a new instance of the <see cref="T:JamesDibble.ApplicationFramework.Data.Persistence.PersistenceCollectionSearcher`1"/> class.
+            </summary>
+            <param name="limit">
+            The maximum number of records to return.
+            </param>
+            <param name="searcher">
+            The searcher.
+            </param>
+        </member>
+        <member name="M:JamesDibble.ApplicationFramework.Data.Persistence.PersistenceCollectionSearcher`1.#ctor(System.Int32,System.Func{`0,System.Boolean},System.Linq.Expressions.Expression{System.Func{`0,System.Object}}[])">
+            <summary>
+            Initialises a new instance of the <see cref="T:JamesDibble.ApplicationFramework.Data.Persistence.PersistenceCollectionSearcher`1"/> class.
+            </summary>
+            <param name="limit">
+            The maximum number of records to return.
+            </param>
+            <param name="predicate">
+            The predicate.
+            </param>
+            <param name="includeProperties">
+            The include properties.
+            </param>
+        </member>
+        <member name="P:JamesDibble.ApplicationFramework.Data.Persistence.PersistenceCollectionSearcher`1.Limit">
+            <summary>
+            Gets the maximum number of records to return.
+            </summary>
+        </member>
+        <member name="T:JamesDibble.ApplicationFramework.Data.Persistence.PropertyChangedBehavior">
+            <summary>
+            This interception behaviour should be added to an object realising <see cref="T:System.ComponentModel.INotifyPropertyChanged"/>.
+            </summary>
+        </member>
+        <member name="M:JamesDibble.ApplicationFramework.Data.Persistence.PropertyChangedBehavior.Invoke(Microsoft.Practices.Unity.InterceptionExtension.IMethodInvocation,Microsoft.Practices.Unity.InterceptionExtension.GetNextInterceptionBehaviorDelegate)">
+            <summary>
+            Implement this method to execute your behaviour processing.
+            </summary>
+            <param name="input">Inputs to the current call to the target.</param><param name="getNext">Delegate to execute to get the next delegate in the behaviour chain.</param>
+            <returns>
+            Return value from the target.
+            </returns>
+        </member>
+        <member name="M:JamesDibble.ApplicationFramework.Data.Persistence.PropertyChangedBehavior.GetRequiredInterfaces">
+            <summary>
+            Returns the interfaces required by the behaviour for the objects it intercepts.
+            </summary>
+            <returns>
+            The required interfaces.
+            </returns>
+        </member>
+        <member name="P:JamesDibble.ApplicationFramework.Data.Persistence.PropertyChangedBehavior.WillExecute">
+            <summary>
+            Gets a value indicating whether this behaviour will actually do anything when invoked.
+            </summary>
+            <remarks>
+            This is used to optimize interception. If the behaviours won't actually
+                        do anything (for example, PIAB where no policies match) then the interception
+                        mechanism can be skipped completely.
+            </remarks>
+        </member>
+        <member name="T:JamesDibble.ApplicationFramework.Data.Persistence.TypeMapping.Configuration.TypeMappingConfigurationCollection">
+            <summary>
+            The type mapping configuration collection.
+            </summary>
+        </member>
+        <member name="M:JamesDibble.ApplicationFramework.Data.Persistence.TypeMapping.Configuration.TypeMappingConfigurationCollection.TypeMapping(System.String)">
+            <summary>
+            The this.
+            </summary>
+            <param name="index">
+            The index.
+            </param>
+            <returns>
+            The <see cref="T:JamesDibble.ApplicationFramework.Data.Persistence.TypeMapping.Configuration.TypeMappingConfigurationElement"/>.
+            </returns>
+        </member>
+        <member name="M:JamesDibble.ApplicationFramework.Data.Persistence.TypeMapping.Configuration.TypeMappingConfigurationCollection.IsElementName(System.String)">
+            <summary>
+            Indicates whether the specified <see cref="T:System.Configuration.ConfigurationElement"/> exists in the <see cref="T:System.Configuration.ConfigurationElementCollection"/>.
+            </summary>
+            <returns>
+            true if the element exists in the collection; otherwise, false. The default is false.
+            </returns>
+            <param name="elementName">The name of the element to verify. </param>
+        </member>
+        <member name="M:JamesDibble.ApplicationFramework.Data.Persistence.TypeMapping.Configuration.TypeMappingConfigurationCollection.CreateNewElement">
+            <summary>
+            When overridden in a derived class, creates a new <see cref="T:System.Configuration.ConfigurationElement"/>.
+            </summary>
+            <returns>
+            A new <see cref="T:System.Configuration.ConfigurationElement"/>.
+            </returns>
+        </member>
+        <member name="M:JamesDibble.ApplicationFramework.Data.Persistence.TypeMapping.Configuration.TypeMappingConfigurationCollection.GetElementKey(System.Configuration.ConfigurationElement)">
+            <summary>
+            Gets the element key for a specified configuration element when overridden in a derived class.
+            </summary>
+            <returns>
+            An <see cref="T:System.Object"/> that acts as the key for the specified <see cref="T:System.Configuration.ConfigurationElement"/>.
+            </returns>
+            <param name="element">The <see cref="T:System.Configuration.ConfigurationElement"/> to return the key for. </param>
+        </member>
+        <member name="P:JamesDibble.ApplicationFramework.Data.Persistence.TypeMapping.Configuration.TypeMappingConfigurationCollection.CollectionType">
+            <summary>
+            Gets the type of the <see cref="T:System.Configuration.ConfigurationElementCollection"/>.
+            </summary>
+            <returns>
+            The <see cref="T:System.Configuration.ConfigurationElementCollectionType"/> of this collection.
+            </returns>
+        </member>
+        <member name="P:JamesDibble.ApplicationFramework.Data.Persistence.TypeMapping.Configuration.TypeMappingConfigurationCollection.ElementName">
+            <summary>
+            Gets the name used to identify this collection of elements in the configuration file when overridden in a derived class.
+            </summary>
+            <returns>
+            The name of the collection; otherwise, an empty string. The default is an empty string.
+            </returns>
+        </member>
+        <member name="T:JamesDibble.ApplicationFramework.Data.Persistence.TypeMapping.Configuration.TypeMappingConfigurationElement">
+            <summary>
+            The type mapping configuration element.
+            </summary>
+        </member>
+        <member name="P:JamesDibble.ApplicationFramework.Data.Persistence.TypeMapping.Configuration.TypeMappingConfigurationElement.ConcreteType">
+            <summary>
+            Gets the implemented type.
+            </summary>
+        </member>
+        <member name="P:JamesDibble.ApplicationFramework.Data.Persistence.TypeMapping.Configuration.TypeMappingConfigurationElement.InterfaceType">
+            <summary>
+            Gets the base type.
+            </summary>
+        </member>
+        <member name="T:JamesDibble.ApplicationFramework.Data.Persistence.TypeMapping.Configuration.TypeMappingConfigurationSection">
+            <summary>
+            The type mapping configuration section.
+            </summary>
+        </member>
+        <member name="P:JamesDibble.ApplicationFramework.Data.Persistence.TypeMapping.Configuration.TypeMappingConfigurationSection.TypeMappings">
+            <summary>
+            Gets the type mappings.
+            </summary>
+        </member>
+        <member name="T:JamesDibble.ApplicationFramework.Data.Persistence.TypeMapping.ITypeMappingDictionary">
+            <summary>
+            Implementing classes expose methods to map an <see cref="T:JamesDibble.ApplicationFramework.Data.Persistence.IPersistedObject"/> 
+            to a concrete type of <see cref="T:JamesDibble.ApplicationFramework.Data.Persistence.IPersistedObject"/>.
+            </summary>
+        </member>
+        <member name="M:JamesDibble.ApplicationFramework.Data.Persistence.TypeMapping.ITypeMappingDictionary.Add``2">
+            <summary>
+            Configure a type mapping.
+            </summary>
+            <typeparam name="TInterface">
+            The type of interface that the <typeparamref name="TConcrete" /> is implemented from.
+            </typeparam>
+            <typeparam name="TConcrete">
+            The type <typeparamref name="TInterface"/> maps too.
+            </typeparam>
+        </member>
+        <member name="M:JamesDibble.ApplicationFramework.Data.Persistence.TypeMapping.ITypeMappingDictionary.PopulateFromConfiguration">
+            <summary>
+            Clear the current dictionary and pull all the mappings from the executing applications
+            configuration file.
+            </summary>
+            <returns>The <see cref="T:JamesDibble.ApplicationFramework.Data.Persistence.TypeMapping.ITypeMappingDictionary"/> as configured</returns>
+        </member>
+        <member name="T:JamesDibble.ApplicationFramework.Data.Persistence.TypeMapping.TypeMappingDictionary">
+            <summary>
+            The type mapping dictionary.
+            </summary>
+        </member>
+        <member name="M:JamesDibble.ApplicationFramework.Data.Persistence.TypeMapping.TypeMappingDictionary.#ctor">
+            <summary>
+            Initialises a new instance of the <see cref="T:JamesDibble.ApplicationFramework.Data.Persistence.TypeMapping.TypeMappingDictionary"/> class.
+            </summary>
+        </member>
+        <member name="M:JamesDibble.ApplicationFramework.Data.Persistence.TypeMapping.TypeMappingDictionary.#ctor(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)">
+            <summary>
+            Initialises a new instance of the <see cref="T:JamesDibble.ApplicationFramework.Data.Persistence.TypeMapping.TypeMappingDictionary"/> class.
+            </summary>
+            <param name="info">
+            The info.
+            </param>
+            <param name="context">
+            The context.
+            </param>
+        </member>
+        <member name="M:JamesDibble.ApplicationFramework.Data.Persistence.TypeMapping.TypeMappingDictionary.Add``2">
+            <summary>
+            Configure a type mapping.
+            </summary>
+            <typeparam name="TInterface">
+            The type of interface that the <typeparamref name="TConcrete" /> is implemented from.
+            </typeparam>
+            <typeparam name="TConcrete">
+            The type <typeparamref name="TInterface"/> maps too.
+            </typeparam>
+        </member>
+        <member name="M:JamesDibble.ApplicationFramework.Data.Persistence.TypeMapping.TypeMappingDictionary.PopulateFromConfiguration">
+            <summary>
+            Clear the current dictionary and pull all the mappings from the executing applications
+            configuration file.
+            </summary>
+            <returns>The <see cref="T:JamesDibble.ApplicationFramework.Data.Persistence.TypeMapping.ITypeMappingDictionary"/> as configured</returns>
+        </member>
+        <member name="T:JamesDibble.ApplicationFramework.Data.Persistence.UniqueObject`1">
+            <summary>
+            A base class for <see cref="T:JamesDibble.ApplicationFramework.Data.Persistence.IUniqueObject`1"/>s.
+            </summary>
+            <typeparam name="T">
+            The type of the unique identifier.
+            </typeparam>
+        </member>
+        <member name="M:JamesDibble.ApplicationFramework.Data.Persistence.UniqueObject`1.#ctor">
+            <summary>
+            Initialises a new instance of the <see cref="T:JamesDibble.ApplicationFramework.Data.Persistence.UniqueObject`1"/> class.
+            </summary>
+        </member>
+        <member name="M:JamesDibble.ApplicationFramework.Data.Persistence.UniqueObject`1.#ctor(`0)">
+            <summary>
+            Initialises a new instance of the <see cref="T:JamesDibble.ApplicationFramework.Data.Persistence.UniqueObject`1"/> class.
+            </summary>
+            <param name="id">
+            The identifier of this <see cref="T:JamesDibble.ApplicationFramework.Data.Persistence.UniqueObject`1"/>.
+            </param>
+        </member>
+        <member name="M:JamesDibble.ApplicationFramework.Data.Persistence.UniqueObject`1.SetNewId(`0)">
+            <summary>
+            Set the unique identifier of this <see cref="T:JamesDibble.ApplicationFramework.Data.Persistence.IUniqueObject`1"/>.
+            </summary>
+            <param name="newId">
+            The new identifier.
+            </param>
+        </member>
+        <member name="P:JamesDibble.ApplicationFramework.Data.Persistence.UniqueObject`1.Id">
+            <summary>
+            Gets or sets the unique identifier of this <see cref="T:System.Object"/>.
+            </summary>
+        </member>
+    </members>
+</doc>

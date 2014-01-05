@@ -1,0 +1,34 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2013
+VisualStudioVersion = 12.0.21005.1
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ketchup.Model", "Ketchup.Model\Ketchup.Model.csproj", "{C84B7C9C-AAF9-4197-935B-6880C5F39AB0}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Dependencies", "Dependencies", "{2A121D94-DF50-41B5-96D8-69DFE9C77BA2}"
+	ProjectSection(SolutionItems) = preProject
+		Dependencies\JamesDibble.ApplicationFramework.Data.Persistence.dll = Dependencies\JamesDibble.ApplicationFramework.Data.Persistence.dll
+		Dependencies\JamesDibble.ApplicationFramework.Data.Persistence.xml = Dependencies\JamesDibble.ApplicationFramework.Data.Persistence.xml
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ketchup.UnitTests", "Ketchup.UnitTests\Ketchup.UnitTests.csproj", "{D3E4C640-EC78-4061-8900-D23372CE04B8}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{C84B7C9C-AAF9-4197-935B-6880C5F39AB0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C84B7C9C-AAF9-4197-935B-6880C5F39AB0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C84B7C9C-AAF9-4197-935B-6880C5F39AB0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C84B7C9C-AAF9-4197-935B-6880C5F39AB0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D3E4C640-EC78-4061-8900-D23372CE04B8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D3E4C640-EC78-4061-8900-D23372CE04B8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D3E4C640-EC78-4061-8900-D23372CE04B8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D3E4C640-EC78-4061-8900-D23372CE04B8}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
