@@ -8,8 +8,6 @@ namespace Ketchup.Persistence.EntityFramework.Migrations
     using System.Data.Entity.Migrations;
     using System.Linq;
 
-    using Ketchup.Model;
-
     /// <summary>
     /// The Entity Framework Migrations configuration.
     /// </summary>
@@ -36,8 +34,6 @@ namespace Ketchup.Persistence.EntityFramework.Migrations
             {
                 return;
             }
-
-            context.ProductAttributeTypes.Add(new ProductAttributeType { Name = "TestDuplicateSeed " });
         }
     }
 }
