@@ -1,0 +1,9 @@
+﻿@using Ketchup.Model
+@model dynamic
+@{
+    ViewBag.Title = "Index";
+}
+
+<div class="col-lg-4">
+    @this.Html.Partial("AddProductAttributeTypeForm", new ProductAttributeType())
+</div>
