@@ -5,10 +5,10 @@
 // --------------------------------------------------------------------------------------------------------------------
 namespace Ketchup.UnitTests.Api
 {
+    using System;
     using System.Collections.Generic;
     using System.Linq;
 
-    using JamesDibble.ApplicationFramework.Data.Persistence;
     using JamesDibble.ApplicationFramework.Data.Persistence.Fakes;
 
     using Ketchup.Api;
@@ -21,7 +21,8 @@ namespace Ketchup.UnitTests.Api
     {
         private IList<ProductCategory> _productCategories;
         private IList<Product> _products;
-        private IPersistenceManager _fakePersistenceManager;
+        private IList<ProductAttributeType> _productAttributeTypes;
+        private StubIPersistenceManager _fakePersistenceManager;
         private ProductManager _target;
 
         [TestInitialize]
@@ -29,6 +30,7 @@ namespace Ketchup.UnitTests.Api
         {
             this._productCategories = new List<ProductCategory>();
             this._products = new List<Product>();
+            this._productAttributeTypes = new List<ProductAttributeType>();
 
             var fakePersistence = new StubIPersistenceManager
                                   {
@@ -37,6 +39,7 @@ namespace Ketchup.UnitTests.Api
 
             fakePersistence.AddOf1M0<ProductCategory>(c => this._productCategories.Add(c));
             fakePersistence.AddOf1M0<Product>(p => this._products.Add(p));
+            fakePersistence.AddOf1M0<ProductAttributeType>(pat => this._productAttributeTypes.Add(pat));
 
             this._fakePersistenceManager = fakePersistence;
 
@@ -61,6 +64,32 @@ namespace Ketchup.UnitTests.Api
             Assert.IsNotNull(actual);
 
             Assert.IsTrue(this._products.Any());
+        }
+
+        [TestMethod]
+        public void TestCreateProductAttributeType()
+        {
+            var actual = this._target.CreateAttributeType(string.Empty, string.Empty, @"$^");
+
+            Assert.IsNotNull(actual);
+
+            Assert.IsTrue(this._productAttributeTypes.Any());
+        }
+
+        [TestMethod]
+        [ExpectedException(typeof(InvalidOperationException))]
+        public void TestCreateProductAttributeTypeAlreadyExists()
+        {
+            this._fakePersistenceManager.FindOf1IPersistenceSearcherOfM0<ProductAttributeType>(ps => new ProductAttributeType());
+
+            var actual = this._target.CreateAttributeType(string.Empty, string.Empty, @"$^");
+        }
+
+        [TestMethod]
+        [ExpectedException(typeof(ArgumentException))]
+        public void TestCreateProductAttributeTypeInvalidRegex()
+        {
+            var actual = this._target.CreateAttributeType(string.Empty, string.Empty, @"$(");
         }
     }
 }

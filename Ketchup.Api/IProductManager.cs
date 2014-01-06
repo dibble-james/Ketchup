@@ -29,5 +29,14 @@ namespace Ketchup.Api
         /// <param name="productSpecification">The attributes of the new <see cref="Product"/>.</param>
         /// <returns>The new <see cref="Product"/>.</returns>
         Product CreateProduct(ProductCategory productCategory, ProductSpecification productSpecification);
+
+        /// <summary>
+        /// Build a new <see cref="ProductAttributeType"/> and save it.
+        /// </summary>
+        /// <param name="name">The name of the new <see cref="ProductAttributeType"/>.</param>
+        /// <param name="displayName">A human readable value of the <paramref name="name"/>.</param>
+        /// <param name="validationRegularExpression">A regular expression to validate the value of a <see cref="ProductAttribute"/>.</param>
+        /// <returns>The new <see cref="ProductAttributeType"/>.</returns>
+        ProductAttributeType CreateAttributeType(string name, string displayName, string validationRegularExpression);
     }
 }

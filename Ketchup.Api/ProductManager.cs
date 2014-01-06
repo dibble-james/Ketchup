@@ -5,7 +5,10 @@
 // --------------------------------------------------------------------------------------------------------------------
 namespace Ketchup.Api
 {
+    using System;
     using System.Collections.ObjectModel;
+    using System.Globalization;
+    using System.Text.RegularExpressions;
 
     using JamesDibble.ApplicationFramework.Data.Persistence;
 
@@ -56,7 +59,7 @@ namespace Ketchup.Api
         {
             var product = new Product
                           {
-                              Category = productCategory, 
+                              Category = productCategory,
                               ProductSpecifications = new Collection<ProductSpecification> { productSpecification }
                           };
 
@@ -65,6 +68,54 @@ namespace Ketchup.Api
             this._persistence.Commit();
 
             return product;
+        }
+
+        /// <summary>
+        /// Build a new <see cref="ProductAttributeType"/> and save it.
+        /// </summary>
+        /// <param name="name">The name of the new <see cref="ProductAttributeType"/>.</param>
+        /// <param name="displayName">A human readable value of the <paramref name="name"/>.</param>
+        /// <param name="validationRegularExpression">A regular expression to validate the value of a <see cref="ProductAttribute"/>.</param>
+        /// <returns>The new <see cref="ProductAttributeType"/>.</returns>
+        public ProductAttributeType CreateAttributeType(string name, string displayName, string validationRegularExpression)
+        {
+            if (
+                this._persistence.Find(
+                    new PersistenceSearcher<ProductAttributeType>(
+                        pat => pat.Name.ToLower(CultureInfo.CurrentCulture) == name.ToLower(CultureInfo.CurrentCulture)))
+                != null)
+            {
+                throw new InvalidOperationException(
+                    string.Format("A Product Attribute type with the name [{0}] already exists.", name));
+            }
+
+            try
+            {
+                var match = Regex.Match(string.Empty, validationRegularExpression);
+            }
+            catch (ArgumentException invalidRegexException)
+            {
+                throw new ArgumentException(
+                    string.Format(
+                    CultureInfo.CurrentCulture, 
+                    "The regular expression [{0}] to validate the product attribute type [{1}] is not a valid regular expression.",
+                    validationRegularExpression,
+                    name),
+                    invalidRegexException);
+            }
+
+            var productAttributeType = new ProductAttributeType
+                                       {
+                                           DisplayName = displayName,
+                                           Name = name,
+                                           ValidationRegularExpression = validationRegularExpression
+                                       };
+
+            this._persistence.Add(productAttributeType);
+
+            this._persistence.Commit();
+
+            return productAttributeType;
         }
     }
 }
