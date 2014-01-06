@@ -49,7 +49,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="KetchupContext.cs" />
-    <Compile Include="Migrations\Configuration.cs" />
+    <Compile Include="KetchupInitialiser.cs" />
+    <Compile Include="Migrations\KetchupConfiguration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

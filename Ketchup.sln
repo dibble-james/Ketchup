@@ -11,6 +11,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Dependencies", "Dependencie
 		Dependencies\JamesDibble.ApplicationFramework.Data.Persistence.EntityFrameworkCodeFirst.dll = Dependencies\JamesDibble.ApplicationFramework.Data.Persistence.EntityFrameworkCodeFirst.dll
 		Dependencies\JamesDibble.ApplicationFramework.Data.Persistence.EntityFrameworkCodeFirst.XML = Dependencies\JamesDibble.ApplicationFramework.Data.Persistence.EntityFrameworkCodeFirst.XML
 		Dependencies\JamesDibble.ApplicationFramework.Data.Persistence.xml = Dependencies\JamesDibble.ApplicationFramework.Data.Persistence.xml
+		Dependencies\JamesDibble.Extensions.System.Data.dll = Dependencies\JamesDibble.Extensions.System.Data.dll
+		Dependencies\JamesDibble.Extensions.System.Data.XML = Dependencies\JamesDibble.Extensions.System.Data.XML
 	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ketchup.UnitTests", "Ketchup.UnitTests\Ketchup.UnitTests.csproj", "{D3E4C640-EC78-4061-8900-D23372CE04B8}"
@@ -27,6 +29,11 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".nuget", ".nuget", "{57630C
 	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ketchup.IntegrationTests", "Ketchup.IntegrationTests\Ketchup.IntegrationTests.csproj", "{B4309ED1-F195-4D79-9DDD-D989EA52D281}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{6C1E8017-36D0-4A95-93B7-80804ACDC208}"
+	ProjectSection(SolutionItems) = preProject
+		Settings.StyleCop = Settings.StyleCop
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

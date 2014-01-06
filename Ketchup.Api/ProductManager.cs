@@ -22,7 +22,7 @@ namespace Ketchup.Api
         private readonly IPersistenceManager _persistence;
 
         /// <summary>
-        /// Create a new instance of the <see cref="ProductManager"/> class.
+        /// Initialises a new instance of the <see cref="ProductManager"/> class.
         /// </summary>
         /// <param name="persistenceManager">A connection to a persistence source.</param>
         public ProductManager(IPersistenceManager persistenceManager)

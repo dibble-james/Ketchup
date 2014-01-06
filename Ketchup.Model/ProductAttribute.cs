@@ -10,8 +10,15 @@ namespace Ketchup.Model
     /// </summary>
     public class ProductAttribute
     {
+        /// <summary>
+        /// Gets or sets the attribute type foreign key.
+        /// </summary>
         public int AttributeTypeId { get; set; }
 
+        /// <summary>
+        /// Gets or sets the <see cref="ProductSpecification"/> this <see cref="ProductAttribute"/> is
+        /// part of.
+        /// </summary>
         public ProductSpecification ProductSpecification { get; set; }
 
         /// <summary>

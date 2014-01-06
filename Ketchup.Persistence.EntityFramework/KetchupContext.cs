@@ -8,47 +8,18 @@ namespace Ketchup.Persistence.EntityFramework
     using System.Data.Entity;
 
     using Ketchup.Model;
-    using System.Data.Entity.Infrastructure;
-    using System.Data.Entity.Core.Objects;
-    using System.Data.Common;
 
     /// <summary>
     /// An EntityFramework context for use with Ketchup.
     /// </summary>
     public class KetchupContext : DbContext
     {
-        public KetchupContext()
-            : base()
-        {
-        }
-
+        /// <summary>
+        /// Initialises a new instance of the <see cref="KetchupContext"/> class.
+        /// </summary>
+        /// <param name="nameOrConnectionString">Either the database name or a connection string.</param>
         public KetchupContext(string nameOrConnectionString)
             : base(nameOrConnectionString)
-        {
-        }
-
-        public KetchupContext(ObjectContext objectContext, bool dbContextOwnsObjectContext)
-            : base(objectContext, dbContextOwnsObjectContext)
-        {
-        }
-                
-        public KetchupContext(string nameOrConnectionString, DbCompiledModel model)
-            : base(nameOrConnectionString, model)
-        {
-        }
-        
-        public KetchupContext(DbConnection existingConnection, bool contextOwnsConnection)
-            : base(existingConnection, contextOwnsConnection)
-        {
-        }
-
-        public KetchupContext(DbConnection existingConnection, DbCompiledModel model, bool contextOwnsConnection)
-            : base(existingConnection, model, contextOwnsConnection)
-        {
-        }
-        
-        protected KetchupContext(DbCompiledModel model) 
-            : base(model)
         {
         }
 
@@ -61,31 +32,52 @@ namespace Ketchup.Persistence.EntityFramework
         /// Gets or sets the <see cref="Product"/> <see cref="DbSet"/>.
         /// </summary>
         public IDbSet<Product> Products { get; set; }
+
         /// <summary>
         /// Gets or sets the <see cref="ProductAttribute"/> <see cref="DbSet"/>.
         /// </summary>
         public IDbSet<ProductAttribute> ProductAttributes { get; set; }
+
         /// <summary>
         /// Gets or sets the <see cref="ProductAttributeType"/> <see cref="DbSet"/>.
         /// </summary>
         public IDbSet<ProductAttributeType> ProductAttributeTypes { get; set; }
+
         /// <summary>
         /// Gets or sets the <see cref="ProductCategory"/> <see cref="DbSet"/>.
         /// </summary>
         public IDbSet<ProductCategory> ProductCategorys { get; set; }
+
         /// <summary>
         /// Gets or sets the <see cref="ProductCategorySpecification"/> <see cref="DbSet"/>.
         /// </summary>
         public IDbSet<ProductCategorySpecification> ProductCategorySpecifications { get; set; }
+
         /// <summary>
         /// Gets or sets the <see cref="ProductSpecification"/> <see cref="DbSet"/>.
         /// </summary>
         public IDbSet<ProductSpecification> ProductSpecifications { get; set; }
+
         /// <summary>
         /// Gets or sets the <see cref="ProductCategorySpecificationAttribute"/> <see cref="DbSet"/>.
         /// </summary>
-        public IDbSet<ProductCategorySpecificationAttribute> ProductCategorySpecificationAttributes { get; set; } 
+        public IDbSet<ProductCategorySpecificationAttribute> ProductCategorySpecificationAttributes { get; set; }
 
+        /// <summary>
+        /// This method is called when the model for a derived context has been initialized, but
+        /// before the model has been locked down and used to initialize the context.  The default
+        /// implementation of this method does nothing, but it can be overridden in a derived class
+        /// such that the model can be further configured before it is locked down.
+        /// </summary>
+        /// <remarks>
+        /// Typically, this method is called only once when the first instance of a derived context
+        /// is created.  The model for that context is then cached and is for all further instances of
+        /// the context in the app domain.  This caching can be disabled by setting the ModelCaching
+        /// property on the given ModelBuidler, but note that this can seriously degrade performance.
+        /// More control over caching is provided through use of the DbModelBuilder and DbContextFactory
+        /// classes directly.
+        /// </remarks>
+        /// <param name="modelBuilder">The builder that defines the model for the context being created. </param>
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
