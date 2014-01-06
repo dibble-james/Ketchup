@@ -16,6 +16,14 @@ namespace Ketchup.Model
     /// </summary>
     public class ProductSpecification : DynamicObject
     {
+        public int ProductId { get; set; }
+
+        /// <summary>
+        /// Gets or sets the <see cref="Product"/> this <see cref="ProductSpecification"/>
+        /// provides attributes for.
+        /// </summary>
+        public Product Product { get; set; }
+
         /// <summary>
         /// Get a <see langword="dynamic" /> representation of this <see cref="ProductSpecification"/>
         /// so that attributes can be retrieved without having to dig into the specification too far with

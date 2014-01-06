@@ -5,6 +5,8 @@
 // --------------------------------------------------------------------------------------------------------------------
 namespace Ketchup.Model
 {
+    using System.Collections.Generic;
+
     using JamesDibble.ApplicationFramework.Data.Persistence;
 
     /// <summary>
@@ -12,6 +14,8 @@ namespace Ketchup.Model
     /// </summary>
     public class ProductAttributeType : UniqueObject<int>
     {
+        public ICollection<ProductCategorySpecificationAttribute> ProductCategories { get; set; }
+
         /// <summary>
         /// Gets or sets the name of this <see cref="ProductAttributeType"/>.
         /// </summary>

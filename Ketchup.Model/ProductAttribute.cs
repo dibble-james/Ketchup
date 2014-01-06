@@ -10,6 +10,10 @@ namespace Ketchup.Model
     /// </summary>
     public class ProductAttribute
     {
+        public int AttributeTypeId { get; set; }
+
+        public ProductSpecification ProductSpecification { get; set; }
+
         /// <summary>
         /// Gets or sets the <see cref="ProductAttributeType"/> of this <see cref="ProductAttribute"/>.
         /// </summary>

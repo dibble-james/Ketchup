@@ -44,6 +44,7 @@
     <Compile Include="ProductAttributeType.cs" />
     <Compile Include="ProductCategory.cs" />
     <Compile Include="ProductCategorySpecification.cs" />
+    <Compile Include="ProductCategorySpecificationAttribute.cs" />
     <Compile Include="ProductSpecification.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
