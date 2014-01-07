@@ -27,6 +27,11 @@ namespace Ketchup.Model
         /// <summary>
         /// Gets or sets the products in this <see cref="ProductCategory"/>.
         /// </summary>
-        public ICollection<Product> Products { get; set; } 
+        public ICollection<Product> Products { get; set; }
+
+        /// <summary>
+        /// Gets or sets the parent <see cref="ProductCategory"/>.
+        /// </summary>
+        public ProductCategory ParentCategory { get; set; }
     }
 }
