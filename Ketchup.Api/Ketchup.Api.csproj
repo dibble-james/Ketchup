@@ -38,6 +38,9 @@
     <Reference Include="System.Core" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ICustomerManager.cs" />
+    <Compile Include="IOrderManager.cs" />
+    <Compile Include="IOrderNumberGenerator.cs" />
     <Compile Include="IProductManager.cs" />
     <Compile Include="ProductManager.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

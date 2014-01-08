@@ -144,6 +144,7 @@ namespace Ketchup.Persistence.EntityFramework
                 .HasForeignKey(o => o.CustomerId)
                 .WillCascadeOnDelete(true);
             modelBuilder.Entity<Order>().HasRequired(o => o.ShippingAddress);
+            modelBuilder.Entity<Order>().Property(o => o.OrderNumber).IsRequired();
 
             modelBuilder.Entity<BasketProduct>().HasKey(bp => new { bp.BasketId, bp.ProductId });
             modelBuilder.Entity<BasketProduct>()

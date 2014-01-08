@@ -15,6 +15,11 @@ namespace Ketchup.Model.Order
     public class Order
     {
         /// <summary>
+        /// Gets or sets the human friendly order identifier.
+        /// </summary>
+        public string OrderNumber { get; set; }
+
+        /// <summary>
         /// Gets or sets the the <see cref="System.DateTime"/> this <see cref="Order"/> was placed.
         /// </summary>
         public DateTime OrderDate { get; set; }
