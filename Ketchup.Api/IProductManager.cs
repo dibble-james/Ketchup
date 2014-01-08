@@ -87,6 +87,7 @@ namespace Ketchup.Api
         /// <summary>
         /// Retrieve the child <see cref="ProductCategory"/>s for a given <paramref name="parentCategory"/>.
         /// </summary>
+        /// <param name="parentCategory">The <see cref="ProductCategory"/> to get child categories for.</param>
         /// <returns>The child <see cref="ProductCategory"/>s</returns>
         IEnumerable<ProductCategory> GetProductCategories(ProductCategory parentCategory);
 

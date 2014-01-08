@@ -100,7 +100,7 @@ namespace Ketchup.Api
             {
                 throw new ArgumentException(
                     string.Format(
-                    CultureInfo.CurrentCulture, 
+                    CultureInfo.CurrentCulture,
                     "The regular expression [{0}] to validate the product attribute type [{1}] is not a valid regular expression.",
                     validationRegularExpression,
                     name),
@@ -196,6 +196,7 @@ namespace Ketchup.Api
         /// <summary>
         /// Retrieve the child <see cref="ProductCategory"/>s for a given <paramref name="parentCategory"/>.
         /// </summary>
+        /// <param name="parentCategory">The <see cref="ProductCategory"/> to get child categories for.</param>
         /// <returns>The child <see cref="ProductCategory"/>s</returns>
         public IEnumerable<ProductCategory> GetProductCategories(ProductCategory parentCategory)
         {
@@ -239,10 +240,11 @@ namespace Ketchup.Api
         {
             var relatedProducts =
                 relatedProductAttributes.Aggregate(
-                    this.GetProducts(), (current, additionalRelatedProductAttribute) =>
-                        current.Where(p => p.ActiveSpecification.ProductAttributes.Any(
-                            pa => pa.AttributeType.Id == additionalRelatedProductAttribute.AttributeType.Id
-                                && pa.Value == additionalRelatedProductAttribute.Value)));
+                    this.GetProducts(), 
+                        (current, additionalRelatedProductAttribute) =>
+                            current.Where(p => p.ActiveSpecification.ProductAttributes.Any(
+                                pa => pa.AttributeType.Id == additionalRelatedProductAttribute.AttributeType.Id
+                                    && pa.Value == additionalRelatedProductAttribute.Value)));
 
             return relatedProducts;
         }

@@ -9,18 +9,39 @@ namespace Ketchup.Model.Order
 
     using Ketchup.Model.Customer;
 
+    /// <summary>
+    /// A model for an <see cref="Order"/> placed by a <see cref="Customer"/>.
+    /// </summary>
     public class Order
     {
+        /// <summary>
+        /// Gets or sets the the <see cref="System.DateTime"/> this <see cref="Order"/> was placed.
+        /// </summary>
         public DateTime OrderDate { get; set; }
 
+        /// <summary>
+        /// Gets or sets the ID of the <see cref="Basket"/> of this <see cref="Order"/>.
+        /// </summary>
         public Guid BasketId { get; set; }
 
+        /// <summary>
+        /// Gets or sets the <see cref="Basket"/> of this <see cref="Order"/>.
+        /// </summary>
         public Basket Basket { get; set; }
 
+        /// <summary>
+        /// Gets or sets the ID of the <see cref="Customer"/> of this <see cref="Order"/>.
+        /// </summary>
         public Guid CustomerId { get; set; }
 
+        /// <summary>
+        /// Gets or sets the <see cref="Customer"/> of this <see cref="Order"/>.
+        /// </summary>
         public Customer Customer { get; set; }
 
+        /// <summary>
+        /// Gets or sets the <see cref="Address"/> this <see cref="Order"/> should be sent too.
+        /// </summary>
         public Address ShippingAddress { get; set; }
     }
 }

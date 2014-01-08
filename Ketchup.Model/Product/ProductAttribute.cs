@@ -17,10 +17,19 @@ namespace Ketchup.Model.Product
         /// </summary>
         public int AttributeTypeId { get; set; }
         
+        /// <summary>
+        /// Gets or sets the ID of the <see cref="Product"/> for this <see cref="ProductAttribute"/>.
+        /// </summary>
         public int ProductId { get; set; }
 
+        /// <summary>
+        /// Gets or sets the <see cref="System.DateTime"/> this <see cref="ProductAttribute"/> will be active from.
+        /// </summary>
         public DateTime AttributeActiveFrom { get; set; }
 
+        /// <summary>
+        /// Gets or sets the <see cref="System.DateTime"/> this <see cref="ProductAttribute"/> will be active until.
+        /// </summary>
         public DateTime AttributeActiveUntil { get; set; }
 
         /// <summary>

@@ -19,6 +19,9 @@ namespace Ketchup.Model.Product
         /// </summary>
         public virtual ICollection<ProductCategorySpecificationAttribute> ProductCategories { get; set; }
 
+        /// <summary>
+        /// Gets or sets the <see cref="ProductAttribute"/>s that use this <see cref="ProductAttributeType"/>.
+        /// </summary>
         public virtual ICollection<ProductAttribute> ProductAttributes { get; set; }
 
         /// <summary>

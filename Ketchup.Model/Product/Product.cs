@@ -28,6 +28,9 @@ namespace Ketchup.Model.Product
         /// </summary>
         public ICollection<ProductSpecification> ProductSpecifications { get; set; }
 
+        /// <summary>
+        /// Gets or sets the <see cref="Basket"/>s this <see cref="Product"/> has been put in.
+        /// </summary>
         public ICollection<BasketProduct> InBaskets { get; set; }
 
         /// <summary>
