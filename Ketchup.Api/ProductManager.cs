@@ -14,7 +14,6 @@ namespace Ketchup.Api
 
     using JamesDibble.ApplicationFramework.Data.Persistence;
 
-    using Ketchup.Model;
     using Ketchup.Model.Product;
 
     /// <summary>
