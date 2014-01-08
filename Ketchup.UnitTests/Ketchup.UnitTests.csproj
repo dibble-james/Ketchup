@@ -44,8 +44,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Api\ProductManagerTests.cs" />
-    <Compile Include="Model\ProductSpecificationTests.cs" />
-    <Compile Include="Model\ProductTests.cs" />
+    <Compile Include="Model\Product\ProductSpecificationTests.cs" />
+    <Compile Include="Model\Product\ProductTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

@@ -9,6 +9,7 @@ namespace Ketchup.Api
     using System.Collections.Generic;
 
     using Ketchup.Model;
+    using Ketchup.Model.Product;
 
     /// <summary>
     /// Implementing classes define methods to perform actions upon <see cref="Product"/>s.

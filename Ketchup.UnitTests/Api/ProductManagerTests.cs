@@ -14,6 +14,7 @@ namespace Ketchup.UnitTests.Api
 
     using Ketchup.Api;
     using Ketchup.Model;
+    using Ketchup.Model.Product;
 
     using Microsoft.VisualStudio.TestTools.UnitTesting;
 

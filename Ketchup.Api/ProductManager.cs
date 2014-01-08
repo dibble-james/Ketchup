@@ -15,6 +15,7 @@ namespace Ketchup.Api
     using JamesDibble.ApplicationFramework.Data.Persistence;
 
     using Ketchup.Model;
+    using Ketchup.Model.Product;
 
     /// <summary>
     /// A class to perform actions upon <see cref="Product"/>s.

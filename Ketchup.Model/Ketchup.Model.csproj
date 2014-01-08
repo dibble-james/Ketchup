@@ -38,16 +38,20 @@
     <Reference Include="System.Core" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Image.cs" />
-    <Compile Include="Product.cs" />
-    <Compile Include="ProductAttribute.cs" />
-    <Compile Include="ProductAttributeType.cs" />
-    <Compile Include="ProductCategory.cs" />
-    <Compile Include="ProductCategorySpecification.cs" />
-    <Compile Include="ProductCategorySpecificationAttribute.cs" />
-    <Compile Include="ProductSpecification.cs" />
+    <Compile Include="Order\Basket.cs" />
+    <Compile Include="Order\Customer.cs" />
+    <Compile Include="Order\Order.cs" />
+    <Compile Include="Product\Image.cs" />
+    <Compile Include="Product\Product.cs" />
+    <Compile Include="Product\ProductAttribute.cs" />
+    <Compile Include="Product\ProductAttributeType.cs" />
+    <Compile Include="Product\ProductCategory.cs" />
+    <Compile Include="Product\ProductCategorySpecification.cs" />
+    <Compile Include="Product\ProductCategorySpecificationAttribute.cs" />
+    <Compile Include="Product\ProductSpecification.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

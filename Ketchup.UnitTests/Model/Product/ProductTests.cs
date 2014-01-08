@@ -3,12 +3,13 @@
 //    Copyright 2012 James Dibble
 // </copyright>
 // --------------------------------------------------------------------------------------------------------------------
-namespace Ketchup.UnitTests.Model
+namespace Ketchup.UnitTests.Model.Product
 {
     using System;
     using System.Collections.ObjectModel;
 
     using Ketchup.Model;
+    using Ketchup.Model.Product;
 
     using Microsoft.VisualStudio.TestTools.UnitTesting;
 

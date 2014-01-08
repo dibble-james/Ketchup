@@ -8,6 +8,7 @@ namespace Ketchup.Persistence.EntityFramework
     using System.Data.Entity;
 
     using Ketchup.Model;
+    using Ketchup.Model.Product;
 
     /// <summary>
     /// An EntityFramework context for use with Ketchup.

@@ -3,7 +3,7 @@
 //    Copyright 2012 James Dibble
 // </copyright>
 // --------------------------------------------------------------------------------------------------------------------
-namespace Ketchup.Model
+namespace Ketchup.Model.Product
 {
     /// <summary>
     /// A class that represents a link between a <see cref="ProductCategory"/> and a <see cref="ProductAttributeType"/>.

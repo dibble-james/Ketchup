@@ -3,7 +3,7 @@
 //    Copyright 2012 James Dibble
 // </copyright>
 // --------------------------------------------------------------------------------------------------------------------
-namespace Ketchup.Model
+namespace Ketchup.Model.Product
 {
     using JamesDibble.ApplicationFramework.Data.Persistence;
 

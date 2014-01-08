@@ -3,7 +3,7 @@
 //    Copyright 2012 James Dibble
 // </copyright>
 // --------------------------------------------------------------------------------------------------------------------
-namespace Ketchup.Model
+namespace Ketchup.Model.Product
 {
     using System;
     using System.Collections.Generic;
@@ -25,7 +25,7 @@ namespace Ketchup.Model
         /// Gets or sets the <see cref="Product"/> this <see cref="ProductSpecification"/>
         /// provides attributes for.
         /// </summary>
-        public Product Product { get; set; }
+        public Model.Product.Product Product { get; set; }
 
         /// <summary>
         /// Gets a <see langword="dynamic" /> representation of this <see cref="ProductSpecification"/>

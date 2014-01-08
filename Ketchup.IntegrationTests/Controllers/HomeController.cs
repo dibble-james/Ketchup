@@ -10,6 +10,7 @@ namespace Ketchup.IntegrationTests.Controllers
 
     using Ketchup.Api;
     using Ketchup.Model;
+    using Ketchup.Model.Product;
 
     public class HomeController : Controller
     {
