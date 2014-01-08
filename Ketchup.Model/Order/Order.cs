@@ -7,12 +7,14 @@ namespace Ketchup.Model.Order
 {
     using System;
 
+    using JamesDibble.ApplicationFramework.Data.Persistence;
+
     using Ketchup.Model.Customer;
 
     /// <summary>
     /// A model for an <see cref="Order"/> placed by a <see cref="Customer"/>.
     /// </summary>
-    public class Order
+    public class Order : IPersistedObject
     {
         /// <summary>
         /// Gets or sets the human friendly order identifier.
