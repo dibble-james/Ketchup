@@ -5,6 +5,7 @@
 // --------------------------------------------------------------------------------------------------------------------
 namespace Ketchup.Api
 {
+    using System;
     using System.Collections.Generic;
 
     using Ketchup.Model;
@@ -62,6 +63,20 @@ namespace Ketchup.Api
         /// <returns>All known <see cref="Product"/>s.</returns>
         IEnumerable<Product> GetProducts();
 
+        /// <summary>
+        /// Retrieve all <see cref="Product"/>s that match a given <paramref name="predicate"/>.
+        /// </summary>
+        /// <param name="predicate">An expression to match <see cref="Product"/>s by.</param>
+        /// <returns>All <see cref="Product"/>s that match a given <paramref name="predicate"/>.</returns>
+        IEnumerable<Product> GetProducts(Func<Product, bool> predicate);
+
+        /// <summary>
+        /// Retrieve all <see cref="Product"/>s that have the same <see cref="ProductAttribute"/>(s).
+        /// </summary>
+        /// <param name="relatedProductAttributes">The <see cref="ProductAttribute"/>s to match upon.</param>
+        /// <returns>All <see cref="Product"/>s that have the same <see cref="ProductAttribute"/>(s).</returns>
+        IEnumerable<Product> GetRelatedProducts(params ProductAttribute[] relatedProductAttributes);
+            
         /// <summary>
         /// Retrieve all known <see cref="ProductCategory"/>s.
         /// </summary>

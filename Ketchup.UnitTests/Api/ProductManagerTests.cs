@@ -7,6 +7,7 @@ namespace Ketchup.UnitTests.Api
 {
     using System;
     using System.Collections.Generic;
+    using System.Collections.ObjectModel;
     using System.Linq;
 
     using JamesDibble.ApplicationFramework.Data.Persistence.Fakes;
@@ -90,6 +91,84 @@ namespace Ketchup.UnitTests.Api
         public void TestCreateProductAttributeTypeInvalidRegex()
         {
             var actual = this._target.CreateAttributeType(string.Empty, string.Empty, @"$(");
+        }
+
+        [TestMethod]
+        public void TestGetRelatedProducts()
+        {
+            var attributeType1 = new ProductAttributeType { Id = 1 };
+            var attributeType2 = new ProductAttributeType { Id = 2 };
+            var attributeType3 = new ProductAttributeType { Id = 3 };
+
+            const string attributeValue1 = "TestValue1";
+            const string attributeValue2 = "TestValue2";
+
+            var product1 = new Product
+                           {
+                               ProductSpecifications =
+                                   new Collection<ProductSpecification>
+                                   {
+                                       new ProductSpecification
+                                       {
+                                           ActiveFrom = DateTime.Now.AddDays(-3),
+                                           ActiveUntil = DateTime.Now.AddDays(+3),
+                                           ProductAttributes = new Collection<ProductAttribute>
+                                                {
+                                                   new ProductAttribute
+                                                   {
+                                                       AttributeType = attributeType1,
+                                                       Value = attributeValue1
+                                                   },
+                                                   new ProductAttribute
+                                                   {
+                                                       AttributeType = attributeType3,
+                                                       Value = "No one cares"
+                                                   }
+                                               }
+                                       }
+                                   }
+                           };
+
+            var product2 = new Product
+            {
+                ProductSpecifications =
+                    new Collection<ProductSpecification>
+                                   {
+                                       new ProductSpecification
+                                       {
+                                           ActiveFrom = DateTime.Now.AddDays(-3),
+                                           ActiveUntil = DateTime.Now.AddDays(+3),
+                                           ProductAttributes = new Collection<ProductAttribute>
+                                                {
+                                                   new ProductAttribute
+                                                   {
+                                                       AttributeType = attributeType1,
+                                                       Value = attributeValue1
+                                                   },
+                                                   new ProductAttribute
+                                                   {
+                                                       AttributeType = attributeType2,
+                                                       Value = attributeValue2
+                                                   },
+                                                   new ProductAttribute
+                                                   {
+                                                       AttributeType = attributeType3,
+                                                       Value = "No one cares"
+                                                   }
+                                               }
+                                       }
+                                   }
+            };
+
+            this._fakePersistenceManager.FindOf1IPersistenceCollectionSearcherOfM0<Product>(ps => new [] { product1, product2 });
+
+            var actual =
+                this._target.GetRelatedProducts(
+                    new ProductAttribute { AttributeType = attributeType1, Value = attributeValue1 },
+                    new ProductAttribute { AttributeType = attributeType2, Value = attributeValue2 });
+
+            Assert.IsTrue(actual.Count() == 1);
+            Assert.AreEqual(product2, actual.FirstOrDefault());
         }
     }
 }

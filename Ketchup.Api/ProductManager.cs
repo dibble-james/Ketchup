@@ -9,6 +9,7 @@ namespace Ketchup.Api
     using System.Collections.Generic;
     using System.Collections.ObjectModel;
     using System.Globalization;
+    using System.Linq;
     using System.Text.RegularExpressions;
 
     using JamesDibble.ApplicationFramework.Data.Persistence;
@@ -157,6 +158,30 @@ namespace Ketchup.Api
         }
 
         /// <summary>
+        /// Retrieve all <see cref="Product"/>s that match a given <paramref name="predicate"/>.
+        /// </summary>
+        /// <param name="predicate">An expression to match <see cref="Product"/>s by.</param>
+        /// <returns>All <see cref="Product"/>s that match a given <paramref name="predicate"/>.</returns>
+        public IEnumerable<Product> GetProducts(Func<Product, bool> predicate)
+        {
+            var products = this._persistence.Find(new PersistenceCollectionSearcher<Product>(predicate));
+
+            return products;
+        }
+
+        /// <summary>
+        /// Retrieve all <see cref="Product"/>s that have the same <see cref="ProductAttribute"/>(s).
+        /// </summary>
+        /// <param name="relatedProductAttributes">The <see cref="ProductAttribute"/>s to match upon.</param>
+        /// <returns>All <see cref="Product"/>s that have the same <see cref="ProductAttribute"/>(s).</returns>
+        public IEnumerable<Product> GetRelatedProducts(params ProductAttribute[] relatedProductAttributes)
+        {
+            var relatedProducts = this.GetRelatedProducts(relatedProductAttributes.AsEnumerable());
+
+            return relatedProducts;
+        }
+
+        /// <summary>
         /// Retrieve all known <see cref="ProductCategory"/>s.
         /// </summary>
         /// <returns>All known <see cref="ProductCategory"/>s.</returns>
@@ -207,6 +232,18 @@ namespace Ketchup.Api
                 this._persistence.Find(new PersistenceSearcher<ProductCategory>(pat => pat.Id == id));
 
             return category;
+        }
+
+        private IEnumerable<Product> GetRelatedProducts(IEnumerable<ProductAttribute> relatedProductAttributes)
+        {
+            var relatedProducts =
+                relatedProductAttributes.Aggregate(
+                    this.GetProducts(), (current, additionalRelatedProductAttribute) =>
+                        current.Where(p => p.ActiveSpecification.ProductAttributes.Any(
+                            pa => pa.AttributeType.Id == additionalRelatedProductAttribute.AttributeType.Id
+                                && pa.Value == additionalRelatedProductAttribute.Value)));
+
+            return relatedProducts;
         }
     }
 }
