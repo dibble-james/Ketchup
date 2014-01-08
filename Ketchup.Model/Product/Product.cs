@@ -11,6 +11,8 @@ namespace Ketchup.Model.Product
 
     using JamesDibble.ApplicationFramework.Data.Persistence;
 
+    using Ketchup.Model.Order;
+
     /// <summary>
     /// An item for sale.
     /// </summary>
@@ -25,6 +27,8 @@ namespace Ketchup.Model.Product
         /// Gets or sets the <see cref="ProductSpecification"/>s, the attributes of this product according to its category.
         /// </summary>
         public ICollection<ProductSpecification> ProductSpecifications { get; set; }
+
+        public ICollection<BasketProduct> InBaskets { get; set; }
 
         /// <summary>
         /// Gets the current <see cref="ProductSpecification"/>.

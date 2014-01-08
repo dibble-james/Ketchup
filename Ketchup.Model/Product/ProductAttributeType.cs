@@ -17,7 +17,9 @@ namespace Ketchup.Model.Product
         /// <summary>
         /// Gets or sets the <see cref="ProductCategory"/>s this <see cref="ProductAttributeType"/> is part of.
         /// </summary>
-        public ICollection<ProductCategorySpecificationAttribute> ProductCategories { get; set; }
+        public virtual ICollection<ProductCategorySpecificationAttribute> ProductCategories { get; set; }
+
+        public virtual ICollection<ProductAttribute> ProductAttributes { get; set; }
 
         /// <summary>
         /// Gets or sets the name of this <see cref="ProductAttributeType"/>.

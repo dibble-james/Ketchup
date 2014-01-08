@@ -5,6 +5,8 @@
 // --------------------------------------------------------------------------------------------------------------------
 namespace Ketchup.Model.Product
 {
+    using System;
+
     /// <summary>
     /// A specification value of a product.
     /// </summary>
@@ -14,6 +16,12 @@ namespace Ketchup.Model.Product
         /// Gets or sets the attribute type foreign key.
         /// </summary>
         public int AttributeTypeId { get; set; }
+        
+        public int ProductId { get; set; }
+
+        public DateTime AttributeActiveFrom { get; set; }
+
+        public DateTime AttributeActiveUntil { get; set; }
 
         /// <summary>
         /// Gets or sets the <see cref="ProductSpecification"/> this <see cref="ProductAttribute"/> is

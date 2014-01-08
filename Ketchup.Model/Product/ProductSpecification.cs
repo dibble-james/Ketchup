@@ -25,7 +25,7 @@ namespace Ketchup.Model.Product
         /// Gets or sets the <see cref="Product"/> this <see cref="ProductSpecification"/>
         /// provides attributes for.
         /// </summary>
-        public Model.Product.Product Product { get; set; }
+        public Product Product { get; set; }
 
         /// <summary>
         /// Gets a <see langword="dynamic" /> representation of this <see cref="ProductSpecification"/>

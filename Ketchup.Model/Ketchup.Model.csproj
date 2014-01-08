@@ -38,8 +38,10 @@
     <Reference Include="System.Core" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Customer\Address.cs" />
+    <Compile Include="Order\BaketProduct.cs" />
     <Compile Include="Order\Basket.cs" />
-    <Compile Include="Order\Customer.cs" />
+    <Compile Include="Customer\Customer.cs" />
     <Compile Include="Order\Order.cs" />
     <Compile Include="Product\Image.cs" />
     <Compile Include="Product\Product.cs" />
