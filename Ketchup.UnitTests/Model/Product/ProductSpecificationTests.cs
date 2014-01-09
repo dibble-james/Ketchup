@@ -11,6 +11,7 @@ namespace Ketchup.UnitTests.Model.Product
     using Ketchup.Model;
     using Ketchup.Model.Product;
 
+    using Microsoft.CSharp.RuntimeBinder;
     using Microsoft.VisualStudio.TestTools.UnitTesting;
 
     [TestClass]
@@ -42,6 +43,30 @@ namespace Ketchup.UnitTests.Model.Product
             var actual = productSpecification.Attributes.Price;
 
             Assert.AreEqual(expected, actual);
+        }
+
+        [ExpectedException(typeof(RuntimeBinderException))]
+        [TestMethod]
+        public void TestBaseIsCalledIfNoAttributesExist()
+        {
+            var productSpecification = new ProductSpecification
+            {
+                ProductAttributes =
+                    new Collection<ProductAttribute>
+                                               {
+                                                   new ProductAttribute
+                                                   {
+                                                       AttributeType
+                                                           =
+                                                           new ProductAttributeType
+                                                           {
+                                                               Name = "Price"
+                                                           }
+                                                   }
+                                               }
+            };
+
+            var actual = productSpecification.Attributes.IDontExist;
         }
     }
 }
