@@ -17,6 +17,11 @@ namespace Ketchup.Model.Product
     public class ProductSpecification : DynamicObject
     {
         /// <summary>
+        /// Gets or sets the <see cref="ProductCategory"/> of this <see cref="Model.Product.Product"/>.
+        /// </summary>
+        public ProductCategory Category { get; set; }
+
+        /// <summary>
         /// Gets or sets the product foreign key.
         /// </summary>
         public int ProductId { get; set; }

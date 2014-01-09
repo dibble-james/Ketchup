@@ -61,7 +61,7 @@ namespace Ketchup.UnitTests.Api
         [TestMethod]
         public void TestCreateProduct()
         {
-            var actual = this._target.CreateProduct(new ProductCategory(), new ProductSpecification());
+            var actual = this._target.CreateProduct(new ProductSpecification());
 
             Assert.IsNotNull(actual);
 

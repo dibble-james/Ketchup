@@ -54,14 +54,12 @@ namespace Ketchup.Api
         /// <summary>
         /// Build a new <see cref="Product"/> and save it.
         /// </summary>
-        /// <param name="productCategory">The group of the new <see cref="Product"/>.</param>
         /// <param name="productSpecification">The attributes of the new <see cref="Product"/>.</param>
         /// <returns>The new <see cref="Product"/>.</returns>
-        public Product CreateProduct(ProductCategory productCategory, ProductSpecification productSpecification)
+        public Product CreateProduct(ProductSpecification productSpecification)
         {
             var product = new Product
                           {
-                              Category = productCategory,
                               ProductSpecifications = new Collection<ProductSpecification> { productSpecification }
                           };
 
