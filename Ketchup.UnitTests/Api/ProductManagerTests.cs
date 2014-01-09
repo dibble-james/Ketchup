@@ -10,13 +10,14 @@ namespace Ketchup.UnitTests.Api
     using System.Collections.ObjectModel;
     using System.Linq;
 
-    using JamesDibble.ApplicationFramework.Data.Persistence.Fakes;
+    using JamesDibble.ApplicationFramework.Data.Persistence;
 
     using Ketchup.Api;
-    using Ketchup.Model;
     using Ketchup.Model.Product;
 
     using Microsoft.VisualStudio.TestTools.UnitTesting;
+
+    using Moq;
 
     [TestClass]
     public class ProductManagerTests
@@ -24,7 +25,7 @@ namespace Ketchup.UnitTests.Api
         private IList<ProductCategory> _productCategories;
         private IList<Product> _products;
         private IList<ProductAttributeType> _productAttributeTypes;
-        private StubIPersistenceManager _fakePersistenceManager;
+        private Mock<IPersistenceManager> _fakePersistenceManager;
         private ProductManager _target;
 
         [TestInitialize]
@@ -34,18 +35,19 @@ namespace Ketchup.UnitTests.Api
             this._products = new List<Product>();
             this._productAttributeTypes = new List<ProductAttributeType>();
 
-            var fakePersistence = new StubIPersistenceManager
-                                  {
-                                      Commit = () => { return; }
-                                  };
+            var fakePersistence = new Mock<IPersistenceManager>();
+            fakePersistence.Setup(p => p.Commit()).Callback(() => { return; });
 
-            fakePersistence.AddOf1M0<ProductCategory>(c => this._productCategories.Add(c));
-            fakePersistence.AddOf1M0<Product>(p => this._products.Add(p));
-            fakePersistence.AddOf1M0<ProductAttributeType>(pat => this._productAttributeTypes.Add(pat));
+            fakePersistence.Setup(p => p.Add(It.IsAny<ProductCategory>()))
+                .Callback<ProductCategory>(c => this._productCategories.Add(c));
+            fakePersistence.Setup(p => p.Add(It.IsAny<Product>()))
+                .Callback<Product>(c => this._products.Add(c));
+            fakePersistence.Setup(p => p.Add(It.IsAny<ProductAttributeType>()))
+                .Callback<ProductAttributeType>(c => this._productAttributeTypes.Add(c));
 
             this._fakePersistenceManager = fakePersistence;
 
-            this._target = new ProductManager(this._fakePersistenceManager);
+            this._target = new ProductManager(this._fakePersistenceManager.Object);
         }
 
         [TestMethod]
@@ -82,7 +84,9 @@ namespace Ketchup.UnitTests.Api
         [ExpectedException(typeof(InvalidOperationException))]
         public void TestCreateProductAttributeTypeAlreadyExists()
         {
-            this._fakePersistenceManager.FindOf1IPersistenceSearcherOfM0<ProductAttributeType>(ps => new ProductAttributeType());
+            this._fakePersistenceManager.Setup(pm => pm.Find(It.IsAny<IPersistenceSearcher<ProductAttributeType>>()))
+                .Returns(new ProductAttributeType());
+                
 
             var actual = this._target.CreateAttributeType(string.Empty, string.Empty, @"$^");
         }
@@ -161,7 +165,9 @@ namespace Ketchup.UnitTests.Api
                                    }
             };
 
-            this._fakePersistenceManager.FindOf1IPersistenceCollectionSearcherOfM0<Product>(ps => new [] { product1, product2 });
+            this._fakePersistenceManager
+                .Setup(p => p.Find(It.IsAny<IPersistenceCollectionSearcher<Product>>()))
+                .Returns(new List<Product> { product1, product2 });
 
             var actual =
                 this._target.GetRelatedProducts(
