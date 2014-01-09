@@ -19,11 +19,6 @@ namespace Ketchup.Model.Product
     public class Product : UniqueObject<int>
     {
         /// <summary>
-        /// Gets or sets the <see cref="ProductCategory"/> of this <see cref="Product"/>.
-        /// </summary>
-        public ProductCategory Category { get; set; }
-
-        /// <summary>
         /// Gets or sets the <see cref="ProductSpecification"/>s, the attributes of this product according to its category.
         /// </summary>
         public ICollection<ProductSpecification> ProductSpecifications { get; set; }

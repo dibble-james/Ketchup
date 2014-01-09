@@ -29,10 +29,9 @@ namespace Ketchup.Api
         /// <summary>
         /// Build a new <see cref="Product"/> and save it.
         /// </summary>
-        /// <param name="productCategory">The group of the new <see cref="Product"/>.</param>
         /// <param name="productSpecification">The attributes of the new <see cref="Product"/>.</param>
         /// <returns>The new <see cref="Product"/>.</returns>
-        Product CreateProduct(ProductCategory productCategory, ProductSpecification productSpecification);
+        Product CreateProduct(ProductSpecification productSpecification);
 
         /// <summary>
         /// Build a new <see cref="ProductAttributeType"/> and save it.
