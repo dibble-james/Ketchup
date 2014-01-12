@@ -16,6 +16,17 @@ namespace Ketchup
     /// </summary>
     internal sealed class KetchupConfiguration : IKetchupConfiguration
     {
+
+        /// <summary>
+        /// Gets the <see cref="IPersistenceManager"/> for <see cref="IKetchup"/> to use to read its object from.
+        /// </summary>
+        public IPersistenceManager Persistence { get; private set; }
+
+        /// <summary>
+        /// Gets the <see cref="IOrderNumberGenerator"/> for <see cref="IKetchup"/> to use.
+        /// </summary>
+        public IOrderNumberGenerator OrderNumberGenerator { get; private set; }
+
         /// <summary>
         /// Create an <see cref="IKetchup"/> context with the previously set parameters.
         /// </summary>
@@ -60,15 +71,5 @@ namespace Ketchup
 
             return this;
         }
-
-        /// <summary>
-        /// Gets the <see cref="IPersistenceManager"/> for <see cref="IKetchup"/> to use to read its object from.
-        /// </summary>
-        public IPersistenceManager Persistence { get; private set; }
-
-        /// <summary>
-        /// Gets the <see cref="IOrderNumberGenerator"/> for <see cref="IKetchup"/> to use.
-        /// </summary>
-        public IOrderNumberGenerator OrderNumberGenerator { get; private set; }
     }
 }

@@ -7,6 +7,9 @@ namespace Ketchup
 {
     using Api;
 
+    /// <summary>
+    /// Implementing classes define access points to eCommerce functions.
+    /// </summary>
     public interface IKetchup
     {
         /// <summary>

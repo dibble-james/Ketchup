@@ -17,6 +17,16 @@ namespace Ketchup
     public interface IKetchupConfiguration
     {
         /// <summary>
+        /// Gets the <see cref="IPersistenceManager"/> for <see cref="IKetchup"/> to use to read its object from.
+        /// </summary>
+        IPersistenceManager Persistence { get; }
+
+        /// <summary>
+        /// Gets the <see cref="IOrderNumberGenerator"/> for <see cref="IKetchup"/> to use.
+        /// </summary>
+        IOrderNumberGenerator OrderNumberGenerator { get; }
+
+        /// <summary>
         /// Create an <see cref="IKetchup"/> context with the previously set parameters.
         /// </summary>
         /// <returns>An <see cref="IKetchup"/> context.</returns>
@@ -29,15 +39,5 @@ namespace Ketchup
         /// <param name="value">The value of the property.</param>
         /// <returns>The fluid interface builder.</returns>
         IKetchupConfiguration With(Expression<Func<IKetchupConfiguration, object>> property, object value);
-
-        /// <summary>
-        /// Gets the <see cref="IPersistenceManager"/> for <see cref="IKetchup"/> to use to read its object from.
-        /// </summary>
-        IPersistenceManager Persistence { get; }
-
-        /// <summary>
-        /// Gets the <see cref="IOrderNumberGenerator"/> for <see cref="IKetchup"/> to use.
-        /// </summary>
-        IOrderNumberGenerator OrderNumberGenerator { get; }
     }
 }

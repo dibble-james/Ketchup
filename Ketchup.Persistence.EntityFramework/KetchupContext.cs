@@ -6,9 +6,7 @@
 namespace Ketchup.Persistence.EntityFramework
 {
     using System.Data.Entity;
-    using System.Data.Entity.ModelConfiguration.Conventions;
 
-    using Ketchup.Model;
     using Ketchup.Model.Customer;
     using Ketchup.Model.Order;
     using Ketchup.Model.Product;
@@ -25,6 +23,8 @@ namespace Ketchup.Persistence.EntityFramework
         public KetchupContext(string nameOrConnectionString)
             : base(nameOrConnectionString)
         {
+            this.Configuration.LazyLoadingEnabled = true;
+            this.Configuration.AutoDetectChangesEnabled = true;
         }
 
         /// <summary>
@@ -110,6 +110,8 @@ namespace Ketchup.Persistence.EntityFramework
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
+
+            modelBuilder.HasDefaultSchema("ketchup");
 
             modelBuilder.Entity<ProductAttribute>()
                 .HasKey(pa => new { pa.AttributeTypeId, pa.ProductId, pa.AttributeActiveFrom, pa.AttributeActiveUntil });

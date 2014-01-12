@@ -39,7 +39,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Customer\Address.cs" />
-    <Compile Include="Order\BaketProduct.cs" />
+    <Compile Include="Order\BasketProduct.cs" />
     <Compile Include="Order\Basket.cs" />
     <Compile Include="Customer\Customer.cs" />
     <Compile Include="Order\Order.cs" />

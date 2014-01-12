@@ -18,7 +18,7 @@ namespace Ketchup.Persistence.EntityFramework.Migrations
         /// </summary>
         public KetchupConfiguration()
         {
-            this.AutomaticMigrationsEnabled = true;
+            this.AutomaticMigrationsEnabled = false;
             this.AutomaticMigrationDataLossAllowed = true;
         }
 
