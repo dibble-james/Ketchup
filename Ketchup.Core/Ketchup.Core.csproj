@@ -38,6 +38,13 @@
     <Reference Include="System.Core" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Api\CustomerManager.cs" />
+    <Compile Include="Api\ICustomerManager.cs" />
+    <Compile Include="Api\IOrderManager.cs" />
+    <Compile Include="Api\IOrderNumberGenerator.cs" />
+    <Compile Include="Api\IProductManager.cs" />
+    <Compile Include="Api\OrderManager.cs" />
+    <Compile Include="Api\ProductManager.cs" />
     <Compile Include="IKetchup.cs" />
     <Compile Include="IKetchupConfiguration.cs" />
     <Compile Include="Ketchup.cs" />
@@ -46,15 +53,12 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Ketchup.Api\Ketchup.Api.csproj">
-      <Project>{4FB190D1-87BF-47E7-85C3-1617C5283429}</Project>
-      <Name>Ketchup.Api</Name>
-    </ProjectReference>
     <ProjectReference Include="..\Ketchup.Model\Ketchup.Model.csproj">
       <Project>{c84b7c9c-aaf9-4197-935b-6880c5f39ab0}</Project>
       <Name>Ketchup.Model</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

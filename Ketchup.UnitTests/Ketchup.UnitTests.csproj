@@ -51,10 +51,6 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Ketchup.Api\Ketchup.Api.csproj">
-      <Project>{4FB190D1-87BF-47E7-85C3-1617C5283429}</Project>
-      <Name>Ketchup.Api</Name>
-    </ProjectReference>
     <ProjectReference Include="..\Ketchup.Core\Ketchup.Core.csproj">
       <Project>{9FFE7E48-334F-4A94-80A4-315B4FE11F92}</Project>
       <Name>Ketchup.Core</Name>

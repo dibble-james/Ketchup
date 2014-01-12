@@ -12,9 +12,9 @@ namespace Ketchup.Api
 
     using JamesDibble.ApplicationFramework.Data.Persistence;
 
-    using Ketchup.Model.Customer;
-    using Ketchup.Model.Order;
-    using Ketchup.Model.Product;
+    using Model.Customer;
+    using Model.Order;
+    using Model.Product;
 
     /// <summary>
     /// An object to manage <see cref="Order"/> objects.

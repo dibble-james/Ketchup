@@ -168,9 +168,9 @@
     <Content Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Ketchup.Api\Ketchup.Api.csproj">
-      <Project>{4fb190d1-87bf-47e7-85c3-1617c5283429}</Project>
-      <Name>Ketchup.Api</Name>
+    <ProjectReference Include="..\Ketchup.Core\Ketchup.Core.csproj">
+      <Project>{9ffe7e48-334f-4a94-80a4-315b4fe11f92}</Project>
+      <Name>Ketchup.Core</Name>
     </ProjectReference>
     <ProjectReference Include="..\Ketchup.Model\Ketchup.Model.csproj">
       <Project>{c84b7c9c-aaf9-4197-935b-6880c5f39ab0}</Project>
