@@ -8,9 +8,9 @@ namespace Ketchup.Api
     using System;
     using System.Collections.Generic;
 
-    using Ketchup.Model.Customer;
-    using Ketchup.Model.Order;
-    using Ketchup.Model.Product;
+    using Model.Customer;
+    using Model.Order;
+    using Model.Product;
 
     /// <summary>
     /// Implementing classes define methods to manage <see cref="Order"/>s.

@@ -5,7 +5,7 @@
 // --------------------------------------------------------------------------------------------------------------------
 namespace Ketchup.Api
 {
-    using Ketchup.Model.Customer;
+    using Model.Customer;
 
     /// <summary>
     /// Implementing classes define methods to manage <see cref="Customer"/>s.

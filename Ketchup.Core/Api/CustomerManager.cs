@@ -6,15 +6,14 @@
 namespace Ketchup.Api
 {
     using System.Collections.ObjectModel;
-
     using JamesDibble.ApplicationFramework.Data.Persistence;
-
-    using Ketchup.Model.Customer;
+    
+    using Model.Customer;
 
     /// <summary>
-    /// A class to manage <see cref="Customer"/> objects.
+    /// A class to manage <see cref="Model.Customer.Customer"/> objects.
     /// </summary>
-    public class CustomerManager : ICustomerManager
+    public sealed class CustomerManager : ICustomerManager
     {
         private readonly IPersistenceManager _persistence;
 
@@ -28,9 +27,9 @@ namespace Ketchup.Api
         }
 
         /// <summary>
-        /// Build a new <see cref="Customer"/>.
+        /// Build a new <see cref="Model.Customer.Customer"/>.
         /// </summary>
-        /// <param name="firstName">The <see cref="Customer"/>s first name.</param>
+        /// <param name="firstName">The <see cref="Model.Customer.Customer"/>s first name.</param>
         /// <param name="lastName">The <see cref="Customer"/>s last name.</param>
         /// <param name="email">The <see cref="Customer"/>s email address.</param>
         /// <param name="address">The <see cref="Customer"/>s primary <see cref="Address"/>.</param>

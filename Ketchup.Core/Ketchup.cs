@@ -5,28 +5,31 @@
 // --------------------------------------------------------------------------------------------------------------------
 namespace Ketchup
 {
-    using global::Ketchup.Api;
+    using System;
+    using Api;
+    using JamesDibble.ApplicationFramework.Data.Persistence;
 
     /// <summary>
-    /// An object to inject Ketchups behavior into applications.
+    /// An implementation of <see cref="IKetchup"/> for use with a fluid interface builder.
     /// </summary>
-    public class Ketchup : IKetchup
+    internal sealed class Ketchup : IKetchup
     {
-        private readonly ICustomerManager _customerManager;
-        private readonly IOrderManager _orderManager;
-        private readonly IProductManager _productManager;
+        private readonly IPersistenceManager _persistence;
+        private readonly IOrderNumberGenerator _orderNumberGenerator;
 
-        /// <summary>
-        /// Initialises a new instance of the <see cref="Ketchup"/> class.
-        /// </summary>
-        /// <param name="customerManager">An <see cref="ICustomerManager"/> instance.</param>
-        /// <param name="orderManager">An <see cref="IOrderManager"/> instance.</param>
-        /// <param name="productManager">An <see cref="IProductManager"/> instance.</param>
-        public Ketchup(ICustomerManager customerManager, IOrderManager orderManager, IProductManager productManager)
+        private ICustomerManager _customerManager;
+        private IOrderManager _orderManager;
+        private IProductManager _productManager;
+
+        internal Ketchup(IPersistenceManager persistence)
         {
-            this._customerManager = customerManager;
-            this._orderManager = orderManager;
-            this._productManager = productManager;
+            this._persistence = persistence;
+        }
+
+        internal Ketchup(IPersistenceManager persistence, IOrderNumberGenerator orderNumberGenerator)
+        {
+            this._persistence = persistence;
+            this._orderNumberGenerator = orderNumberGenerator;
         }
 
         /// <summary>
@@ -36,7 +39,7 @@ namespace Ketchup
         {
             get
             {
-                return this._customerManager;
+                return this._customerManager ?? (this._customerManager = new CustomerManager(this._persistence));
             }
         }
 
@@ -47,7 +50,13 @@ namespace Ketchup
         {
             get
             {
-                return this._orderManager;
+                if (this._orderNumberGenerator == null)
+                {
+                    throw new InvalidOperationException(
+                        @"Ketchup was not configured with an IOrderNumberGenerator and therefore cannot be used to manage orders.");
+                }
+
+                return this._orderManager ?? (this._orderManager = new OrderManager(this._persistence, this._orderNumberGenerator));
             }
         }
 
@@ -58,7 +67,7 @@ namespace Ketchup
         {
             get
             {
-                return this._productManager;
+                return this._productManager ?? (this._productManager = new ProductManager(this._persistence));
             }
         }
     }
