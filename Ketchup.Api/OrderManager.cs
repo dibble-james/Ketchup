@@ -19,7 +19,7 @@ namespace Ketchup.Api
     /// <summary>
     /// An object to manage <see cref="Order"/> objects.
     /// </summary>
-    public class OrderManager : IOrderManager
+    public sealed class OrderManager : IOrderManager
     {
         private readonly IPersistenceManager _persistence;
         private readonly IOrderNumberGenerator _orderNumberGenerator;

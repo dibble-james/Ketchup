@@ -31,12 +31,18 @@
     <DocumentationFile>..\Release\Ketchup.Core.XML</DocumentationFile>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="JamesDibble.ApplicationFramework.Data.Persistence">
+      <HintPath>..\Dependencies\JamesDibble.ApplicationFramework.Data.Persistence.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="IKetchup.cs" />
+    <Compile Include="IKetchupConfiguration.cs" />
     <Compile Include="Ketchup.cs" />
+    <Compile Include="KetchupBuilder.cs" />
+    <Compile Include="KetchupConfiguration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

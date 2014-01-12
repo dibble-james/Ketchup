@@ -45,6 +45,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Api\ProductManagerTests.cs" />
+    <Compile Include="Core\KetchupConfigurationTests.cs" />
     <Compile Include="Model\Product\ProductSpecificationTests.cs" />
     <Compile Include="Model\Product\ProductTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -53,6 +54,10 @@
     <ProjectReference Include="..\Ketchup.Api\Ketchup.Api.csproj">
       <Project>{4FB190D1-87BF-47E7-85C3-1617C5283429}</Project>
       <Name>Ketchup.Api</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Ketchup.Core\Ketchup.Core.csproj">
+      <Project>{9FFE7E48-334F-4A94-80A4-315B4FE11F92}</Project>
+      <Name>Ketchup.Core</Name>
     </ProjectReference>
     <ProjectReference Include="..\Ketchup.Model\Ketchup.Model.csproj">
       <Project>{c84b7c9c-aaf9-4197-935b-6880c5f39ab0}</Project>

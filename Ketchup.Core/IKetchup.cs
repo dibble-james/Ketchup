@@ -5,8 +5,7 @@
 // --------------------------------------------------------------------------------------------------------------------
 namespace Ketchup
 {
-    using global::Ketchup.Api;
-    using global::Ketchup.Model.Customer;
+    using Api;
 
     public interface IKetchup
     {

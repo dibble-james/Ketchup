@@ -14,7 +14,7 @@ namespace Ketchup.Api
     /// <summary>
     /// A class to manage <see cref="Customer"/> objects.
     /// </summary>
-    public class CustomerManager : ICustomerManager
+    public sealed class CustomerManager : ICustomerManager
     {
         private readonly IPersistenceManager _persistence;
 
