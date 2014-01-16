@@ -31,6 +31,8 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{6C1E8017-36D0-4A95-93B7-80804ACDC208}"
 	ProjectSection(SolutionItems) = preProject
 		Ketchup.sln.DotSettings = Ketchup.sln.DotSettings
+		LICENSE = LICENSE
+		README.md = README.md
 		Settings.StyleCop = Settings.StyleCop
 	EndProjectSection
 EndProject
