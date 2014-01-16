@@ -18,7 +18,7 @@ namespace Ketchup
         private IProductManager _productManager;
 
         /// <summary>
-        /// Gets access to the Ketchup <see cref="ICustomerManager"/>.
+        /// Gets or sets access to the Ketchup <see cref="ICustomerManager"/>.
         /// </summary>
         public ICustomerManager Customers
         {
@@ -31,6 +31,7 @@ namespace Ketchup
 
                 return this._customerManager;
             }
+
             internal set
             {
                 this._customerManager = value;
@@ -38,7 +39,7 @@ namespace Ketchup
         }
 
         /// <summary>
-        /// Gets access to the Ketchup <see cref="IOrderManager"/>.
+        /// Gets or sets access to the Ketchup <see cref="IOrderManager"/>.
         /// </summary>
         public IOrderManager Orders
         {
@@ -52,6 +53,7 @@ namespace Ketchup
 
                 return this._orderManager;
             }
+
             internal set
             {
                 this._orderManager = value;
@@ -59,7 +61,7 @@ namespace Ketchup
         }
 
         /// <summary>
-        /// Gets access to the Ketchup <see cref="IProductManager"/>.
+        /// Gets or sets access to the Ketchup <see cref="IProductManager"/>.
         /// </summary>
         public IProductManager Products
         {
@@ -73,6 +75,7 @@ namespace Ketchup
 
                 return this._productManager;
             }
+
             internal set
             {
                 this._productManager = value;

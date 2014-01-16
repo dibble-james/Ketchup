@@ -1,13 +1,23 @@
+// --------------------------------------------------------------------------------------------------------------------
+// <copyright file="201401161732436_InitialCreate.cs" company="James Dibble">
+//    Copyright 2012 James Dibble
+// </copyright>
+// --------------------------------------------------------------------------------------------------------------------
 namespace Ketchup.Persistence.EntityFramework.Migrations
 {
-    using System;
     using System.Data.Entity.Migrations;
     
+    /// <summary>
+    /// Model creation migration.
+    /// </summary>
     public partial class InitialCreate : DbMigration
     {
+        /// <summary>
+        /// Operations to be performed during the upgrade process.
+        /// </summary>
         public override void Up()
         {
-            CreateTable(
+            this.CreateTable(
                 "ketchup.Addresses",
                 c => new
                     {
@@ -24,7 +34,7 @@ namespace Ketchup.Persistence.EntityFramework.Migrations
                 .ForeignKey("ketchup.Customers", t => t.Customer_Id)
                 .Index(t => t.Customer_Id);
             
-            CreateTable(
+            this.CreateTable(
                 "ketchup.BasketProducts",
                 c => new
                     {
@@ -37,7 +47,7 @@ namespace Ketchup.Persistence.EntityFramework.Migrations
                 .Index(t => t.BasketId)
                 .Index(t => t.ProductId);
             
-            CreateTable(
+            this.CreateTable(
                 "ketchup.Baskets",
                 c => new
                     {
@@ -45,7 +55,7 @@ namespace Ketchup.Persistence.EntityFramework.Migrations
                     })
                 .PrimaryKey(t => t.Id);
             
-            CreateTable(
+            this.CreateTable(
                 "ketchup.Orders",
                 c => new
                     {
@@ -63,7 +73,7 @@ namespace Ketchup.Persistence.EntityFramework.Migrations
                 .Index(t => t.CustomerId)
                 .Index(t => t.ShippingAddress_Id);
             
-            CreateTable(
+            this.CreateTable(
                 "ketchup.Customers",
                 c => new
                     {
@@ -74,7 +84,7 @@ namespace Ketchup.Persistence.EntityFramework.Migrations
                     })
                 .PrimaryKey(t => t.Id);
             
-            CreateTable(
+            this.CreateTable(
                 "ketchup.Products",
                 c => new
                     {
@@ -85,7 +95,7 @@ namespace Ketchup.Persistence.EntityFramework.Migrations
                 .ForeignKey("ketchup.ProductCategories", t => t.ProductCategory_Id)
                 .Index(t => t.ProductCategory_Id);
             
-            CreateTable(
+            this.CreateTable(
                 "ketchup.ProductSpecifications",
                 c => new
                     {
@@ -101,7 +111,7 @@ namespace Ketchup.Persistence.EntityFramework.Migrations
                 .Index(t => t.Category_Id)
                 .Index(t => t.ProductId);
             
-            CreateTable(
+            this.CreateTable(
                 "ketchup.ProductCategories",
                 c => new
                     {
@@ -115,7 +125,7 @@ namespace Ketchup.Persistence.EntityFramework.Migrations
                 .Index(t => t.ParentCategory_Id)
                 .Index(t => t.Id);
             
-            CreateTable(
+            this.CreateTable(
                 "ketchup.ProductCategorySpecifications",
                 c => new
                     {
@@ -124,7 +134,7 @@ namespace Ketchup.Persistence.EntityFramework.Migrations
                     })
                 .PrimaryKey(t => t.Id);
             
-            CreateTable(
+            this.CreateTable(
                 "ketchup.ProductCategorySpecificationAttributes",
                 c => new
                     {
@@ -140,7 +150,7 @@ namespace Ketchup.Persistence.EntityFramework.Migrations
                 .Index(t => t.ProductCategoryId)
                 .Index(t => t.ProductCategorySpecification_Id);
             
-            CreateTable(
+            this.CreateTable(
                 "ketchup.ProductAttributeTypes",
                 c => new
                     {
@@ -151,7 +161,7 @@ namespace Ketchup.Persistence.EntityFramework.Migrations
                     })
                 .PrimaryKey(t => t.Id);
             
-            CreateTable(
+            this.CreateTable(
                 "ketchup.ProductAttributes",
                 c => new
                     {
@@ -167,7 +177,7 @@ namespace Ketchup.Persistence.EntityFramework.Migrations
                 .Index(t => t.AttributeTypeId)
                 .Index(t => new { t.ProductId, t.AttributeActiveFrom, t.AttributeActiveUntil });
             
-            CreateTable(
+            this.CreateTable(
                 "ketchup.Images",
                 c => new
                     {
@@ -179,59 +189,61 @@ namespace Ketchup.Persistence.EntityFramework.Migrations
                     })
                 .PrimaryKey(t => t.Id)
                 .ForeignKey("ketchup.ProductSpecifications", t => new { t.ProductSpecification_ProductId, t.ProductSpecification_ActiveFrom, t.ProductSpecification_ActiveUntil })
-                .Index(t => new { t.ProductSpecification_ProductId, t.ProductSpecification_ActiveFrom, t.ProductSpecification_ActiveUntil });
-            
+                .Index(t => new { t.ProductSpecification_ProductId, t.ProductSpecification_ActiveFrom, t.ProductSpecification_ActiveUntil });   
         }
-        
+
+        /// <summary>
+        /// Operations to be performed during the downgrade process.
+        /// </summary>
         public override void Down()
         {
-            DropForeignKey("ketchup.BasketProducts", "ProductId", "ketchup.Products");
-            DropForeignKey("ketchup.Images", new[] { "ProductSpecification_ProductId", "ProductSpecification_ActiveFrom", "ProductSpecification_ActiveUntil" }, "ketchup.ProductSpecifications");
-            DropForeignKey("ketchup.ProductSpecifications", "ProductId", "ketchup.Products");
-            DropForeignKey("ketchup.ProductSpecifications", "Category_Id", "ketchup.ProductCategories");
-            DropForeignKey("ketchup.ProductCategories", "Id", "ketchup.ProductCategorySpecifications");
-            DropForeignKey("ketchup.ProductCategorySpecificationAttributes", "ProductCategorySpecification_Id", "ketchup.ProductCategorySpecifications");
-            DropForeignKey("ketchup.ProductCategorySpecificationAttributes", "ProductCategoryId", "ketchup.ProductCategories");
-            DropForeignKey("ketchup.ProductCategorySpecificationAttributes", "ProductAttributeTypeId", "ketchup.ProductAttributeTypes");
-            DropForeignKey("ketchup.ProductAttributes", new[] { "ProductId", "AttributeActiveFrom", "AttributeActiveUntil" }, "ketchup.ProductSpecifications");
-            DropForeignKey("ketchup.ProductAttributes", "AttributeTypeId", "ketchup.ProductAttributeTypes");
-            DropForeignKey("ketchup.Products", "ProductCategory_Id", "ketchup.ProductCategories");
-            DropForeignKey("ketchup.ProductCategories", "ParentCategory_Id", "ketchup.ProductCategories");
-            DropForeignKey("ketchup.BasketProducts", "BasketId", "ketchup.Baskets");
-            DropForeignKey("ketchup.Orders", "ShippingAddress_Id", "ketchup.Addresses");
-            DropForeignKey("ketchup.Orders", "CustomerId", "ketchup.Customers");
-            DropForeignKey("ketchup.Addresses", "Customer_Id", "ketchup.Customers");
-            DropForeignKey("ketchup.Orders", "BasketId", "ketchup.Baskets");
-            DropIndex("ketchup.BasketProducts", new[] { "ProductId" });
-            DropIndex("ketchup.Images", new[] { "ProductSpecification_ProductId", "ProductSpecification_ActiveFrom", "ProductSpecification_ActiveUntil" });
-            DropIndex("ketchup.ProductSpecifications", new[] { "ProductId" });
-            DropIndex("ketchup.ProductSpecifications", new[] { "Category_Id" });
-            DropIndex("ketchup.ProductCategories", new[] { "Id" });
-            DropIndex("ketchup.ProductCategorySpecificationAttributes", new[] { "ProductCategorySpecification_Id" });
-            DropIndex("ketchup.ProductCategorySpecificationAttributes", new[] { "ProductCategoryId" });
-            DropIndex("ketchup.ProductCategorySpecificationAttributes", new[] { "ProductAttributeTypeId" });
-            DropIndex("ketchup.ProductAttributes", new[] { "ProductId", "AttributeActiveFrom", "AttributeActiveUntil" });
-            DropIndex("ketchup.ProductAttributes", new[] { "AttributeTypeId" });
-            DropIndex("ketchup.Products", new[] { "ProductCategory_Id" });
-            DropIndex("ketchup.ProductCategories", new[] { "ParentCategory_Id" });
-            DropIndex("ketchup.BasketProducts", new[] { "BasketId" });
-            DropIndex("ketchup.Orders", new[] { "ShippingAddress_Id" });
-            DropIndex("ketchup.Orders", new[] { "CustomerId" });
-            DropIndex("ketchup.Addresses", new[] { "Customer_Id" });
-            DropIndex("ketchup.Orders", new[] { "BasketId" });
-            DropTable("ketchup.Images");
-            DropTable("ketchup.ProductAttributes");
-            DropTable("ketchup.ProductAttributeTypes");
-            DropTable("ketchup.ProductCategorySpecificationAttributes");
-            DropTable("ketchup.ProductCategorySpecifications");
-            DropTable("ketchup.ProductCategories");
-            DropTable("ketchup.ProductSpecifications");
-            DropTable("ketchup.Products");
-            DropTable("ketchup.Customers");
-            DropTable("ketchup.Orders");
-            DropTable("ketchup.Baskets");
-            DropTable("ketchup.BasketProducts");
-            DropTable("ketchup.Addresses");
+            this.DropForeignKey("ketchup.BasketProducts", "ProductId", "ketchup.Products");
+            this.DropForeignKey("ketchup.Images", new[] { "ProductSpecification_ProductId", "ProductSpecification_ActiveFrom", "ProductSpecification_ActiveUntil" }, "ketchup.ProductSpecifications");
+            this.DropForeignKey("ketchup.ProductSpecifications", "ProductId", "ketchup.Products");
+            this.DropForeignKey("ketchup.ProductSpecifications", "Category_Id", "ketchup.ProductCategories");
+            this.DropForeignKey("ketchup.ProductCategories", "Id", "ketchup.ProductCategorySpecifications");
+            this.DropForeignKey("ketchup.ProductCategorySpecificationAttributes", "ProductCategorySpecification_Id", "ketchup.ProductCategorySpecifications");
+            this.DropForeignKey("ketchup.ProductCategorySpecificationAttributes", "ProductCategoryId", "ketchup.ProductCategories");
+            this.DropForeignKey("ketchup.ProductCategorySpecificationAttributes", "ProductAttributeTypeId", "ketchup.ProductAttributeTypes");
+            this.DropForeignKey("ketchup.ProductAttributes", new[] { "ProductId", "AttributeActiveFrom", "AttributeActiveUntil" }, "ketchup.ProductSpecifications");
+            this.DropForeignKey("ketchup.ProductAttributes", "AttributeTypeId", "ketchup.ProductAttributeTypes");
+            this.DropForeignKey("ketchup.Products", "ProductCategory_Id", "ketchup.ProductCategories");
+            this.DropForeignKey("ketchup.ProductCategories", "ParentCategory_Id", "ketchup.ProductCategories");
+            this.DropForeignKey("ketchup.BasketProducts", "BasketId", "ketchup.Baskets");
+            this.DropForeignKey("ketchup.Orders", "ShippingAddress_Id", "ketchup.Addresses");
+            this.DropForeignKey("ketchup.Orders", "CustomerId", "ketchup.Customers");
+            this.DropForeignKey("ketchup.Addresses", "Customer_Id", "ketchup.Customers");
+            this.DropForeignKey("ketchup.Orders", "BasketId", "ketchup.Baskets");
+            this.DropIndex("ketchup.BasketProducts", new[] { "ProductId" });
+            this.DropIndex("ketchup.Images", new[] { "ProductSpecification_ProductId", "ProductSpecification_ActiveFrom", "ProductSpecification_ActiveUntil" });
+            this.DropIndex("ketchup.ProductSpecifications", new[] { "ProductId" });
+            this.DropIndex("ketchup.ProductSpecifications", new[] { "Category_Id" });
+            this.DropIndex("ketchup.ProductCategories", new[] { "Id" });
+            this.DropIndex("ketchup.ProductCategorySpecificationAttributes", new[] { "ProductCategorySpecification_Id" });
+            this.DropIndex("ketchup.ProductCategorySpecificationAttributes", new[] { "ProductCategoryId" });
+            this.DropIndex("ketchup.ProductCategorySpecificationAttributes", new[] { "ProductAttributeTypeId" });
+            this.DropIndex("ketchup.ProductAttributes", new[] { "ProductId", "AttributeActiveFrom", "AttributeActiveUntil" });
+            this.DropIndex("ketchup.ProductAttributes", new[] { "AttributeTypeId" });
+            this.DropIndex("ketchup.Products", new[] { "ProductCategory_Id" });
+            this.DropIndex("ketchup.ProductCategories", new[] { "ParentCategory_Id" });
+            this.DropIndex("ketchup.BasketProducts", new[] { "BasketId" });
+            this.DropIndex("ketchup.Orders", new[] { "ShippingAddress_Id" });
+            this.DropIndex("ketchup.Orders", new[] { "CustomerId" });
+            this.DropIndex("ketchup.Addresses", new[] { "Customer_Id" });
+            this.DropIndex("ketchup.Orders", new[] { "BasketId" });
+            this.DropTable("ketchup.Images");
+            this.DropTable("ketchup.ProductAttributes");
+            this.DropTable("ketchup.ProductAttributeTypes");
+            this.DropTable("ketchup.ProductCategorySpecificationAttributes");
+            this.DropTable("ketchup.ProductCategorySpecifications");
+            this.DropTable("ketchup.ProductCategories");
+            this.DropTable("ketchup.ProductSpecifications");
+            this.DropTable("ketchup.Products");
+            this.DropTable("ketchup.Customers");
+            this.DropTable("ketchup.Orders");
+            this.DropTable("ketchup.Baskets");
+            this.DropTable("ketchup.BasketProducts");
+            this.DropTable("ketchup.Addresses");
         }
     }
 }

@@ -6,14 +6,18 @@
 namespace Ketchup.Persistence.EntityFramework.Migrations
 {
     using System.Data.Entity.Migrations;
+    using System.Diagnostics.CodeAnalysis;
     using System.Linq;
 
+    /// <summary>
+    /// The Entity Framework Migrations configuration.
+    /// </summary>
     public class KetchupContextConfiguration : DbMigrationsConfiguration<KetchupContext>
     {
         private readonly bool _shouldSeed;
 
         /// <summary>
-        /// Initialises a new instance of the <see cref="KetchupContextConfiguration{TSeeder}"/> class.
+        /// Initialises a new instance of the <see cref="KetchupContextConfiguration"/> class.
         /// </summary>
         public KetchupContextConfiguration()
         {
@@ -24,6 +28,9 @@ namespace Ketchup.Persistence.EntityFramework.Migrations
             this._shouldSeed = migrator.GetPendingMigrations().Any();
         }
 
+        /// <summary>
+        /// Gets a value indicating whether any migrations were present.
+        /// </summary>
         protected bool ShouldSeed
         {
             get
@@ -36,6 +43,9 @@ namespace Ketchup.Persistence.EntityFramework.Migrations
     /// <summary>
     /// The Entity Framework Migrations configuration.
     /// </summary>
+    /// <typeparam name="TSeeder">
+    /// The class to create to invoke seed methods from.
+    /// </typeparam>
     public class KetchupContextConfiguration<TSeeder> : KetchupContextConfiguration where TSeeder : IKetchupSeeder, new()
     {
         /// <summary>
