@@ -14,7 +14,7 @@ namespace Ketchup.Persistence.EntityFramework.Migrations
     public class KetchupContextConfiguration<TSeeder> : DbMigrationsConfiguration<KetchupContext> where TSeeder : IKetchupSeeder, new()
     {
         /// <summary>
-        /// Initialises a new instance of the <see cref="KetchupContextConfiguration"/> class.
+        /// Initialises a new instance of the <see cref="KetchupContextConfiguration{TSeeder}"/> class.
         /// </summary>
         public KetchupContextConfiguration()
         {
