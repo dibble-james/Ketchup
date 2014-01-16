@@ -7,7 +7,6 @@ namespace Ketchup
 {
     using System;
     using Api;
-    using JamesDibble.ApplicationFramework.Data.Persistence;
 
     /// <summary>
     /// An implementation of <see cref="IKetchup"/> for use with a fluid interface builder.

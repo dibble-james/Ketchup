@@ -3,12 +3,13 @@
 //    Copyright 2012 James Dibble
 // </copyright>
 // --------------------------------------------------------------------------------------------------------------------
-namespace Ketchup.UnitTests.Api
+namespace Ketchup.UnitTests.Core.Api
 {
     using System;
     using System.Collections.Generic;
     using System.Collections.ObjectModel;
     using System.Linq;
+    using System.Linq.Expressions;
 
     using JamesDibble.ApplicationFramework.Data.Persistence;
 
@@ -86,7 +87,7 @@ namespace Ketchup.UnitTests.Api
         {
             this._fakePersistenceManager.Setup(pm => pm.Find(It.IsAny<IPersistenceSearcher<ProductAttributeType>>()))
                 .Returns(new ProductAttributeType());
-                
+
 
             var actual = this._target.CreateAttributeType(string.Empty, string.Empty, @"$^");
         }
@@ -176,6 +177,116 @@ namespace Ketchup.UnitTests.Api
 
             Assert.IsTrue(actual.Count() == 1);
             Assert.AreEqual(product2, actual.FirstOrDefault());
+        }
+
+        [TestMethod]
+        public void TestGetAllProductAttributeTypes()
+        {
+            var attributeType1 = new ProductAttributeType { Id = 1 };
+            var attributeType2 = new ProductAttributeType { Id = 2 };
+            var attributeType3 = new ProductAttributeType { Id = 3 };
+
+            var expected = new List<ProductAttributeType> { attributeType1, attributeType2, attributeType3 };
+
+            this._fakePersistenceManager.Setup(
+                pm => pm.Find(It.Is<PersistenceCollectionSearcher<ProductAttributeType>>(pcs => pcs.Predicate == null)))
+                .Returns(expected);
+
+            var actual = this._target.GetProductAttributeTypes();
+
+            Assert.AreEqual(expected, actual);
+        }
+
+        [TestMethod]
+        public void TestGetProductAttributeType()
+        {
+            var expected = new ProductAttributeType { Id = 1 };
+
+            this._fakePersistenceManager.Setup(
+                pm => pm.Find(It.IsAny<PersistenceSearcher<ProductAttributeType>>()))
+                .Returns(expected);
+
+            var actual = this._target.GetProductAttributeType("something");
+
+            Assert.AreEqual(expected, actual);
+        }
+
+        [TestMethod]
+        public void TestGetProductsWithPredicate()
+        {
+            var expected = new List<Product> { new Product { Id = 1 }, new Product { Id = 2 } };
+
+            Func<Product, bool> predicate = p => p.Id == 1;
+
+            this._fakePersistenceManager.Setup(
+                pm => pm.Find(It.Is<PersistenceCollectionSearcher<Product>>(ps => ps.Predicate == predicate))).Returns(expected);
+
+            var actual = this._target.GetProducts(predicate);
+
+            Assert.AreEqual(expected, actual);
+        }
+
+        [TestMethod]
+        public void TestGetChildCategories()
+        {
+            var parentCategory = new ProductCategory { Id = 1 };
+
+            var expected = new List<ProductCategory> { new ProductCategory { Id = 2 } };
+            
+            this._fakePersistenceManager.Setup(
+                pm => pm.Find(It.IsAny<PersistenceCollectionSearcher<ProductCategory>>()))
+                .Returns(expected);
+
+            var actual = this._target.GetProductCategories(parentCategory);
+
+            Assert.AreEqual(expected, actual);
+        }
+
+        [TestMethod]
+        public void TestGetCategoryById()
+        {
+            const int id = 1;
+
+            var expected = new ProductCategory { Id = 1 };
+            
+
+            this._fakePersistenceManager.Setup(
+                pm => pm.Find(It.IsAny<PersistenceSearcher<ProductCategory>>()))
+                .Returns(expected);
+
+            var actual = this._target.GetProductCategory(id);
+
+            Assert.AreEqual(expected, actual);
+        }
+
+        [TestMethod]
+        public void TestGetCategoryByName()
+        {
+            const string name = "hello";
+
+            var expected = new ProductCategory { Id = 1 };
+            
+            this._fakePersistenceManager.Setup(
+                pm => pm.Find(It.IsAny<PersistenceSearcher<ProductCategory>>()))
+                .Returns(expected);
+
+            var actual = this._target.GetProductCategory(name);
+
+            Assert.AreEqual(expected, actual);
+        }
+
+        [TestMethod]
+        public void TestGetAllCategories()
+        {
+            var expected = new List<ProductCategory> { new ProductCategory { Id = 1 }, new ProductCategory { Id = 2 } };
+
+            this._fakePersistenceManager.Setup(
+                pm => pm.Find(It.Is<PersistenceCollectionSearcher<ProductCategory>>(pcs => pcs.Predicate == null)))
+                .Returns(expected);
+
+            var actual = this._target.GetProductCategories();
+
+            Assert.AreEqual(expected, actual);
         }
     }
 }

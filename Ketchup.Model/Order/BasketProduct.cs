@@ -7,12 +7,14 @@ namespace Ketchup.Model.Order
 {
     using System;
 
+    using JamesDibble.ApplicationFramework.Data.Persistence;
+
     using Ketchup.Model.Product;
 
     /// <summary>
     /// A model to join a <see cref="Product"/> to a <see cref="Basket"/>.
     /// </summary>
-    public class BasketProduct
+    public class BasketProduct : IPersistedObject
     {
         /// <summary>
         /// Gets or sets the ID of the <see cref="Basket"/> in the join.

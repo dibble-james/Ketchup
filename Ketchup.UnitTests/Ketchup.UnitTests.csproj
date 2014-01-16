@@ -44,8 +44,11 @@
     <Reference Include="System.Core" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Api\ProductManagerTests.cs" />
+    <Compile Include="Core\Api\CustomerManagerTests.cs" />
+    <Compile Include="Core\Api\OrderManagerTests.cs" />
+    <Compile Include="Core\Api\ProductManagerTests.cs" />
     <Compile Include="Core\KetchupConfigurationTests.cs" />
+    <Compile Include="Core\KetchupTests.cs" />
     <Compile Include="Model\Product\ProductSpecificationTests.cs" />
     <Compile Include="Model\Product\ProductTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
