@@ -34,6 +34,9 @@
     <Reference Include="JamesDibble.ApplicationFramework.Data.Persistence">
       <HintPath>..\Dependencies\JamesDibble.ApplicationFramework.Data.Persistence.dll</HintPath>
     </Reference>
+    <Reference Include="JamesDibble.Extensions.System">
+      <HintPath>..\Dependencies\JamesDibble.Extensions.System.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
   </ItemGroup>

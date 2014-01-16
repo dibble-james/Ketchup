@@ -6,8 +6,7 @@
 namespace Ketchup
 {
     using System;
-    using System.Linq.Expressions;
-    using System.Reflection;
+
     using Api;
     using JamesDibble.ApplicationFramework.Data.Persistence;
 
@@ -16,16 +15,58 @@ namespace Ketchup
     /// </summary>
     internal sealed class KetchupConfiguration : IKetchupConfiguration
     {
+        private readonly IPersistenceManager _persistence;
+        private readonly Ketchup _instance;
+
+        internal KetchupConfiguration(IPersistenceManager persistence)
+        {
+            Argument.CannotBeNull(
+                persistence, 
+                "persistence", 
+                "Ketchup must be able to access it's database via an IPersistenceManager");
+
+            this._instance = new Ketchup();
+            this._persistence = persistence;
+        }
 
         /// <summary>
-        /// Gets the <see cref="IPersistenceManager"/> for <see cref="IKetchup"/> to use to read its object from.
+        /// Define this <see cref="IKetchup"/> instance as one that can access information about and manage products.
         /// </summary>
-        public IPersistenceManager Persistence { get; private set; }
+        /// <returns>The current <see cref="IKetchupConfiguration"/>.</returns>
+        public IKetchupConfiguration AsProductManager()
+        {
+            this._instance.Products = new ProductManager(this._persistence);
+
+            return this;
+        }
 
         /// <summary>
-        /// Gets the <see cref="IOrderNumberGenerator"/> for <see cref="IKetchup"/> to use.
+        /// Define this <see cref="IKetchup"/> instance as one that can manager customers.
         /// </summary>
-        public IOrderNumberGenerator OrderNumberGenerator { get; private set; }
+        /// <returns>The current <see cref="IKetchupConfiguration"/>.</returns>
+        public IKetchupConfiguration AsCustomerManager()
+        {
+            this._instance.Customers = new CustomerManager(this._persistence);
+
+            return this;
+        }
+
+        /// <summary>
+        /// Define this <see cref="IKetchup"/> instance as one that can create and manage orders.
+        /// </summary>
+        /// <param name="orderNumberGenerator">An object to create order numbers.</param>
+        /// <returns>The current <see cref="IKetchupConfiguration"/>.</returns>
+        public IKetchupConfiguration AsOrderManager(IOrderNumberGenerator orderNumberGenerator)
+        {
+            Argument.CannotBeNull(
+                orderNumberGenerator, 
+                "orderNumberGenerator", 
+                "To be configured as an Order Manager, Ketchup must be able to generate order numbers.");
+
+            this._instance.Orders = new OrderManager(this._persistence, orderNumberGenerator);
+
+            return this;
+        }
 
         /// <summary>
         /// Create an <see cref="IKetchup"/> context with the previously set parameters.
@@ -33,43 +74,7 @@ namespace Ketchup
         /// <returns>An <see cref="IKetchup"/> context.</returns>
         public IKetchup Build()
         {
-            if (this.Persistence == null)
-            {
-                throw new InvalidOperationException("No IPersistenceManager has been defined to build Ketchup with.");
-            }
-
-            if (this.OrderNumberGenerator != null)
-            {
-                return new Ketchup(this.Persistence, this.OrderNumberGenerator);
-            }
-
-            return new Ketchup(this.Persistence);
-        }
-
-        /// <summary>
-        /// Set a property to the <see cref="IKetchup"/> context.
-        /// </summary>
-        /// <param name="property">The property to set.</param>
-        /// <param name="value">The value of the property.</param>
-        /// <returns>The fluid interface builder.</returns>
-        public IKetchupConfiguration With(Expression<Func<IKetchupConfiguration, object>> property, object value)
-        {
-            PropertyInfo propertyInfo;
-
-            if (property.Body is MemberExpression)
-            {
-                propertyInfo = (property.Body as MemberExpression).Member as PropertyInfo;
-            }
-            else
-            {
-                propertyInfo = (((UnaryExpression)property.Body).Operand as MemberExpression).Member as PropertyInfo;
-            }
-
-            var ps = this.GetType().GetProperty(propertyInfo.Name);
-            
-            ps.SetValue(this, value);
-
-            return this;
+            return this._instance;
         }
     }
 }

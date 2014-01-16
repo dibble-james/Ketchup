@@ -13,6 +13,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Dependencies", "Dependencie
 		Dependencies\JamesDibble.ApplicationFramework.Data.Persistence.xml = Dependencies\JamesDibble.ApplicationFramework.Data.Persistence.xml
 		Dependencies\JamesDibble.Extensions.System.Data.dll = Dependencies\JamesDibble.Extensions.System.Data.dll
 		Dependencies\JamesDibble.Extensions.System.Data.XML = Dependencies\JamesDibble.Extensions.System.Data.XML
+		Dependencies\JamesDibble.Extensions.System.dll = Dependencies\JamesDibble.Extensions.System.dll
+		Dependencies\JamesDibble.Extensions.System.XML = Dependencies\JamesDibble.Extensions.System.XML
 	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ketchup.UnitTests", "Ketchup.UnitTests\Ketchup.UnitTests.csproj", "{D3E4C640-EC78-4061-8900-D23372CE04B8}"

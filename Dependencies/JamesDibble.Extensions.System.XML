@@ -1,0 +1,225 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>JamesDibble.Extensions.System</name>
+    </assembly>
+    <members>
+        <member name="T:System.Argument">
+            <summary>
+            Static methods for verifying public method parameters.
+            </summary>
+        </member>
+        <member name="M:System.Argument.CannotBeNull``1(``0,System.String)">
+            <summary>
+            Check an argument is not null.
+            </summary>
+            <param name="argument">The object to verify.</param>
+            <param name="argumentName">The name of the argument being checked for use in exception.</param>
+            <typeparam name="TArg">The type of the argument</typeparam>
+            <exception cref="T:System.ArgumentNullException">The <paramref name="argument"/> was null.</exception>
+        </member>
+        <member name="M:System.Argument.CannotBeNull``1(``0,System.String,System.String)">
+            <summary>
+            Check an argument is not null and throw an argument with a message.
+            </summary>
+            <param name="argument">The argument to verify.</param>
+            <param name="argumentName">The name of the argument being checked for use in exception.</param>
+            <param name="message">The message to return to the calling method.</param>
+            <typeparam name="TArg">The type of the argument</typeparam>
+            <exception cref="T:System.ArgumentNullException">The <paramref name="argument"/> was null.</exception>
+        </member>
+        <member name="T:System.DateTimeRange">
+            <summary>
+            An object representing a pair of points in time.
+            </summary>
+        </member>
+        <member name="M:System.DateTimeRange.#ctor(System.DateTime,System.DateTime)">
+            <summary>
+            Initialises a new instance of the <see cref="T:System.DateTimeRange"/> struct. 
+            </summary>
+            <param name="start">
+            The <see cref="T:System.DateTime"/> this <see cref="T:System.DateTimeRange"/> began.
+            </param>
+            <param name="finish">
+            The <see cref="T:System.DateTime"/> this <see cref="T:System.DateTimeRange"/> ended.
+            </param>
+        </member>
+        <member name="M:System.DateTimeRange.IsInRange(System.DateTime)">
+            <summary>
+            Check whether the <paramref name="date"/> is within this <see cref="T:System.DateTimeRange"/>.
+            </summary>
+            <param name="date">
+            The date to check.
+            </param>
+            <returns>
+            A value indicating whether the <paramref name="date"/> is within this <see cref="T:System.DateTimeRange"/>.
+            </returns>
+        </member>
+        <member name="P:System.DateTimeRange.Start">
+            <summary>
+            Gets the <see cref="T:System.DateTime"/> this <see cref="T:System.DateTimeRange"/> began.
+            </summary>
+        </member>
+        <member name="P:System.DateTimeRange.Finish">
+            <summary>
+            Gets the <see cref="T:System.DateTime"/> this <see cref="T:System.DateTimeRange"/> ended.
+            </summary>
+        </member>
+        <member name="T:System.DateTimeExtensions">
+            <summary>
+            Extensions of the <see cref="T:System.DateTime"/> class.
+            </summary>
+        </member>
+        <member name="M:System.DateTimeExtensions.Ordinal(System.DateTime)">
+            <summary>
+            Get the ordinal string for the given <see cref="T:System.DateTime"/>.
+            </summary>
+            <param name="date">
+            The date.
+            </param>
+            <returns>
+            An ordinal representation of the day.  <c>Eg: 15th</c>
+            </returns>
+        </member>
+        <member name="T:System.EnumerableExtensions">
+            <summary>
+            Extensions methods for <see cref="T:System.Collections.Generic.IEnumerable`1"/> objects
+            </summary>
+        </member>
+        <member name="M:System.EnumerableExtensions.DistinctBy``2(System.Collections.Generic.IEnumerable{``0},System.Func{``0,``1})">
+            <summary>
+            Group a <see cref="T:System.Collections.Generic.IEnumerable`1"/> of <typeparamref name="T"/> by a given
+            set of keys and return the first result to gain the distinct values in the
+            <paramref name="collection"/>.
+            </summary>
+            <param name="collection">
+            The collection to evaluate distinct elements upon.
+            </param>
+            <param name="predicate">
+            The keys to distinct by.
+            </param>
+            <typeparam name="T">
+            The type of the collection.
+            </typeparam>
+            <typeparam name="TKey">
+            The type of the key to distinct by.
+            </typeparam>
+            <returns>
+            The <see cref="T:System.Collections.Generic.IEnumerable`1"/>.
+            </returns>
+        </member>
+        <member name="T:System.StringExtensions">
+            <summary>
+            The string extensions.
+            </summary>
+        </member>
+        <member name="M:System.StringExtensions.ToUrlString(System.String)">
+            <summary>
+            The to url string.
+            </summary>
+            <param name="value">
+            The string to fix.
+            </param>
+            <returns>
+            The <see cref="T:System.String"/>.
+            </returns>
+        </member>
+        <member name="M:System.StringExtensions.FromUrlString(System.String)">
+            <summary>
+            The URL string to reverse.
+            </summary>
+            <param name="value">
+            The string to reverse.
+            </param>
+            <returns>
+            The <see cref="T:System.String"/> from once it came.
+            </returns>
+        </member>
+        <member name="M:System.StringExtensions.NormalizeNewLines(System.String)">
+            <summary>
+            Normalize new line characters.
+            </summary>
+            <param name="input">
+            The input string.
+            </param>
+            <returns>
+            The <see cref="T:System.String"/> normalized.
+            </returns>
+        </member>
+        <member name="M:System.StringExtensions.ComputeHash(System.String)">
+            <summary>
+            The compute hash.
+            </summary>
+            <param name="value">
+            The value.
+            </param>
+            <returns>
+            The <see cref="T:System.String"/>.
+            </returns>
+        </member>
+        <member name="M:System.StringExtensions.ComputeHash(System.String,System.String)">
+            <summary>
+            The compute hash.
+            </summary>
+            <param name="value">
+            The value.
+            </param>
+            <param name="salt">
+            The salt.
+            </param>
+            <returns>
+            The <see cref="T:System.String"/>.
+            </returns>
+        </member>
+        <member name="M:System.StringExtensions.Pluralise(System.String,System.Collections.Generic.IEnumerable{System.Object})">
+            <summary>
+            Pluralise a string given the length of a given collection.
+            </summary>
+            <param name="value">
+            The string to pluralise.
+            </param>
+            <param name="collection">
+            The collection to count.
+            </param>
+            <returns>
+            The pluralised <see cref="T:System.String"/>.
+            </returns>
+        </member>
+        <member name="M:System.StringExtensions.Pluralise(System.String,System.Int32)">
+            <summary>
+            Pluralise a string given the length of a given collection.
+            </summary>
+            <param name="value">
+            The string to pluralise.
+            </param>
+            <param name="count">
+            The count.
+            </param>
+            <returns>
+            The pluralised <see cref="T:System.String"/>.
+            </returns>
+        </member>
+        <member name="T:System.ObjectExtensions">
+            <summary>
+            The system extensions.
+            </summary>
+        </member>
+        <member name="M:System.ObjectExtensions.CopyTo``1(``0,``0)">
+            <summary>
+            The copy to.
+            </summary>
+            <param name="baseObject">
+            The base object.
+            </param>
+            <param name="reference">
+            The object to copy to.
+            </param>
+            <typeparam name="T">
+            The return type.
+            </typeparam>
+            <returns>
+            The reference object as a clone of the base object.
+            </returns>
+        </member>
+    </members>
+</doc>

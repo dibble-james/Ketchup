@@ -5,8 +5,6 @@
 //  --------------------------------------------------------------------------------------------------------------------
 namespace Ketchup
 {
-    using System;
-    using System.Linq.Expressions;
     using Api;
     using JamesDibble.ApplicationFramework.Data.Persistence;
 
@@ -17,27 +15,28 @@ namespace Ketchup
     public interface IKetchupConfiguration
     {
         /// <summary>
-        /// Gets the <see cref="IPersistenceManager"/> for <see cref="IKetchup"/> to use to read its object from.
+        /// Define this <see cref="IKetchup"/> instance as one that can access information about and manage products.
         /// </summary>
-        IPersistenceManager Persistence { get; }
+        /// <returns>The current <see cref="IKetchupConfiguration"/>.</returns>
+        IKetchupConfiguration AsProductManager();
 
         /// <summary>
-        /// Gets the <see cref="IOrderNumberGenerator"/> for <see cref="IKetchup"/> to use.
+        /// Define this <see cref="IKetchup"/> instance as one that can manager customers.
         /// </summary>
-        IOrderNumberGenerator OrderNumberGenerator { get; }
+        /// <returns>The current <see cref="IKetchupConfiguration"/>.</returns>
+        IKetchupConfiguration AsCustomerManager();
+
+        /// <summary>
+        /// Define this <see cref="IKetchup"/> instance as one that can create and manage orders.
+        /// </summary>
+        /// <param name="orderNumberGenerator">An object to create order numbers.</param>
+        /// <returns>The current <see cref="IKetchupConfiguration"/>.</returns>
+        IKetchupConfiguration AsOrderManager(IOrderNumberGenerator orderNumberGenerator);
 
         /// <summary>
         /// Create an <see cref="IKetchup"/> context with the previously set parameters.
         /// </summary>
         /// <returns>An <see cref="IKetchup"/> context.</returns>
         IKetchup Build();
-
-        /// <summary>
-        /// Set a property to the <see cref="IKetchup"/> context.
-        /// </summary>
-        /// <param name="property">The property to set.</param>
-        /// <param name="value">The value of the property.</param>
-        /// <returns>The fluid interface builder.</returns>
-        IKetchupConfiguration With(Expression<Func<IKetchupConfiguration, object>> property, object value);
     }
 }

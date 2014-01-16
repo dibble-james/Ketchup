@@ -6,7 +6,12 @@
 
 namespace Ketchup.UnitTests.Core
 {
+    using System;
+
     using JamesDibble.ApplicationFramework.Data.Persistence;
+
+    using Ketchup.Api;
+
     using Microsoft.VisualStudio.TestTools.UnitTesting;
     using Moq;
 
@@ -16,11 +21,46 @@ namespace Ketchup.UnitTests.Core
         [TestMethod]
         public void TestBuilder()
         {
-            var fakePersistence = new Mock<IPersistenceManager>().Object;
-
-            var ketchup = KetchupBuilder.Configure().With(k => k.Persistence, fakePersistence).Build();
+            var ketchup = KetchupBuilder.Configure(() => new Mock<IPersistenceManager>().Object).Build();
 
             Assert.IsNotNull(ketchup);
+        }
+
+        [TestMethod]
+        public void TestBuildCustomerManager()
+        {
+            var ketchup =
+                KetchupBuilder.Configure(() => new Mock<IPersistenceManager>().Object).AsCustomerManager().Build();
+
+            Assert.IsNotNull(ketchup.Customers);
+        }
+
+        [TestMethod]
+        public void TestBuildProductManager()
+        {
+            var ketchup =
+                KetchupBuilder.Configure(() => new Mock<IPersistenceManager>().Object).AsProductManager().Build();
+
+            Assert.IsNotNull(ketchup.Products);
+        }
+
+        [TestMethod]
+        public void TestBuildOrderManger()
+        {
+            var ketchup =
+                KetchupBuilder
+                    .Configure(() => new Mock<IPersistenceManager>().Object)
+                    .AsOrderManager(new Mock<IOrderNumberGenerator>().Object)
+                    .Build();
+
+            Assert.IsNotNull(ketchup.Orders);
+        }
+
+        [TestMethod]
+        [ExpectedException(typeof(ArgumentNullException))]
+        public void TestOrderManagerExpectsNumberGenerator()
+        {
+            KetchupBuilder.Configure(() => new Mock<IPersistenceManager>().Object).AsOrderManager(null);
         }
     }
 }

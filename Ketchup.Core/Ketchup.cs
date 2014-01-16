@@ -14,23 +14,9 @@ namespace Ketchup
     /// </summary>
     internal sealed class Ketchup : IKetchup
     {
-        private readonly IPersistenceManager _persistence;
-        private readonly IOrderNumberGenerator _orderNumberGenerator;
-
         private ICustomerManager _customerManager;
         private IOrderManager _orderManager;
         private IProductManager _productManager;
-
-        internal Ketchup(IPersistenceManager persistence)
-        {
-            this._persistence = persistence;
-        }
-
-        internal Ketchup(IPersistenceManager persistence, IOrderNumberGenerator orderNumberGenerator)
-        {
-            this._persistence = persistence;
-            this._orderNumberGenerator = orderNumberGenerator;
-        }
 
         /// <summary>
         /// Gets access to the Ketchup <see cref="ICustomerManager"/>.
@@ -39,7 +25,16 @@ namespace Ketchup
         {
             get
             {
-                return this._customerManager ?? (this._customerManager = new CustomerManager(this._persistence));
+                if (this._customerManager == null)
+                {
+                    throw new InvalidOperationException("This Ketchup instance was not built AsCustomerManager.");
+                }
+
+                return this._customerManager;
+            }
+            internal set
+            {
+                this._customerManager = value;
             }
         }
 
@@ -50,13 +45,17 @@ namespace Ketchup
         {
             get
             {
-                if (this._orderNumberGenerator == null)
+                if (this._orderManager == null)
                 {
                     throw new InvalidOperationException(
-                        @"Ketchup was not configured with an IOrderNumberGenerator and therefore cannot be used to manage orders.");
+                        @"This Ketchup instance was not built AsOrderManager.");
                 }
 
-                return this._orderManager ?? (this._orderManager = new OrderManager(this._persistence, this._orderNumberGenerator));
+                return this._orderManager;
+            }
+            internal set
+            {
+                this._orderManager = value;
             }
         }
 
@@ -67,7 +66,17 @@ namespace Ketchup
         {
             get
             {
-                return this._productManager ?? (this._productManager = new ProductManager(this._persistence));
+                if (this._productManager == null)
+                {
+                    throw new InvalidOperationException(
+                        @"This Ketchup instance was not built AsProductManager.");
+                }
+
+                return this._productManager;
+            }
+            internal set
+            {
+                this._productManager = value;
             }
         }
     }
