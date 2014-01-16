@@ -27,11 +27,11 @@ namespace Ketchup.Model.Order
         /// <summary>
         /// Gets or sets the <see cref="Basket"/> in the join.
         /// </summary>
-        public Basket Basket { get; set; }
+        public virtual Basket Basket { get; set; }
 
         /// <summary>
         /// Gets or sets the <see cref="Product"/> in the join.
         /// </summary>
-        public Product Product { get; set; }
+        public virtual Product Product { get; set; }
     }
 }

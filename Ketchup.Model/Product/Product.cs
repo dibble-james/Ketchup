@@ -21,12 +21,12 @@ namespace Ketchup.Model.Product
         /// <summary>
         /// Gets or sets the <see cref="ProductSpecification"/>s, the attributes of this product according to its category.
         /// </summary>
-        public ICollection<ProductSpecification> ProductSpecifications { get; set; }
+        public virtual ICollection<ProductSpecification> ProductSpecifications { get; set; }
 
         /// <summary>
         /// Gets or sets the <see cref="Basket"/>s this <see cref="Product"/> has been put in.
         /// </summary>
-        public ICollection<BasketProduct> InBaskets { get; set; }
+        public virtual ICollection<BasketProduct> InBaskets { get; set; }
 
         /// <summary>
         /// Gets the current <see cref="ProductSpecification"/>.

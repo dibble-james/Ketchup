@@ -16,7 +16,7 @@ namespace Ketchup.Model.Product
         /// Gets or sets the attribute type foreign key.
         /// </summary>
         public int AttributeTypeId { get; set; }
-        
+
         /// <summary>
         /// Gets or sets the ID of the <see cref="Product"/> for this <see cref="ProductAttribute"/>.
         /// </summary>
@@ -36,12 +36,12 @@ namespace Ketchup.Model.Product
         /// Gets or sets the <see cref="ProductSpecification"/> this <see cref="ProductAttribute"/> is
         /// part of.
         /// </summary>
-        public ProductSpecification ProductSpecification { get; set; }
+        public virtual ProductSpecification ProductSpecification { get; set; }
 
         /// <summary>
         /// Gets or sets the <see cref="ProductAttributeType"/> of this <see cref="ProductAttribute"/>.
         /// </summary>
-        public ProductAttributeType AttributeType { get; set; }
+        public virtual ProductAttributeType AttributeType { get; set; }
 
         /// <summary>
         /// Gets or sets the serialised value of this <see cref="ProductAttribute"/>.
