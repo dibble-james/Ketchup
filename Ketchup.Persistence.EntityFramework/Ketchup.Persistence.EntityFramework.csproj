@@ -51,11 +51,14 @@
     <Compile Include="IKetchupSeeder.cs" />
     <Compile Include="KetchupContext.cs" />
     <Compile Include="KetchupInitialiser.cs" />
+    <Compile Include="Migrations\201401161732436_InitialCreate.cs" />
+    <Compile Include="Migrations\201401161732436_InitialCreate.Designer.cs">
+      <DependentUpon>201401161732436_InitialCreate.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\KetchupContextConfiguration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="App.config" />
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
@@ -63,6 +66,11 @@
       <Project>{c84b7c9c-aaf9-4197-935b-6880c5f39ab0}</Project>
       <Name>Ketchup.Model</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201401161732436_InitialCreate.resx">
+      <DependentUpon>201401161732436_InitialCreate.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="$(SolutionDir)\.nuget\NuGet.targets" Condition="Exists('$(SolutionDir)\.nuget\NuGet.targets')" />

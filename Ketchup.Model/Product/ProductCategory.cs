@@ -22,16 +22,16 @@ namespace Ketchup.Model.Product
         /// <summary>
         /// Gets or sets the <see cref="ProductCategorySpecification"/> of this <see cref="ProductCategory"/>.
         /// </summary>
-        public ProductCategorySpecification Specification { get; set; }
+        public virtual ProductCategorySpecification Specification { get; set; }
 
         /// <summary>
         /// Gets or sets the products in this <see cref="ProductCategory"/>.
         /// </summary>
-        public ICollection<Product> Products { get; set; }
+        public virtual ICollection<Product> Products { get; set; }
 
         /// <summary>
         /// Gets or sets the parent <see cref="ProductCategory"/>.
         /// </summary>
-        public ProductCategory ParentCategory { get; set; }
+        public virtual ProductCategory ParentCategory { get; set; }
     }
 }
