@@ -19,7 +19,7 @@ namespace Ketchup.Model.Product
         /// <summary>
         /// Gets or sets the <see cref="ProductCategory"/> of this <see cref="Model.Product.Product"/>.
         /// </summary>
-        public ProductCategory Category { get; set; }
+        public virtual ProductCategory Category { get; set; }
 
         /// <summary>
         /// Gets or sets the product foreign key.
@@ -30,7 +30,7 @@ namespace Ketchup.Model.Product
         /// Gets or sets the <see cref="Product"/> this <see cref="ProductSpecification"/>
         /// provides attributes for.
         /// </summary>
-        public Product Product { get; set; }
+        public virtual Product Product { get; set; }
 
         /// <summary>
         /// Gets a <see langword="dynamic" /> representation of this <see cref="ProductSpecification"/>
@@ -63,12 +63,12 @@ namespace Ketchup.Model.Product
         /// <summary>
         /// Gets or sets the specification values for the parent <see cref="Product"/>.
         /// </summary>
-        public ICollection<ProductAttribute> ProductAttributes { get; set; }
+        public virtual ICollection<ProductAttribute> ProductAttributes { get; set; }
 
         /// <summary>
         /// Gets or sets the <see cref="Image"/>s for the parent <see cref="Product"/>.
         /// </summary>
-        public ICollection<Image> ProductImages { get; set; }
+        public virtual ICollection<Image> ProductImages { get; set; }
 
         /// <summary>
         /// Provides the implementation for operations that get member values. Classes derived from 

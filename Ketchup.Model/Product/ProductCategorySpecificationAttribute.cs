@@ -23,11 +23,11 @@ namespace Ketchup.Model.Product
         /// <summary>
         /// Gets or sets the <see cref="ProductCategory"/> in this relationship.
         /// </summary>
-        public ProductCategory ProductCategory { get; set; }
+        public virtual ProductCategory ProductCategory { get; set; }
 
         /// <summary>
         /// Gets or sets the <see cref="ProductAttributeType"/>s of this <see cref="ProductCategorySpecificationAttribute"/>.
         /// </summary>
-        public ProductAttributeType Attribute { get; set; } 
+        public virtual ProductAttributeType Attribute { get; set; } 
     }
 }

@@ -24,6 +24,7 @@ namespace Ketchup.Persistence.EntityFramework
             : base(nameOrConnectionString)
         {
             this.Configuration.LazyLoadingEnabled = true;
+            this.Configuration.ProxyCreationEnabled = true;
             this.Configuration.AutoDetectChangesEnabled = true;
         }
 
@@ -128,6 +129,11 @@ namespace Ketchup.Persistence.EntityFramework
 
             modelBuilder.Entity<ProductSpecification>()
                 .HasKey(ps => new { ps.ProductId, ps.ActiveFrom, ps.ActiveUntil });
+
+            modelBuilder.Entity<ProductCategory>()
+                .HasRequired(pc => pc.Specification)
+                .WithRequiredDependent(pcs => pcs.ProductCategory)
+                .WillCascadeOnDelete(true);
 
             modelBuilder.Entity<ProductCategorySpecificationAttribute>()
                 .HasKey(pcsa => new { pcsa.ProductAttributeTypeId, pcsa.ProductCategoryId })

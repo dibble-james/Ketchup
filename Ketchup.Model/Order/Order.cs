@@ -34,7 +34,7 @@ namespace Ketchup.Model.Order
         /// <summary>
         /// Gets or sets the <see cref="Basket"/> of this <see cref="Order"/>.
         /// </summary>
-        public Basket Basket { get; set; }
+        public virtual Basket Basket { get; set; }
 
         /// <summary>
         /// Gets or sets the ID of the <see cref="Customer"/> of this <see cref="Order"/>.
@@ -44,11 +44,11 @@ namespace Ketchup.Model.Order
         /// <summary>
         /// Gets or sets the <see cref="Customer"/> of this <see cref="Order"/>.
         /// </summary>
-        public Customer Customer { get; set; }
+        public virtual Customer Customer { get; set; }
 
         /// <summary>
         /// Gets or sets the <see cref="Address"/> this <see cref="Order"/> should be sent too.
         /// </summary>
-        public Address ShippingAddress { get; set; }
+        public virtual Address ShippingAddress { get; set; }
     }
 }
