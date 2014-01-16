@@ -31,10 +31,16 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{6C1E8017-36D0-4A95-93B7-80804ACDC208}"
 	ProjectSection(SolutionItems) = preProject
 		Ketchup.sln.DotSettings = Ketchup.sln.DotSettings
+		LICENSE = LICENSE
+		README.md = README.md
 		Settings.StyleCop = Settings.StyleCop
 	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ketchup.Core", "Ketchup.Core\Ketchup.Core.csproj", "{9FFE7E48-334F-4A94-80A4-315B4FE11F92}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Samples", "Samples", "{4D883A5B-0023-4AED-B6AC-8E332039263D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EntityFrameworkInit", "Samples\EntityFrameworkInit\EntityFrameworkInit.csproj", "{2B646E75-9806-4D92-9366-B7F06BDAFB84}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -58,9 +64,16 @@ Global
 		{9FFE7E48-334F-4A94-80A4-315B4FE11F92}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9FFE7E48-334F-4A94-80A4-315B4FE11F92}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{9FFE7E48-334F-4A94-80A4-315B4FE11F92}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2B646E75-9806-4D92-9366-B7F06BDAFB84}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2B646E75-9806-4D92-9366-B7F06BDAFB84}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2B646E75-9806-4D92-9366-B7F06BDAFB84}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2B646E75-9806-4D92-9366-B7F06BDAFB84}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{2B646E75-9806-4D92-9366-B7F06BDAFB84} = {4D883A5B-0023-4AED-B6AC-8E332039263D}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		EnterpriseLibraryConfigurationToolBinariesPath = packages\Unity.2.1.505.2\lib\NET35
