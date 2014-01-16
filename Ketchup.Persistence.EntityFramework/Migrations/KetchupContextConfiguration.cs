@@ -1,5 +1,5 @@
 // --------------------------------------------------------------------------------------------------------------------
-// <copyright file="KetchupConfiguration.cs" company="James Dibble">
+// <copyright file="KetchupContextConfiguration.cs" company="James Dibble">
 //    Copyright 2012 James Dibble
 // </copyright>
 // --------------------------------------------------------------------------------------------------------------------
@@ -11,15 +11,14 @@ namespace Ketchup.Persistence.EntityFramework.Migrations
     /// <summary>
     /// The Entity Framework Migrations configuration.
     /// </summary>
-    public class KetchupConfiguration : DbMigrationsConfiguration<KetchupContext>
+    public class KetchupContextConfiguration<TSeeder> : DbMigrationsConfiguration<KetchupContext> where TSeeder : IKetchupSeeder, new()
     {
         /// <summary>
-        /// Initialises a new instance of the <see cref="KetchupConfiguration"/> class.
+        /// Initialises a new instance of the <see cref="KetchupContextConfiguration"/> class.
         /// </summary>
-        public KetchupConfiguration()
+        public KetchupContextConfiguration()
         {
             this.AutomaticMigrationsEnabled = false;
-            this.AutomaticMigrationDataLossAllowed = true;
         }
 
         /// <summary>
@@ -28,12 +27,24 @@ namespace Ketchup.Persistence.EntityFramework.Migrations
         /// <param name="context">Context to be used for updating seed data. </param>
         protected override void Seed(KetchupContext context)
         {
-            var migrator = new DbMigrator(this);
-
-            if (migrator.GetPendingMigrations().Any())
+            if (!this.ShouldSeed())
             {
                 return;
             }
+
+            var seeder = new TSeeder();
+
+            foreach (var seedMethod in seeder.SeedMethods)
+            {
+                seedMethod.Invoke(context);
+            }
+        }
+
+        protected bool ShouldSeed()
+        {
+            var migrator = new DbMigrator(this);
+
+            return !migrator.GetPendingMigrations().Any();
         }
     }
 }

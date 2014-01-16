@@ -20,7 +20,7 @@ namespace Ketchup.Persistence.EntityFramework
         /// Initialises a new instance of the <see cref="KetchupContext"/> class.
         /// </summary>
         /// <param name="nameOrConnectionString">Either the database name or a connection string.</param>
-        public KetchupContext(string nameOrConnectionString)
+        internal KetchupContext(string nameOrConnectionString)
             : base(nameOrConnectionString)
         {
             this.Configuration.LazyLoadingEnabled = true;

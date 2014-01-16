@@ -33,11 +33,6 @@ namespace Ketchup.IntegrationTests
 
         public static void RegisterTypes(IUnityContainer container)
         {
-            var context = KetchupInitialiser.Initialise<KetchupInitialiser>();
-
-            container.RegisterInstance<DbContext>(context);
-            container.RegisterInstance(context);
-
             container.RegisterType<IPersistenceManager, EntityFrameworkPersistenceManager>();
             container.RegisterType<IProductManager, ProductManager>();
         }

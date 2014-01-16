@@ -8,7 +8,7 @@ namespace Ketchup.Persistence.EntityFramework
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     using System.Linq;
-    
+
     using Ketchup.Persistence.EntityFramework.Migrations;
 
     /// <summary>
@@ -22,17 +22,26 @@ namespace Ketchup.Persistence.EntityFramework
         /// <typeparam name="TKetchupInitialiser">
         /// The <see cref="KetchupInitialiser"/> type to be used to build the context.
         /// </typeparam>
+        /// <typeparam name="TConfiguration">
+        /// The <see cref="KetchupContextConfiguration{TSeeder}"/> type to use to seed the database with.
+        /// </typeparam>
+        /// <typeparam name="TSeeder">
+        /// The type to insert objects after migration with.
+        /// </typeparam>
         /// <returns>
         /// A <see cref="KetchupContext"/> to inject into 
         /// the <see cref="JamesDibble.ApplicationFramework.Data.Persistence.IPersistenceManager"/>.
         /// </returns>
-        public static KetchupContext Initialise<TKetchupInitialiser>() where TKetchupInitialiser : KetchupInitialiser, new()
+        public static KetchupContext Initialise<TKetchupInitialiser, TConfiguration, TSeeder>() 
+            where TKetchupInitialiser : KetchupInitialiser, new()
+            where TConfiguration : KetchupContextConfiguration<TSeeder>, new() 
+            where TSeeder : IKetchupSeeder, new()
         {
-            Database.SetInitializer(new MigrateDatabaseToLatestVersion<KetchupContext, KetchupConfiguration>());
+            Database.SetInitializer(new MigrateDatabaseToLatestVersion<KetchupContext, TConfiguration>());
 
             var context = new TKetchupInitialiser().Create();
 
-            context.Products.FirstOrDefault();
+            context.Products.Any();
 
             return context;
         }
