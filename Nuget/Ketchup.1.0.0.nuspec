@@ -12,13 +12,13 @@
         <tags>eCommerce</tags>
     </metadata>
     <files>
-        <file src="Release\JamesDibble.ApplicationFramework.Data.Persistence.dll" target="lib\JamesDibble.ApplicationFramework.Data.Persistence.dll" />
-        <file src="Release\JamesDibble.ApplicationFramework.Data.Persistence.xml" target="lib\JamesDibble.ApplicationFramework.Data.Persistence.xml" />
-        <file src="Release\JamesDibble.Extensions.System.dll" target="lib\JamesDibble.Extensions.System.dll" />
-        <file src="Release\JamesDibble.Extensions.System.xml" target="lib\JamesDibble.Extensions.System.xml" />
-        <file src="Release\Ketchup.Core.dll" target="lib\Ketchup.Core.dll" />
-        <file src="Release\Ketchup.Core.XML" target="lib\Ketchup.Core.XML" />
-        <file src="Release\Ketchup.Model.dll" target="lib\Ketchup.Model.dll" />
-        <file src="Release\Ketchup.Model.XML" target="lib\Ketchup.Model.XML" />
+        <file src="..\Release\JamesDibble.ApplicationFramework.Data.Persistence.dll" target="lib\JamesDibble.ApplicationFramework.Data.Persistence.dll" />
+        <file src="..\Release\JamesDibble.ApplicationFramework.Data.Persistence.xml" target="lib\JamesDibble.ApplicationFramework.Data.Persistence.xml" />
+        <file src="..\Release\JamesDibble.Extensions.System.dll" target="lib\JamesDibble.Extensions.System.dll" />
+        <file src="..\Release\JamesDibble.Extensions.System.xml" target="lib\JamesDibble.Extensions.System.xml" />
+        <file src="..\Release\Ketchup.Core.dll" target="lib\Ketchup.Core.dll" />
+        <file src="..\Release\Ketchup.Core.XML" target="lib\Ketchup.Core.XML" />
+        <file src="..\Release\Ketchup.Model.dll" target="lib\Ketchup.Model.dll" />
+        <file src="..\Release\Ketchup.Model.XML" target="lib\Ketchup.Model.XML" />
     </files>
 </package>

@@ -18,9 +18,11 @@
         </dependencies>
     </metadata>
     <files>
-        <file src="Dependencies\JamesDibble.ApplicationFramework.Data.Persistence.EntityFrameworkCodeFirst.dll" target="lib\JamesDibble.ApplicationFramework.Data.Persistence.EntityFrameworkCodeFirst.dll" />
-        <file src="Dependencies\JamesDibble.ApplicationFramework.Data.Persistence.EntityFrameworkCodeFirst.XML" target="lib\JamesDibble.ApplicationFramework.Data.Persistence.EntityFrameworkCodeFirst.XML" />
-        <file src="Release\Ketchup.Persistence.EntityFramework.dll" target="lib\Ketchup.Persistence.EntityFramework.dll" />
-        <file src="Release\Ketchup.Persistence.EntityFramework.XML" target="lib\Ketchup.Persistence.EntityFramework.XML" />
+        <file src="content\app.config.transform" target="content\app.config.transform" />
+        <file src="content\web.config.transform" target="content\web.config.transform" />
+        <file src="..\Dependencies\JamesDibble.ApplicationFramework.Data.Persistence.EntityFrameworkCodeFirst.dll" target="lib\JamesDibble.ApplicationFramework.Data.Persistence.EntityFrameworkCodeFirst.dll" />
+        <file src="..\Dependencies\JamesDibble.ApplicationFramework.Data.Persistence.EntityFrameworkCodeFirst.XML" target="lib\JamesDibble.ApplicationFramework.Data.Persistence.EntityFrameworkCodeFirst.XML" />
+        <file src="..\Release\Ketchup.Persistence.EntityFramework.dll" target="lib\Ketchup.Persistence.EntityFramework.dll" />
+        <file src="..\Release\Ketchup.Persistence.EntityFramework.XML" target="lib\Ketchup.Persistence.EntityFramework.XML" />
     </files>
 </package>
