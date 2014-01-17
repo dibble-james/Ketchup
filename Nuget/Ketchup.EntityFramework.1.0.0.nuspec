@@ -1,0 +1,26 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2011/08/nuspec.xsd">
+    <metadata>
+        <id>Ketchup.EntityFramework</id>
+        <version>1.0.0</version>
+        <title>Ketchup.EntityFramework</title>
+        <authors>James Dibble</authors>
+        <owners>James Dibble</owners>
+        <projectUrl>https://github.com/james-dibble/Ketchup</projectUrl>
+        <requireLicenseAcceptance>false</requireLicenseAcceptance>
+        <description>Entity Framework drivers for the Ketchup eCommerce framework.</description>
+        <copyright>2014 James Dibble</copyright>
+        <language>en-GB</language>
+        <tags>eCommerce, Entity Framework, Ketchup</tags>
+        <dependencies>
+            <dependency id="EntityFramework" version="6.0.1" />
+            <dependency id="Ketchup" version="1.0.1" />
+        </dependencies>
+    </metadata>
+    <files>
+        <file src="Dependencies\JamesDibble.ApplicationFramework.Data.Persistence.EntityFrameworkCodeFirst.dll" target="lib\JamesDibble.ApplicationFramework.Data.Persistence.EntityFrameworkCodeFirst.dll" />
+        <file src="Dependencies\JamesDibble.ApplicationFramework.Data.Persistence.EntityFrameworkCodeFirst.XML" target="lib\JamesDibble.ApplicationFramework.Data.Persistence.EntityFrameworkCodeFirst.XML" />
+        <file src="Release\Ketchup.Persistence.EntityFramework.dll" target="lib\Ketchup.Persistence.EntityFramework.dll" />
+        <file src="Release\Ketchup.Persistence.EntityFramework.XML" target="lib\Ketchup.Persistence.EntityFramework.XML" />
+    </files>
+</package>

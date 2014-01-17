@@ -42,6 +42,12 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Samples", "Samples", "{4D88
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EntityFrameworkInit", "Samples\EntityFrameworkInit\EntityFrameworkInit.csproj", "{2B646E75-9806-4D92-9366-B7F06BDAFB84}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Nuget", "Nuget", "{A3B82835-55AE-4F72-A39C-56C3710E3D66}"
+	ProjectSection(SolutionItems) = preProject
+		Nuget\Ketchup.1.0.0.nuspec = Nuget\Ketchup.1.0.0.nuspec
+		Nuget\Ketchup.EntityFramework.1.0.0.nuspec = Nuget\Ketchup.EntityFramework.1.0.0.nuspec
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -73,6 +79,7 @@ Global
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
+		{A3B82835-55AE-4F72-A39C-56C3710E3D66} = {6C1E8017-36D0-4A95-93B7-80804ACDC208}
 		{2B646E75-9806-4D92-9366-B7F06BDAFB84} = {4D883A5B-0023-4AED-B6AC-8E332039263D}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
