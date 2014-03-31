@@ -10,11 +10,11 @@
     <copyright>2014 James Dibble</copyright>
     <language>en-GB</language>
     <tags>eCommerce</tags>
+    <dependencies>
+      <dependency id="JamesDibble.ApplicationFramework.Data.Persistence" version="1.0.0" />
+      <dependency id="JamesDibble.Extensions.System" version="1.0.1" />
+    </dependencies>
   </metadata>
-  <dependencies>
-    <dependency id="JamesDibble.ApplicationFramework.Data.Persistence" version="1.0.0" />
-    <dependency id="JamesDibble.Extensions.System" version="1.0.1" />
-  </dependencies>
   <files>
     <file src="..\Release\Ketchup.Core.dll" target="lib\Ketchup.Core.dll" />
     <file src="..\Release\Ketchup.Core.XML" target="lib\Ketchup.Core.XML" />
