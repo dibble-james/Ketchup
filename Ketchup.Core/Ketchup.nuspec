@@ -1,0 +1,24 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2011/08/nuspec.xsd">
+  <metadata>
+    <id>Ketchup</id>
+    <version>$version$</version>
+    <title>Ketchup</title>
+    <authors>James Dibble</authors>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>Ketchup is an easy to integrate eCommerce framework for all types of .Net Framework applications.</description>
+    <copyright>2014 James Dibble</copyright>
+    <language>en-GB</language>
+    <tags>eCommerce</tags>
+  </metadata>
+  <dependencies>
+    <dependency id="JamesDibble.ApplicationFramework.Data.Persistence" version="1.0.0" />
+    <dependency id="JamesDibble.Extensions.System" version="1.0.1" />
+  </dependencies>
+  <files>
+    <file src="..\Release\Ketchup.Core.dll" target="lib\Ketchup.Core.dll" />
+    <file src="..\Release\Ketchup.Core.XML" target="lib\Ketchup.Core.XML" />
+    <file src="..\Release\Ketchup.Model.dll" target="lib\Ketchup.Model.dll" />
+    <file src="..\Release\Ketchup.Model.XML" target="lib\Ketchup.Model.XML" />
+  </files>
+</package>

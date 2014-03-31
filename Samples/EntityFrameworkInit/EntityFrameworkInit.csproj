@@ -40,11 +40,17 @@
     <Reference Include="EntityFramework.SqlServer">
       <HintPath>..\..\packages\EntityFramework.6.0.2\lib\net45\EntityFramework.SqlServer.dll</HintPath>
     </Reference>
+    <Reference Include="JamesDibble.ApplicationFramework.Configuration">
+      <HintPath>..\..\packages\JamesDibble.ApplicationFramework.Data.Persistence.1.0.0\lib\JamesDibble.ApplicationFramework.Configuration.dll</HintPath>
+    </Reference>
     <Reference Include="JamesDibble.ApplicationFramework.Data.Persistence">
-      <HintPath>..\..\Dependencies\JamesDibble.ApplicationFramework.Data.Persistence.dll</HintPath>
+      <HintPath>..\..\packages\JamesDibble.ApplicationFramework.Data.Persistence.1.0.0\lib\JamesDibble.ApplicationFramework.Data.Persistence.dll</HintPath>
     </Reference>
     <Reference Include="JamesDibble.ApplicationFramework.Data.Persistence.EntityFrameworkCodeFirst">
-      <HintPath>..\..\Dependencies\JamesDibble.ApplicationFramework.Data.Persistence.EntityFrameworkCodeFirst.dll</HintPath>
+      <HintPath>..\..\packages\JamesDibble.ApplicationFramework.Data.Persistence.EntityFrameworkCodeFirst.1.0.0\lib\JamesDibble.ApplicationFramework.Data.Persistence.EntityFrameworkCodeFirst.dll</HintPath>
+    </Reference>
+    <Reference Include="JamesDibble.Extensions.System.Data">
+      <HintPath>..\..\packages\JamesDibble.ApplicationFramework.Data.Persistence.EntityFrameworkCodeFirst.1.0.0\lib\JamesDibble.Extensions.System.Data.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
