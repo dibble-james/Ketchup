@@ -4,7 +4,7 @@ Ketchup
 __An easy to integrate ECommerce framework for .Net Applications.__
 
 ###Continuous Integration
-![alt text](https://ci.appveyor.com/api/projects/status?id=skiwgf2l9l23o7gp "Build Status")
+[![Build status](https://ci.appveyor.com/api/projects/status/skiwgf2l9l23o7gp)](https://ci.appveyor.com/project/james-dibble/ketchup)
 
 ###License
 Currently distubuted under the MIT license.
