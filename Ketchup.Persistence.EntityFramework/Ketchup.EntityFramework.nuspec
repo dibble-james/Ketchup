@@ -14,7 +14,7 @@
         <tags>eCommerce, Entity Framework, Ketchup</tags>
         <dependencies>
             <dependency id="EntityFramework" version="6.0.1" />
-            <dependency id="Ketchup" version="1.0.1" />
+            <dependency id="Ketchup" version="0.0.39" />
             <dependency id="JamesDibble.ApplicationFramework.Data.Persistence.EntityFrameworkCodeFirst" version="1.0.0" />
         </dependencies>
     </metadata>
