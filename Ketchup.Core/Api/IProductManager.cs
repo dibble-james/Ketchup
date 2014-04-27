@@ -23,7 +23,7 @@ namespace Ketchup.Api
         /// The attributes required for <see cref="Product"/>s of this <see cref="ProductCategory"/>.
         /// </param>
         /// <returns>The new <see cref="ProductCategory"/>.</returns>
-        ProductCategory CreateProductCategory(string name, ProductCategorySpecification specification);
+        ProductCategory CreateProductCategory(string name, IEnumerable<ProductCategorySpecificationAttribute> specification);
 
         /// <summary>
         /// Build a new <see cref="Product"/> and save it.

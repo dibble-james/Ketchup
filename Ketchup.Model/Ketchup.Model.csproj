@@ -55,7 +55,6 @@
     <Compile Include="Product\ProductAttribute.cs" />
     <Compile Include="Product\ProductAttributeType.cs" />
     <Compile Include="Product\ProductCategory.cs" />
-    <Compile Include="Product\ProductCategorySpecification.cs" />
     <Compile Include="Product\ProductCategorySpecificationAttribute.cs" />
     <Compile Include="Product\ProductSpecification.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

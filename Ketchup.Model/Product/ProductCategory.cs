@@ -20,9 +20,9 @@ namespace Ketchup.Model.Product
         public string Name { get; set; }
 
         /// <summary>
-        /// Gets or sets the <see cref="ProductCategorySpecification"/> of this <see cref="ProductCategory"/>.
+        /// Gets or sets the <see cref="ProductCategorySpecificationAttribute"/>s of this <see cref="ProductCategory"/>.
         /// </summary>
-        public virtual ProductCategorySpecification Specification { get; set; }
+        public virtual ICollection<ProductCategorySpecificationAttribute> Specification { get; set; } 
 
         /// <summary>
         /// Gets or sets the products in this <see cref="ProductCategory"/>.

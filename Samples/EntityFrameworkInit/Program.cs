@@ -26,7 +26,7 @@
             {
                 Console.WriteLine("Category: {0}", productCategory.Name);
 
-                foreach (var attribute in productCategory.Specification.Attributes)
+                foreach (var attribute in productCategory.Specification)
                 {
                     Console.WriteLine(attribute.Attribute.Name);
                 }

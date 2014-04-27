@@ -22,6 +22,7 @@ namespace Ketchup.Persistence.EntityFramework.Migrations
         public KetchupContextConfiguration()
         {
             this.AutomaticMigrationsEnabled = true;
+            this.AutomaticMigrationDataLossAllowed = true;
 
             var migrator = new DbMigrator(this);
 

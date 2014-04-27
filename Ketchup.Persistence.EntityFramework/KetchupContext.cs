@@ -54,11 +54,6 @@ namespace Ketchup.Persistence.EntityFramework
         public IDbSet<ProductCategory> ProductCategorys { get; set; }
 
         /// <summary>
-        /// Gets or sets the <see cref="ProductCategorySpecification"/> <see cref="DbSet"/>.
-        /// </summary>
-        public IDbSet<ProductCategorySpecification> ProductCategorySpecifications { get; set; }
-
-        /// <summary>
         /// Gets or sets the <see cref="ProductSpecification"/> <see cref="DbSet"/>.
         /// </summary>
         public IDbSet<ProductSpecification> ProductSpecifications { get; set; }
@@ -129,11 +124,6 @@ namespace Ketchup.Persistence.EntityFramework
 
             modelBuilder.Entity<ProductSpecification>()
                 .HasKey(ps => new { ps.ProductId, ps.ActiveFrom, ps.ActiveUntil });
-
-            modelBuilder.Entity<ProductCategory>()
-                .HasRequired(pc => pc.Specification)
-                .WithRequiredDependent(pcs => pcs.ProductCategory)
-                .WillCascadeOnDelete(true);
 
             modelBuilder.Entity<ProductCategorySpecificationAttribute>()
                 .HasKey(pcsa => new { pcsa.ProductAttributeTypeId, pcsa.ProductCategoryId })

@@ -43,32 +43,27 @@
 
         public static void AddProductCategory(KetchupContext context)
         {
-            var category = new ProductCategory { Name = "Default Product" };
-
             var price = context.ProductAttributeTypes.First(pat => pat.Name == "Price");
             var name = context.ProductAttributeTypes.First(pat => pat.Name == "Name");
 
-            context.ProductCategorys.AddOrUpdate(category);
-
-            context.ProductCategorySpecifications.AddOrUpdate(
-                new ProductCategorySpecification
-                {
-                    Attributes =
+            var category = new ProductCategory 
+            { 
+                Name = "Default Product",
+                Specification =
                         new Collection<ProductCategorySpecificationAttribute>
                         {
                             new ProductCategorySpecificationAttribute
                             {
-                                Attribute = name,
-                                ProductCategory = category
+                                Attribute = name
                             },
                             new ProductCategorySpecificationAttribute
                             {
-                                Attribute = price,
-                                ProductCategory = category
+                                Attribute = price
                             }
-                        },
-                    ProductCategory = category
-                });
+                        } 
+            };
+
+            context.ProductCategorys.AddOrUpdate(category);
 
             context.SaveChanges();
         }

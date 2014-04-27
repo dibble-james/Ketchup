@@ -40,9 +40,9 @@ namespace Ketchup.Api
         /// The attributes required for <see cref="Product"/>s of this <see cref="ProductCategory"/>.
         /// </param>
         /// <returns>The new <see cref="ProductCategory"/>.</returns>
-        public ProductCategory CreateProductCategory(string name, ProductCategorySpecification specification)
+        public ProductCategory CreateProductCategory(string name, IEnumerable<ProductCategorySpecificationAttribute> specification)
         {
-            var productCategory = new ProductCategory { Name = name, Specification = specification };
+            var productCategory = new ProductCategory { Name = name, Specification = specification.ToList() };
 
             this._persistence.Add(productCategory);
 
