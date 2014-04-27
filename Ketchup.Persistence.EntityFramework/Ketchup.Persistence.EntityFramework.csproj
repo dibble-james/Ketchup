@@ -40,7 +40,7 @@
       <HintPath>..\packages\EntityFramework.6.0.2\lib\net45\EntityFramework.SqlServer.dll</HintPath>
     </Reference>
     <Reference Include="JamesDibble.ApplicationFramework.Data.Persistence">
-      <HintPath>..\Dependencies\JamesDibble.ApplicationFramework.Data.Persistence.dll</HintPath>
+      <HintPath>..\packages\JamesDibble.ApplicationFramework.Data.Persistence.1.0.0\lib\JamesDibble.ApplicationFramework.Data.Persistence.dll</HintPath>
     </Reference>
     <Reference Include="JamesDibble.ApplicationFramework.Data.Persistence.EntityFrameworkCodeFirst">
       <HintPath>..\packages\JamesDibble.ApplicationFramework.Data.Persistence.EntityFrameworkCodeFirst.1.0.0\lib\JamesDibble.ApplicationFramework.Data.Persistence.EntityFrameworkCodeFirst.dll</HintPath>
