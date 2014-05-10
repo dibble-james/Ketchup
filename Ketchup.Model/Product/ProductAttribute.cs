@@ -6,11 +6,12 @@
 namespace Ketchup.Model.Product
 {
     using System;
+    using JamesDibble.ApplicationFramework.Data;
 
     /// <summary>
     /// A specification value of a product.
     /// </summary>
-    public class ProductAttribute
+    public class ProductAttribute : IPersistedObject
     {
         /// <summary>
         /// Gets or sets the attribute type foreign key.

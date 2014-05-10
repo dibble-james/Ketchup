@@ -10,11 +10,12 @@ namespace Ketchup.Model.Product
     using System.Dynamic;
     using System.Globalization;
     using System.Linq;
+    using JamesDibble.ApplicationFramework.Data;
 
     /// <summary>
     /// The attributes of a <see cref="Product"/>.
     /// </summary>
-    public class ProductSpecification : DynamicObject
+    public class ProductSpecification : DynamicObject, IPersistedObject
     {
         /// <summary>
         /// Gets or sets the <see cref="ProductCategory"/> of this <see cref="Model.Product.Product"/>.

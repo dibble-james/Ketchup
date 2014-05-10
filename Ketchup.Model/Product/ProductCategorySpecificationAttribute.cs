@@ -5,10 +5,12 @@
 // --------------------------------------------------------------------------------------------------------------------
 namespace Ketchup.Model.Product
 {
+    using JamesDibble.ApplicationFramework.Data;
+
     /// <summary>
     /// A class that represents a link between a <see cref="ProductCategory"/> and a <see cref="ProductAttributeType"/>.
     /// </summary>
-    public class ProductCategorySpecificationAttribute
+    public class ProductCategorySpecificationAttribute : IPersistedObject
     {
         /// <summary>
         /// Gets or sets the product category foreign key.
