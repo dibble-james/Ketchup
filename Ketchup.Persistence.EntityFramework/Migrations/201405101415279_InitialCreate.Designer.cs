@@ -13,7 +13,7 @@ namespace Ketchup.Persistence.EntityFramework.Migrations
         
         string IMigrationMetadata.Id
         {
-            get { return "201401161732436_InitialCreate"; }
+            get { return "201405101415279_InitialCreate"; }
         }
         
         string IMigrationMetadata.Source

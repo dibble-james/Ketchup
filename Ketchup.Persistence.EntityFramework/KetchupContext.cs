@@ -126,9 +126,17 @@ namespace Ketchup.Persistence.EntityFramework
                 .HasKey(ps => new { ps.ProductId, ps.ActiveFrom, ps.ActiveUntil });
 
             modelBuilder.Entity<ProductCategorySpecificationAttribute>()
-                .HasKey(pcsa => new { pcsa.ProductAttributeTypeId, pcsa.ProductCategoryId })
+                .HasKey(pcsa => new { pcsa.ProductAttributeTypeId, pcsa.ProductCategoryId });
+            modelBuilder.Entity<ProductCategorySpecificationAttribute>()
                 .HasRequired(pcsa => pcsa.Attribute)
-                .WithMany(pa => pa.ProductCategories);
+                .WithMany(pa => pa.ProductCategories)
+                .HasForeignKey(pcsa => pcsa.ProductAttributeTypeId)
+                .WillCascadeOnDelete(true);
+            modelBuilder.Entity<ProductCategorySpecificationAttribute>()
+                .HasRequired(pcsa => pcsa.ProductCategory)
+                .WithMany(pc => pc.Specification)
+                .HasForeignKey(pcsa => pcsa.ProductCategoryId)
+                .WillCascadeOnDelete(true);
 
             modelBuilder.Entity<Order>().HasKey(o => new { o.OrderDate, o.BasketId, o.CustomerId });
             modelBuilder.Entity<Order>()

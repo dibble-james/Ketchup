@@ -11,8 +11,8 @@
     <language>en-GB</language>
     <tags>eCommerce</tags>
     <dependencies>
-      <dependency id="JamesDibble.ApplicationFramework.Data.Persistence" version="1.0.0" />
-      <dependency id="JamesDibble.Extensions.System" version="1.0.1" />
+      <dependency id="JamesDibble.ApplicationFramework.Data.Persistence" version="1.1.0.37" />
+      <dependency id="JamesDibble.Extensions.System" version="1.1.0.37" />
     </dependencies>
   </metadata>
   <files>

@@ -32,16 +32,16 @@ namespace Ketchup.Persistence.EntityFramework
         /// A <see cref="KetchupContext"/> to inject into 
         /// the <see cref="JamesDibble.ApplicationFramework.Data.Persistence.IPersistenceManager"/>.
         /// </returns>
-        public static KetchupContext Initialise<TKetchupInitialiser, TConfiguration, TSeeder>() 
+        public static KetchupContext Initialise<TKetchupInitialiser, TConfiguration, TSeeder>()
             where TKetchupInitialiser : KetchupInitialiser, new()
-            where TConfiguration : KetchupContextConfiguration<TSeeder>, new() 
+            where TConfiguration : KetchupContextConfiguration<TSeeder>, new()
             where TSeeder : IKetchupSeeder, new()
         {
             Database.SetInitializer(new MigrateDatabaseToLatestVersion<KetchupContext, TConfiguration>());
 
             var context = new TKetchupInitialiser().Create();
 
-            context.Products.Any();
+            context.ProductCategorys.Any();
 
             return context;
         }

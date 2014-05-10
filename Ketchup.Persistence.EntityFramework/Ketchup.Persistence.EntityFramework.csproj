@@ -57,9 +57,9 @@
     <Compile Include="IKetchupSeeder.cs" />
     <Compile Include="KetchupContext.cs" />
     <Compile Include="KetchupInitialiser.cs" />
-    <Compile Include="Migrations\201401161732436_InitialCreate.cs" />
-    <Compile Include="Migrations\201401161732436_InitialCreate.Designer.cs">
-      <DependentUpon>201401161732436_InitialCreate.cs</DependentUpon>
+    <Compile Include="Migrations\201405101415279_InitialCreate.cs" />
+    <Compile Include="Migrations\201405101415279_InitialCreate.Designer.cs">
+      <DependentUpon>201405101415279_InitialCreate.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\KetchupContextConfiguration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -75,8 +75,8 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201401161732436_InitialCreate.resx">
-      <DependentUpon>201401161732436_InitialCreate.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201405101415279_InitialCreate.resx">
+      <DependentUpon>201405101415279_InitialCreate.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

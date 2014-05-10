@@ -48,24 +48,32 @@
 
             var category = new ProductCategory 
             { 
-                Name = "Default Product",
-                Specification =
-                        new Collection<ProductCategorySpecificationAttribute>
-                        {
-                            new ProductCategorySpecificationAttribute
-                            {
-                                Attribute = name
-                            },
-                            new ProductCategorySpecificationAttribute
-                            {
-                                Attribute = price
-                            }
-                        } 
+                Name = "Default Product Category"
             };
 
-            context.ProductCategorys.AddOrUpdate(category);
+            context.ProductCategorys.AddOrUpdate(pc => pc.Name, category);
 
-            context.SaveChanges();
+            var specifications = new []
+            {
+                new ProductCategorySpecificationAttribute
+                {
+                    Attribute = price, 
+                    ProductCategory = category,
+                    ProductAttributeTypeId = price.Id,
+                    ProductCategoryId = category.Id
+                },
+                new ProductCategorySpecificationAttribute
+                {
+                    Attribute = name, 
+                    ProductCategory = category,
+                    ProductAttributeTypeId = price.Id,
+                    ProductCategoryId = category.Id
+                },
+            };
+
+            context.ProductCategorySpecificationAttributes.AddOrUpdate(
+                pcsa => new { pcsa.ProductAttributeTypeId, pcsa.ProductCategoryId }, 
+                specifications);
         }
     }
 }
