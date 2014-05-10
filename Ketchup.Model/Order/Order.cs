@@ -7,7 +7,7 @@ namespace Ketchup.Model.Order
 {
     using System;
 
-    using JamesDibble.ApplicationFramework.Data.Persistence;
+    using JamesDibble.ApplicationFramework.Data;
 
     using Ketchup.Model.Customer;
 

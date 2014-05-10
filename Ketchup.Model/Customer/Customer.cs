@@ -8,7 +8,7 @@ namespace Ketchup.Model.Customer
     using System;
     using System.Collections.Generic;
 
-    using JamesDibble.ApplicationFramework.Data.Persistence;
+    using JamesDibble.ApplicationFramework.Data;
     using Ketchup.Model.Order;
 
     /// <summary>

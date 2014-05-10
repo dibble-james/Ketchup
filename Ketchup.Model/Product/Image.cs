@@ -5,7 +5,7 @@
 // --------------------------------------------------------------------------------------------------------------------
 namespace Ketchup.Model.Product
 {
-    using JamesDibble.ApplicationFramework.Data.Persistence;
+    using JamesDibble.ApplicationFramework.Data;
 
     /// <summary>
     /// An path to a graphical representation of the product.

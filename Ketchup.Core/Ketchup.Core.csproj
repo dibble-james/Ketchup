@@ -34,15 +34,16 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="JamesDibble.ApplicationFramework.Configuration">
-      <HintPath>..\packages\JamesDibble.ApplicationFramework.Data.Persistence.1.0.0\lib\JamesDibble.ApplicationFramework.Configuration.dll</HintPath>
+      <HintPath>..\packages\JamesDibble.ApplicationFramework.Configuration.1.1.0.45\lib\net45\JamesDibble.ApplicationFramework.Configuration.dll</HintPath>
     </Reference>
-    <Reference Include="JamesDibble.ApplicationFramework.Data.Persistence, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\packages\JamesDibble.ApplicationFramework.Data.Persistence.1.0.0\lib\JamesDibble.ApplicationFramework.Data.Persistence.dll</HintPath>
+    <Reference Include="JamesDibble.ApplicationFramework.Data.Core">
+      <HintPath>..\packages\JamesDibble.ApplicationFramework.Data.Core.1.1.0.45\lib\net45\JamesDibble.ApplicationFramework.Data.Core.dll</HintPath>
     </Reference>
-    <Reference Include="JamesDibble.Extensions.System, Version=1.1.0.26, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\packages\JamesDibble.Extensions.System.1.1.0.26\lib\net45\JamesDibble.Extensions.System.dll</HintPath>
+    <Reference Include="JamesDibble.ApplicationFramework.Data.Persistence">
+      <HintPath>..\packages\JamesDibble.ApplicationFramework.Data.Persistence.1.1.0.45\lib\net45\JamesDibble.ApplicationFramework.Data.Persistence.dll</HintPath>
+    </Reference>
+    <Reference Include="JamesDibble.Extensions.System">
+      <HintPath>..\packages\JamesDibble.Extensions.System.1.1.0.45\lib\net45\JamesDibble.Extensions.System.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />

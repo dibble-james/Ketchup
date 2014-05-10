@@ -5,7 +5,7 @@
 // --------------------------------------------------------------------------------------------------------------------
 namespace Ketchup.Model.Customer
 {
-    using JamesDibble.ApplicationFramework.Data.Persistence;
+    using JamesDibble.ApplicationFramework.Data;
     
     /// <summary>
     /// An object to represent a postal address location.

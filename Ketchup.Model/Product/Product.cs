@@ -9,7 +9,7 @@ namespace Ketchup.Model.Product
     using System.Collections.Generic;
     using System.Linq;
 
-    using JamesDibble.ApplicationFramework.Data.Persistence;
+    using JamesDibble.ApplicationFramework.Data;
 
     using Ketchup.Model.Order;
 

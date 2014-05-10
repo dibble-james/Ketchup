@@ -33,20 +33,33 @@
     <DocumentationFile>..\Release\Ketchup.Persistence.EntityFramework.XML</DocumentationFile>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="EntityFramework">
-      <HintPath>..\packages\EntityFramework.6.0.2\lib\net45\EntityFramework.dll</HintPath>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\EntityFramework.6.1.0\lib\net45\EntityFramework.dll</HintPath>
     </Reference>
-    <Reference Include="EntityFramework.SqlServer">
-      <HintPath>..\packages\EntityFramework.6.0.2\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\EntityFramework.6.1.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
     </Reference>
-    <Reference Include="JamesDibble.ApplicationFramework.Data.Persistence">
-      <HintPath>..\packages\JamesDibble.ApplicationFramework.Data.Persistence.1.0.0\lib\JamesDibble.ApplicationFramework.Data.Persistence.dll</HintPath>
+    <Reference Include="JamesDibble.ApplicationFramework.Configuration, Version=1.1.0.43, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\JamesDibble.ApplicationFramework.Configuration.1.1.0.45\lib\net45\JamesDibble.ApplicationFramework.Configuration.dll</HintPath>
     </Reference>
-    <Reference Include="JamesDibble.ApplicationFramework.Data.Persistence.EntityFrameworkCodeFirst">
-      <HintPath>..\packages\JamesDibble.ApplicationFramework.Data.Persistence.EntityFrameworkCodeFirst.1.0.0\lib\JamesDibble.ApplicationFramework.Data.Persistence.EntityFrameworkCodeFirst.dll</HintPath>
+    <Reference Include="JamesDibble.ApplicationFramework.Data.Core, Version=1.1.0.45, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\JamesDibble.ApplicationFramework.Data.Core.1.1.0.45\lib\net45\JamesDibble.ApplicationFramework.Data.Core.dll</HintPath>
     </Reference>
-    <Reference Include="JamesDibble.Extensions.System.Data">
-      <HintPath>..\packages\JamesDibble.ApplicationFramework.Data.Persistence.EntityFrameworkCodeFirst.1.0.0\lib\JamesDibble.Extensions.System.Data.dll</HintPath>
+    <Reference Include="JamesDibble.ApplicationFramework.Data.Persistence, Version=1.1.0.43, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\JamesDibble.ApplicationFramework.Data.Persistence.1.1.0.45\lib\net45\JamesDibble.ApplicationFramework.Data.Persistence.dll</HintPath>
+    </Reference>
+    <Reference Include="JamesDibble.ApplicationFramework.Data.Persistence.EntityFrameworkCodeFirst, Version=1.1.0.45, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\JamesDibble.ApplicationFramework.Data.Persistence.EntityFrameworkCodeFirst.1.1.0.45\lib\net45\JamesDibble.ApplicationFramework.Data.Persistence.EntityFrameworkCodeFirst.dll</HintPath>
+    </Reference>
+    <Reference Include="JamesDibble.Extensions.System, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\JamesDibble.Extensions.System.1.1.0.45\lib\net45\JamesDibble.Extensions.System.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
@@ -65,6 +78,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="App.config" />
     <None Include="Ketchup.EntityFramework.nuspec" />
     <None Include="packages.config" />
   </ItemGroup>

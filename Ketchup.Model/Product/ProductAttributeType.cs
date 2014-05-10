@@ -7,7 +7,7 @@ namespace Ketchup.Model.Product
 {
     using System.Collections.Generic;
 
-    using JamesDibble.ApplicationFramework.Data.Persistence;
+    using JamesDibble.ApplicationFramework.Data;
 
     /// <summary>
     /// A classification of a product specification value.

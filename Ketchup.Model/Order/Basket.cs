@@ -8,7 +8,7 @@ namespace Ketchup.Model.Order
     using System;
     using System.Collections.Generic;
 
-    using JamesDibble.ApplicationFramework.Data.Persistence;
+    using JamesDibble.ApplicationFramework.Data;
 
     /// <summary>
     /// A model to represent a selection of <see cref="Product"/>s.

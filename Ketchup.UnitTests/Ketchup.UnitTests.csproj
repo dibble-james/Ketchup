@@ -33,10 +33,17 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="JamesDibble.ApplicationFramework.Configuration">
-      <HintPath>..\packages\JamesDibble.ApplicationFramework.Data.Persistence.1.0.0\lib\JamesDibble.ApplicationFramework.Configuration.dll</HintPath>
+      <HintPath>..\packages\JamesDibble.ApplicationFramework.Configuration.1.1.0.45\lib\net45\JamesDibble.ApplicationFramework.Configuration.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="JamesDibble.ApplicationFramework.Data.Core">
+      <HintPath>..\packages\JamesDibble.ApplicationFramework.Data.Core.1.1.0.45\lib\net45\JamesDibble.ApplicationFramework.Data.Core.dll</HintPath>
     </Reference>
     <Reference Include="JamesDibble.ApplicationFramework.Data.Persistence">
-      <HintPath>..\packages\JamesDibble.ApplicationFramework.Data.Persistence.1.0.0\lib\JamesDibble.ApplicationFramework.Data.Persistence.dll</HintPath>
+      <HintPath>..\packages\JamesDibble.ApplicationFramework.Data.Persistence.1.1.0.45\lib\net45\JamesDibble.ApplicationFramework.Data.Persistence.dll</HintPath>
+    </Reference>
+    <Reference Include="JamesDibble.Extensions.System">
+      <HintPath>..\packages\JamesDibble.Extensions.System.1.1.0.45\lib\net45\JamesDibble.Extensions.System.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="Microsoft.VisualStudio.QualityTools.UnitTestFramework, Version=10.1.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" />
