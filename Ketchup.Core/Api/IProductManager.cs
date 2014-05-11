@@ -48,6 +48,15 @@ namespace Ketchup.Api
         IEnumerable<ProductAttributeType> GetProductAttributeTypes();
 
         /// <summary>
+        /// Retrieve a <see cref="ProductAttributeType"/> by ID.
+        /// </summary>
+        /// <param name="id">The ID of the <see cref="ProductAttributeType"/> required.</param>
+        /// <returns>
+        /// A <see cref="ProductAttributeType"/> or null if no single <see cref="ProductAttributeType"/> exists.
+        /// </returns>
+        ProductAttributeType GetProductAttributeType(int id);
+
+        /// <summary>
         /// Retrieve a <see cref="ProductAttributeType"/> by name.
         /// </summary>
         /// <param name="name">The name of the <see cref="ProductAttributeType"/> required.</param>
@@ -90,6 +99,15 @@ namespace Ketchup.Api
         IEnumerable<ProductCategory> GetProductCategories(ProductCategory parentCategory);
 
         /// <summary>
+        /// Retrieve all the distinct <see cref="ProductAttribute"/>s for a <see cref="ProductCategory"/> and
+        /// <see cref="ProductAttributeType"/> based on their value.
+        /// </summary>
+        /// <param name="category">The <see cref="ProductCategory"/> to find the unique attributes for.</param>
+        /// <param name="attributeType">The <see cref="ProductAttributeType"/> to find the unique attributes for.</param>
+        /// <returns>A collection of distinct <see cref="ProductAttribute"/>s.</returns>
+        IEnumerable<ProductAttribute> GetUniqueProductAttributes(ProductCategory category, ProductAttributeType attributeType);
+            
+        /// <summary>
         /// Retrieve a <see cref="ProductCategory"/> by name.
         /// </summary>
         /// <param name="name">The name of the <see cref="ProductCategory"/> required.</param>
@@ -106,5 +124,23 @@ namespace Ketchup.Api
         /// A <see cref="ProductCategory"/> or null if no single <see cref="ProductCategory"/> exists.
         /// </returns>
         ProductCategory GetProductCategory(int id);
+
+        /// <summary>
+        /// Retrieve a <see cref="Product"/> by ID.
+        /// </summary>
+        /// <param name="id">The ID of the <see cref="ProductCategory"/> required.</param>
+        /// <returns>
+        /// A <see cref="Product"/> or null if no single <see cref="Product"/> exists.
+        /// </returns>
+        Product GetProduct(int id);
+
+        /// <summary>
+        /// Retrieve a <see cref="Product"/> that matches a given <paramref name="predicate"/>.
+        /// </summary>
+        /// <param name="predicate">An expression to match <see cref="Product"/> by.</param>
+        /// <returns>
+        /// A <see cref="Product"/> or null if no single <see cref="Product"/> exists.
+        /// </returns>
+        Product GetProduct(Func<Product, bool> predicate);
     }
 }

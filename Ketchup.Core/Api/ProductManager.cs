@@ -130,6 +130,21 @@ namespace Ketchup.Api
         }
 
         /// <summary>
+        /// Retrieve a <see cref="ProductAttributeType"/> by ID.
+        /// </summary>
+        /// <param name="id">The ID of the <see cref="ProductAttributeType"/> required.</param>
+        /// <returns>
+        /// A <see cref="ProductAttributeType"/> or null if no single <see cref="ProductAttributeType"/> exists.
+        /// </returns>
+        public ProductAttributeType GetProductAttributeType(int id)
+        {
+            var attribute =
+               this._persistence.Find(new PersistenceSearcher<ProductAttributeType>(pat => pat.Id == id));
+
+            return attribute;
+        }
+
+        /// <summary>
         /// Retrieve a <see cref="ProductAttributeType"/> by name.
         /// </summary>
         /// <param name="name">The name of the <see cref="ProductAttributeType"/> required.</param>
@@ -204,6 +219,24 @@ namespace Ketchup.Api
         }
 
         /// <summary>
+        /// Retrieve all the distinct <see cref="ProductAttribute"/>s for a <see cref="ProductCategory"/> and
+        /// <see cref="ProductAttributeType"/> based on their value.
+        /// </summary>
+        /// <param name="category">The <see cref="ProductCategory"/> to find the unique attributes for.</param>
+        /// <param name="attributeType">The <see cref="ProductAttributeType"/> to find the unique attributes for.</param>
+        /// <returns>A collection of distinct <see cref="ProductAttribute"/>s.</returns>
+        public IEnumerable<ProductAttribute> GetUniqueProductAttributes(ProductCategory category, ProductAttributeType attributeType)
+        {
+            var attibutes = this._persistence.Find(
+                new PersistenceCollectionSearcher<ProductAttribute>(
+                    pa => pa.AttributeType.Id == attributeType.Id &&
+                          pa.ProductSpecification.Category.Id == category.Id))
+                .DistinctBy(pa => pa.Value.ToLower());
+
+            return attibutes;
+        }
+
+        /// <summary>
         /// Retrieve a <see cref="ProductCategory"/> by name.
         /// </summary>
         /// <param name="name">The name of the <see cref="ProductCategory"/> required.</param>
@@ -231,6 +264,36 @@ namespace Ketchup.Api
                 this._persistence.Find(new PersistenceSearcher<ProductCategory>(pat => pat.Id == id));
 
             return category;
+        }
+
+        /// <summary>
+        /// Retrieve a <see cref="Product"/> by ID.
+        /// </summary>
+        /// <param name="id">The ID of the <see cref="ProductCategory"/> required.</param>
+        /// <returns>
+        /// A <see cref="Product"/> or null if no single <see cref="Product"/> exists.
+        /// </returns>
+        public Product GetProduct(int id)
+        {
+            var product = this._persistence.Find(
+                new PersistenceSearcher<Product>(p => p.Id == id));
+
+            return product;
+        }
+
+        /// <summary>
+        /// Retrieve a <see cref="Product"/> that matches a given <paramref name="predicate"/>.
+        /// </summary>
+        /// <param name="predicate">An expression to match <see cref="Product"/> by.</param>
+        /// <returns>
+        /// A <see cref="Product"/> or null if no single <see cref="Product"/> exists.
+        /// </returns>
+        public Product GetProduct(Func<Product, bool> predicate)
+        {
+            var product = this._persistence.Find(
+                new PersistenceSearcher<Product>(predicate));
+
+            return product;
         }
 
         private IEnumerable<Product> GetRelatedProducts(IEnumerable<ProductAttribute> relatedProductAttributes)
