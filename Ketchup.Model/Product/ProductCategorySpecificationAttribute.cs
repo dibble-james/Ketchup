@@ -23,6 +23,11 @@ namespace Ketchup.Model.Product
         public int ProductAttributeTypeId { get; set; }
 
         /// <summary>
+        /// Gets or sets the ranking of this <see cref="ProductAttributeType"/> in the <see cref="ProductCategory"/> specification.
+        /// </summary>
+        public int DisplayOrder { get; set; }
+
+        /// <summary>
         /// Gets or sets the <see cref="ProductCategory"/> in this relationship.
         /// </summary>
         public virtual ProductCategory ProductCategory { get; set; }
