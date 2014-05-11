@@ -14,13 +14,13 @@ namespace Ketchup.Persistence.EntityFramework
     /// <summary>
     /// An EntityFramework context for use with Ketchup.
     /// </summary>
-    public class KetchupContext : DbContext
+    public abstract class KetchupContext : DbContext
     {
         /// <summary>
         /// Initialises a new instance of the <see cref="KetchupContext"/> class.
         /// </summary>
         /// <param name="nameOrConnectionString">Either the database name or a connection string.</param>
-        internal KetchupContext(string nameOrConnectionString)
+        protected KetchupContext(string nameOrConnectionString)
             : base(nameOrConnectionString)
         {
             this.Configuration.LazyLoadingEnabled = true;
@@ -106,8 +106,6 @@ namespace Ketchup.Persistence.EntityFramework
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
-
-            modelBuilder.HasDefaultSchema("ketchup");
 
             modelBuilder.Entity<ProductAttribute>()
                 .HasKey(pa => new { pa.AttributeTypeId, pa.ProductId, pa.AttributeActiveFrom, pa.AttributeActiveUntil });
