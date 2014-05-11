@@ -11,12 +11,11 @@
     <language>en-GB</language>
     <tags>eCommerce</tags>
     <dependencies>
-      <dependency id="Ketchup.Model" version="$version$" />
-      <dependency id="JamesDibble.ApplicationFramework.Data.Persistence" version="1.1.0.46" />
+      <dependency id="JamesDibble.ApplicationFramework.Data.Core" version="1.1.0.46" />
     </dependencies>
   </metadata>
   <files>
-    <file src="..\Release\Ketchup.Core.dll" target="lib\net45\Ketchup.Core.dll" />
-    <file src="..\Release\Ketchup.Core.XML" target="lib\net45\Ketchup.Core.XML" />
+    <file src="..\Release\Ketchup.Model.dll" target="lib\net45\Ketchup.Model.dll" />
+    <file src="..\Release\Ketchup.Model.XML" target="lib\net45\Ketchup.Model.XML" />
   </files>
 </package>

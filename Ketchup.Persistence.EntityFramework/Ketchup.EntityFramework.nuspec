@@ -15,13 +15,13 @@
         <dependencies>
             <dependency id="EntityFramework" version="6.1.0" />
             <dependency id="Ketchup" version="$version$" />
-            <dependency id="JamesDibble.ApplicationFramework.Data.Persistence.EntityFrameworkCodeFirst" version="1.1.0.45" />
+            <dependency id="JamesDibble.ApplicationFramework.Data.Persistence.EntityFrameworkCodeFirst" version="1.1.0.46" />
         </dependencies>
     </metadata>
     <files>
         <file src="..\Nuget\content\app.config.transform" target="content\app.config.transform" />
         <file src="..\Nuget\content\web.config.transform" target="content\web.config.transform" />
-        <file src="..\Release\Ketchup.Persistence.EntityFramework.dll" target="lib\Ketchup.Persistence.EntityFramework.dll" />
-        <file src="..\Release\Ketchup.Persistence.EntityFramework.XML" target="lib\Ketchup.Persistence.EntityFramework.XML" />
+        <file src="..\Release\Ketchup.Persistence.EntityFramework.dll" target="lib\net45\Ketchup.Persistence.EntityFramework.dll" />
+        <file src="..\Release\Ketchup.Persistence.EntityFramework.XML" target="lib\net45\Ketchup.Persistence.EntityFramework.XML" />
     </files>
 </package>
