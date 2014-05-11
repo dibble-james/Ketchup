@@ -82,7 +82,7 @@ namespace Ketchup.Api
             if (
                 this._persistence.Find(
                     new PersistenceSearcher<ProductAttributeType>(
-                        pat => pat.Name.ToLower(CultureInfo.CurrentCulture) == name.ToLower(CultureInfo.CurrentCulture)))
+                        pat => pat.Name.ToLower() == name.ToLower()))
                 != null)
             {
                 throw new InvalidOperationException(
@@ -139,7 +139,7 @@ namespace Ketchup.Api
         public ProductAttributeType GetProductAttributeType(string name)
         {
             var attribute =
-                this._persistence.Find(new PersistenceSearcher<ProductAttributeType>(pat => pat.Name == name));
+                this._persistence.Find(new PersistenceSearcher<ProductAttributeType>(pat => pat.Name.ToLower() == name.ToLower()));
 
             return attribute;
         }
@@ -213,7 +213,7 @@ namespace Ketchup.Api
         public ProductCategory GetProductCategory(string name)
         {
             var category =
-                this._persistence.Find(new PersistenceSearcher<ProductCategory>(pat => pat.Name == name));
+                this._persistence.Find(new PersistenceSearcher<ProductCategory>(pat => pat.Name.ToLower() == name.ToLower()));
 
             return category;
         }
@@ -241,7 +241,7 @@ namespace Ketchup.Api
                         (current, additionalRelatedProductAttribute) =>
                             current.Where(p => p.ActiveSpecification.ProductAttributes.Any(
                                 pa => pa.AttributeType.Id == additionalRelatedProductAttribute.AttributeType.Id
-                                    && pa.Value == additionalRelatedProductAttribute.Value)));
+                                    && pa.Value.ToLower() == additionalRelatedProductAttribute.Value.ToLower())));
 
             return relatedProducts;
         }
