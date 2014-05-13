@@ -64,9 +64,14 @@ namespace Ketchup.UnitTests.Core.Api
         [TestMethod]
         public void TestCreateProduct()
         {
-            var actual = this._target.CreateProduct(new ProductSpecification());
+            var fakeCategory = new ProductCategory();
+            var fakeSpecification = new ProductSpecification();
+
+            var actual = this._target.CreateProduct(fakeSpecification, fakeCategory);
 
             Assert.IsNotNull(actual);
+            Assert.AreEqual(fakeCategory, actual.Category);
+            Assert.IsTrue(actual.ProductSpecifications.Any(ps => ps == fakeSpecification));
 
             Assert.IsTrue(this._products.Any());
         }
