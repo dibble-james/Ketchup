@@ -45,6 +45,11 @@ namespace Ketchup.Model.Product
         }
 
         /// <summary>
+        /// Gets or sets the parent <see cref="ProductCategory"/> of the <see cref="Product"/>.
+        /// </summary>
+        public virtual ProductCategory Category { get; set; }
+
+        /// <summary>
         /// Gets the <see cref="ProductSpecification"/> at a given <see cref="System.DateTime"/>.
         /// </summary>
         /// <param name="context">The <see cref="System.DateTime"/> to check for a specification for.</param>

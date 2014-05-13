@@ -29,8 +29,17 @@ namespace Ketchup.Api
         /// Build a new <see cref="Product"/> and save it.
         /// </summary>
         /// <param name="productSpecification">The attributes of the new <see cref="Product"/>.</param>
+        /// <param name="category">The parent <see cref="ProductCategory"/> of the new <see cref="Product"/>.</param>
         /// <returns>The new <see cref="Product"/>.</returns>
-        Product CreateProduct(ProductSpecification productSpecification);
+        Product CreateProduct(ProductSpecification productSpecification, ProductCategory category);
+
+        /// <summary>
+        /// Concatenate an updated <see cref="ProductSpecification"/> to a given <paramref name="product"/>.
+        /// </summary>
+        /// <param name="product">The <see cref="Product"/> to update.</param>
+        /// <param name="updatedSpecification">The updated <see cref="ProductSpecification"/>.</param>
+        /// <returns>The updated <paramref name="product"/>.</returns>
+        Product UpdateProduct(Product product, ProductSpecification updatedSpecification);
 
         /// <summary>
         /// Build a new <see cref="ProductAttributeType"/> and save it.

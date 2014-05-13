@@ -55,19 +55,38 @@ namespace Ketchup.Api
         /// Build a new <see cref="Product"/> and save it.
         /// </summary>
         /// <param name="productSpecification">The attributes of the new <see cref="Product"/>.</param>
+        /// <param name="category">The parent <see cref="ProductCategory"/> of the new <see cref="Product"/>.</param>
         /// <returns>The new <see cref="Product"/>.</returns>
-        public Product CreateProduct(ProductSpecification productSpecification)
+        public Product CreateProduct(ProductSpecification productSpecification, ProductCategory category)
         {
             var product = new Product
-                          {
-                              ProductSpecifications = new Collection<ProductSpecification> { productSpecification }
-                          };
+            {
+                ProductSpecifications = new Collection<ProductSpecification> { productSpecification },
+                Category = category
+            };
 
             this._persistence.Add(product);
 
             this._persistence.Commit();
 
             return product;
+        }
+
+        /// <summary>
+        /// Concatenate an updated <see cref="ProductSpecification"/> to a given <paramref name="product"/>.
+        /// </summary>
+        /// <param name="product">The <see cref="Product"/> to update.</param>
+        /// <param name="updatedSpecification">The updated <see cref="ProductSpecification"/>.</param>
+        /// <returns>The updated <paramref name="product"/>.</returns>
+        public Product UpdateProduct(Product product, ProductSpecification updatedSpecification)
+        {
+            var productToUpdate = this.GetProduct(product.Id);
+
+            productToUpdate.ProductSpecifications.Add(updatedSpecification);
+
+            this._persistence.Commit();
+
+            return productToUpdate;
         }
 
         /// <summary>

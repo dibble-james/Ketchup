@@ -161,6 +161,10 @@ namespace Ketchup.Persistence.EntityFramework
                 .WithMany(p => p.InBaskets)
                 .HasForeignKey(bp => bp.ProductId)
                 .WillCascadeOnDelete(true);
+
+            modelBuilder.Entity<Product>()
+                .HasRequired(p => p.Category)
+                .WithMany(c => c.Products);
         }
     }
 }
