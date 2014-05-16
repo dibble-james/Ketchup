@@ -93,6 +93,14 @@ namespace Ketchup.Api
         /// <param name="relatedProductAttributes">The <see cref="ProductAttribute"/>s to match upon.</param>
         /// <returns>All <see cref="Product"/>s that have the same <see cref="ProductAttribute"/>(s).</returns>
         IEnumerable<Product> GetRelatedProducts(params ProductAttribute[] relatedProductAttributes);
+
+        /// <summary>
+        /// Retrieve all <see cref="Product"/>s that have the same <see cref="ProductAttribute"/>(s).
+        /// </summary>
+        /// <param name="category">The <see cref="ProductCategory"/> the matching <see cref="Product"/>s must belong.</param>
+        /// <param name="relatedProductAttributes">The <see cref="ProductAttribute"/>s to match upon.</param>
+        /// <returns>All <see cref="Product"/>s that have the same <see cref="ProductAttribute"/>(s).</returns>
+        IEnumerable<Product> GetRelatedProducts(ProductCategory category, params ProductAttribute[] relatedProductAttributes);
             
         /// <summary>
         /// Retrieve all known <see cref="ProductCategory"/>s.

@@ -185,6 +185,124 @@ namespace Ketchup.UnitTests.Core.Api
         }
 
         [TestMethod]
+        public void TestGetRelatedProductsWithCategory()
+        {
+            var attributeType1 = new ProductAttributeType { Id = 1 };
+            var attributeType2 = new ProductAttributeType { Id = 2 };
+            var attributeType3 = new ProductAttributeType { Id = 3 };
+
+            var category1 = new ProductCategory { Id = 1 };
+            var category2 = new ProductCategory { Id = 2 };
+
+            const string attributeValue1 = "TestValue1";
+            const string attributeValue2 = "TestValue2";
+
+            var product1 = new Product
+            {
+                Category = category1,
+                ProductSpecifications =
+                    new Collection<ProductSpecification>
+                                   {
+                                       new ProductSpecification
+                                       {
+                                           ActiveFrom = DateTime.Now.AddDays(-3),
+                                           ActiveUntil = DateTime.Now.AddDays(+3),
+                                           ProductAttributes = new Collection<ProductAttribute>
+                                                {
+                                                   new ProductAttribute
+                                                   {
+                                                       AttributeType = attributeType1,
+                                                       Value = attributeValue1
+                                                   },
+                                                   new ProductAttribute
+                                                   {
+                                                       AttributeType = attributeType3,
+                                                       Value = "No one cares"
+                                                   }
+                                               }
+                                       }
+                                   }
+            };
+
+            var product2 = new Product
+            {
+                Category = category2,
+                ProductSpecifications =
+                    new Collection<ProductSpecification>
+                                   {
+                                       new ProductSpecification
+                                       {
+                                           ActiveFrom = DateTime.Now.AddDays(-3),
+                                           ActiveUntil = DateTime.Now.AddDays(+3),
+                                           ProductAttributes = new Collection<ProductAttribute>
+                                                {
+                                                   new ProductAttribute
+                                                   {
+                                                       AttributeType = attributeType1,
+                                                       Value = attributeValue1
+                                                   },
+                                                   new ProductAttribute
+                                                   {
+                                                       AttributeType = attributeType2,
+                                                       Value = attributeValue2
+                                                   },
+                                                   new ProductAttribute
+                                                   {
+                                                       AttributeType = attributeType3,
+                                                       Value = "No one cares"
+                                                   }
+                                               }
+                                       }
+                                   }
+            };
+
+            var product3 = new Product
+            {
+                Category = category1,
+                ProductSpecifications =
+                    new Collection<ProductSpecification>
+                                   {
+                                       new ProductSpecification
+                                       {
+                                           ActiveFrom = DateTime.Now.AddDays(-3),
+                                           ActiveUntil = DateTime.Now.AddDays(+3),
+                                           ProductAttributes = new Collection<ProductAttribute>
+                                                {
+                                                   new ProductAttribute
+                                                   {
+                                                       AttributeType = attributeType1,
+                                                       Value = attributeValue1
+                                                   },
+                                                   new ProductAttribute
+                                                   {
+                                                       AttributeType = attributeType2,
+                                                       Value = attributeValue2
+                                                   },
+                                                   new ProductAttribute
+                                                   {
+                                                       AttributeType = attributeType3,
+                                                       Value = "No one cares"
+                                                   }
+                                               }
+                                       }
+                                   }
+            };
+
+            this._fakePersistenceManager
+                .Setup(p => p.Find(It.IsAny<IPersistenceCollectionSearcher<Product>>()))
+                .Returns(new List<Product> { product1, product2, product3 });
+
+            var actual =
+                this._target.GetRelatedProducts(
+                    category2,
+                    new ProductAttribute { AttributeType = attributeType1, Value = attributeValue1 },
+                    new ProductAttribute { AttributeType = attributeType2, Value = attributeValue2 });
+
+            Assert.IsTrue(actual.Count() == 1);
+            Assert.AreEqual(product2, actual.FirstOrDefault());
+        }
+
+        [TestMethod]
         public void TestGetAllProductAttributeTypes()
         {
             var attributeType1 = new ProductAttributeType { Id = 1 };
@@ -237,7 +355,7 @@ namespace Ketchup.UnitTests.Core.Api
             var parentCategory = new ProductCategory { Id = 1 };
 
             var expected = new List<ProductCategory> { new ProductCategory { Id = 2 } };
-            
+
             this._fakePersistenceManager.Setup(
                 pm => pm.Find(It.IsAny<PersistenceCollectionSearcher<ProductCategory>>()))
                 .Returns(expected);
@@ -253,7 +371,7 @@ namespace Ketchup.UnitTests.Core.Api
             const int id = 1;
 
             var expected = new ProductCategory { Id = 1 };
-            
+
 
             this._fakePersistenceManager.Setup(
                 pm => pm.Find(It.IsAny<PersistenceSearcher<ProductCategory>>()))
@@ -270,7 +388,7 @@ namespace Ketchup.UnitTests.Core.Api
             const string name = "hello";
 
             var expected = new ProductCategory { Id = 1 };
-            
+
             this._fakePersistenceManager.Setup(
                 pm => pm.Find(It.IsAny<PersistenceSearcher<ProductCategory>>()))
                 .Returns(expected);
