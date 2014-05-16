@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<configuration>
+<configuration xmlns:xdt="http://schemas.microsoft.com/XML-Document-Transform">
   <connectionStrings>
     <add name="KetchupConnection" connectionString="data source=.\SQLEXPRESS;initial catalog=;integrated security=True;multipleactiveresultsets=True;" providerName="System.Data.SqlClient" xdt:Transform="InsertIfMissing" xdt:Locator="Match(name)" />
   </connectionStrings>
