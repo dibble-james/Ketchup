@@ -132,6 +132,11 @@ namespace Ketchup.UnitTests.Core.Api
                                                    },
                                                    new ProductAttribute
                                                    {
+                                                       AttributeType = attributeType2,
+                                                       Value = "A different value"
+                                                   },
+                                                   new ProductAttribute
+                                                   {
                                                        AttributeType = attributeType3,
                                                        Value = "No one cares"
                                                    }
