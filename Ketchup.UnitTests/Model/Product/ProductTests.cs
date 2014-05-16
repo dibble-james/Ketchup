@@ -53,6 +53,80 @@ namespace Ketchup.UnitTests.Model.Product
         }
 
         [TestMethod]
+        public void TestActiveSpecificationSameEndDate()
+        {
+            var productSpecification1 = new ProductSpecification
+            {
+                ActiveFrom = DateTime.Now.AddDays(-5),
+                ActiveUntil = DateTime.MaxValue
+            };
+
+            var productSpecification2 = new ProductSpecification
+            {
+                ActiveFrom = DateTime.Now.AddDays(-4),
+                ActiveUntil = DateTime.MaxValue
+            };
+
+            var productSpecification3 = new ProductSpecification
+            {
+                ActiveFrom = DateTime.Now.AddDays(-3),
+                ActiveUntil = DateTime.MaxValue
+            };
+
+            var product = new Product
+            {
+                ProductSpecifications =
+                    new Collection<ProductSpecification>
+                                  {
+                                      productSpecification1,
+                                      productSpecification2,
+                                      productSpecification3
+                                  }
+            };
+
+            var actual = product.ActiveSpecification;
+
+            Assert.AreEqual(productSpecification3, actual);
+        }
+
+        [TestMethod]
+        public void TestActiveAtSpecificationSameEndDate()
+        {
+            var productSpecification1 = new ProductSpecification
+            {
+                ActiveFrom = DateTime.Now.AddDays(-5),
+                ActiveUntil = DateTime.MaxValue
+            };
+
+            var productSpecification2 = new ProductSpecification
+            {
+                ActiveFrom = DateTime.Now.AddDays(-4),
+                ActiveUntil = DateTime.MaxValue
+            };
+
+            var productSpecification3 = new ProductSpecification
+            {
+                ActiveFrom = DateTime.Now.AddDays(-3),
+                ActiveUntil = DateTime.MaxValue
+            };
+
+            var product = new Product
+            {
+                ProductSpecifications =
+                    new Collection<ProductSpecification>
+                                  {
+                                      productSpecification1,
+                                      productSpecification2,
+                                      productSpecification3
+                                  }
+            };
+
+            var actual = product.ActiveAt(DateTime.Now.AddDays(-4));
+
+            Assert.AreEqual(productSpecification2, actual);
+        }
+
+        [TestMethod]
         public void TestActiveAtSpecification()
         {
             var productSpecification1 = new ProductSpecification

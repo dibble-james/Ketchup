@@ -35,10 +35,7 @@ namespace Ketchup.Model.Product
         {
             get
             {
-                var active =
-                    this.ProductSpecifications
-                        .OrderByDescending(ps => ps.ActiveUntil)
-                        .FirstOrDefault(ps => ps.ActiveFrom <= DateTime.Now);
+                var active = this.ActiveAt(DateTime.Now);
 
                 return active;
             }
@@ -61,6 +58,7 @@ namespace Ketchup.Model.Product
             var active =
                     this.ProductSpecifications
                         .OrderByDescending(ps => ps.ActiveUntil)
+                        .ThenByDescending(ps => ps.ActiveFrom)
                         .FirstOrDefault(ps => ps.ActiveFrom <= context);
 
             return active;
