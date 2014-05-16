@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2013
-VisualStudioVersion = 12.0.30110.0
+VisualStudioVersion = 12.0.21005.1
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ketchup.Model", "Ketchup.Model\Ketchup.Model.csproj", "{C84B7C9C-AAF9-4197-935B-6880C5F39AB0}"
 EndProject
@@ -34,8 +34,10 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Nuget", "Nuget", "{9103C809
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "content", "content", "{7B33BC43-F653-4582-A998-F5E066FA9A1F}"
 	ProjectSection(SolutionItems) = preProject
-		Nuget\content\app.config.transform = Nuget\content\app.config.transform
-		Nuget\content\web.config.transform = Nuget\content\web.config.transform
+		Nuget\content\app.config.install.xdt = Nuget\content\app.config.install.xdt
+		Nuget\content\app.config.uninstall.xdt = Nuget\content\app.config.uninstall.xdt
+		Nuget\content\web.config.install.xdt = Nuget\content\web.config.install.xdt
+		Nuget\content\web.config.uninstall.xdt = Nuget\content\web.config.uninstall.xdt
 	EndProjectSection
 EndProject
 Global
