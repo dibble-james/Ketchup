@@ -19,8 +19,10 @@
         </dependencies>
     </metadata>
     <files>
-        <file src="..\Nuget\content\app.config.transform" target="content\app.config.transform" />
-        <file src="..\Nuget\content\web.config.transform" target="content\web.config.transform" />
+        <file src="..\Nuget\content\app.config.install.xdt" target="content\app.config.install.xdt" />
+        <file src="..\Nuget\content\web.config.install.xdt" target="content\WEB.config.install.xdt" />
+        <file src="..\Nuget\content\app.config.uninstall.xdt" target="content\app.config.uninstall.xdt" />
+        <file src="..\Nuget\content\web.config.uninstall.xdt" target="content\web.config.uninstall.xdt" />
         <file src="..\Release\Ketchup.Persistence.EntityFramework.dll" target="lib\net45\Ketchup.Persistence.EntityFramework.dll" />
         <file src="..\Release\Ketchup.Persistence.EntityFramework.XML" target="lib\net45\Ketchup.Persistence.EntityFramework.XML" />
     </files>
