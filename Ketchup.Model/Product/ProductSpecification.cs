@@ -96,14 +96,14 @@ namespace Ketchup.Model.Product
         public override bool TryGetMember(GetMemberBinder binder, out object result)
         {
             if (this.ProductAttributes.All(
-                pa => pa.AttributeType.Name.ToLower(CultureInfo.CurrentCulture) != binder.Name.ToLower(CultureInfo.CurrentCulture)))
+                pa => pa.AttributeType.Name.Replace(" ", string.Empty).ToLower(CultureInfo.CurrentCulture) != binder.Name.ToLower(CultureInfo.CurrentCulture)))
             {
                 return base.TryGetMember(binder, out result);
             }
 
             result =
                 this.ProductAttributes.First(
-                    pa => pa.AttributeType.Name.ToLowerInvariant() == binder.Name.ToLowerInvariant()).Value;
+                    pa => pa.AttributeType.Name.Replace(" ", string.Empty).ToLowerInvariant() == binder.Name.ToLowerInvariant()).Value;
 
             return true;
         }

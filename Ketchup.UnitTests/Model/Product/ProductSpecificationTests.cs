@@ -45,6 +45,34 @@ namespace Ketchup.UnitTests.Model.Product
             Assert.AreEqual(expected, actual);
         }
 
+        [TestMethod]
+        public void TestAttributesCanBeRetrievedDynamicallyWithSpaces()
+        {
+            var expected = 2.80M.ToString(CultureInfo.CurrentCulture);
+
+            var productSpecification = new ProductSpecification
+            {
+                ProductAttributes =
+                    new Collection<ProductAttribute>
+                                               {
+                                                   new ProductAttribute
+                                                   {
+                                                       AttributeType
+                                                           =
+                                                           new ProductAttributeType
+                                                           {
+                                                               Name = "Price GBP"
+                                                           },
+                                                       Value = expected
+                                                   }
+                                               }
+            };
+
+            var actual = productSpecification.Attributes.PriceGBP;
+
+            Assert.AreEqual(expected, actual);
+        }
+
         [ExpectedException(typeof(RuntimeBinderException))]
         [TestMethod]
         public void TestBaseIsCalledIfNoAttributesExist()
