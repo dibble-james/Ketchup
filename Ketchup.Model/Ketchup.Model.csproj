@@ -33,9 +33,8 @@
     <DocumentationFile>..\Release\Ketchup.Model.XML</DocumentationFile>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="JamesDibble.ApplicationFramework.Data.Core, Version=1.1.0.45, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\packages\JamesDibble.ApplicationFramework.Data.Core.1.1.0.45\lib\net45\JamesDibble.ApplicationFramework.Data.Core.dll</HintPath>
+    <Reference Include="JamesDibble.ApplicationFramework.Data.Core">
+      <HintPath>..\packages\JamesDibble.ApplicationFramework.Data.Core.1.1.0.57\lib\net45\JamesDibble.ApplicationFramework.Data.Core.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />

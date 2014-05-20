@@ -15,7 +15,7 @@
         <dependencies>
             <dependency id="EntityFramework" version="6.1.0" />
             <dependency id="Ketchup.Core" version="$version$" />
-            <dependency id="JamesDibble.ApplicationFramework.Data.Persistence.EntityFrameworkCodeFirst" version="1.1.0.46" />
+            <dependency id="JamesDibble.ApplicationFramework.Data.Persistence.EntityFrameworkCodeFirst" version="1.1.0.57" />
         </dependencies>
     </metadata>
     <files>
