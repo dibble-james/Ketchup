@@ -462,5 +462,21 @@ namespace Ketchup.UnitTests.Core.Api
 
             Assert.IsTrue(actual.Count() == 2);
         }
+
+        [TestMethod]
+        public void TestGetProductById()
+        {
+            const int expectedId = 1;
+
+            var expected = new Product { Id = expectedId };
+
+            this._fakePersistenceManager.Setup(
+                pm => pm.Find(It.IsAny<PersistenceSearcher<Product>>()))
+                .Returns(expected);
+
+            var actual = this._target.GetProduct(expectedId);
+
+            Assert.AreEqual(expected, actual);
+        }
     }
 }
