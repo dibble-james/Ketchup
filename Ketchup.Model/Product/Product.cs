@@ -35,7 +35,7 @@ namespace Ketchup.Model.Product
         {
             get
             {
-                var active = this.ActiveAt(DateTime.Now);
+                var active = this.ActiveAt(DateTime.UtcNow);
 
                 return active;
             }
