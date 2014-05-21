@@ -512,5 +512,31 @@ namespace Ketchup.UnitTests.Core.Api
 
             Assert.AreEqual(expected, actual);
         }
+
+        [TestMethod]
+        public void TestUpdateProduct()
+        {
+            var fakeProduct = new Product
+            {
+                ProductSpecifications = new Collection<ProductSpecification>()
+            };
+
+            var commitWasCalled = false;
+
+            this._fakePersistenceManager.Setup(
+                pm => pm.Find(It.IsAny<PersistenceSearcher<Product>>()))
+                .Returns(fakeProduct);
+
+            this._fakePersistenceManager.Setup(
+                pm => pm.Commit())
+                .Callback(() => commitWasCalled = true);
+
+            var expected = new ProductSpecification();
+
+            var actual = this._target.UpdateProduct(fakeProduct, expected);
+
+            Assert.IsTrue(actual.ProductSpecifications.Contains(expected));
+            Assert.IsTrue(commitWasCalled);
+        }
     }
 }
