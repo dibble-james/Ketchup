@@ -478,5 +478,39 @@ namespace Ketchup.UnitTests.Core.Api
 
             Assert.AreEqual(expected, actual);
         }
+
+        [TestMethod]
+        public void TestGetProductByPredicate()
+        {
+            const int expectedId = 1;
+
+            var expected = new Product { Id = expectedId };
+
+            Func<Product, bool> predicate = p => p.Id == 1;
+
+            this._fakePersistenceManager.Setup(
+                pm => pm.Find(It.Is<PersistenceSearcher<Product>>(pc => pc.Predicate == predicate)))
+                .Returns(expected);
+
+            var actual = this._target.GetProduct(predicate);
+
+            Assert.AreEqual(expected, actual);
+        }
+
+        [TestMethod]
+        public void TestGetProductAttributeTypeById()
+        {
+            const int expectedId = 1;
+
+            var expected = new ProductAttributeType { Id = expectedId };
+
+            this._fakePersistenceManager.Setup(
+                pm => pm.Find(It.IsAny<PersistenceSearcher<ProductAttributeType>>()))
+                .Returns(expected);
+
+            var actual = this._target.GetProductAttributeType(expectedId);
+
+            Assert.AreEqual(expected, actual);
+        }
     }
 }
