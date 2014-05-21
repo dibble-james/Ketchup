@@ -416,5 +416,51 @@ namespace Ketchup.UnitTests.Core.Api
 
             Assert.AreEqual(expected, actual);
         }
+
+        [TestMethod]
+        public void TestGetGetUniqueProductAttributes()
+        {
+            var fakeCategory = new ProductCategory();
+
+            var fakeAttributeType = new ProductAttributeType();
+
+            var fakeAttribute1 = new ProductAttribute
+            {
+                AttributeType = fakeAttributeType,
+                Value = "Hello"
+            };
+
+            var fakeAttribute2 = new ProductAttribute
+            {
+                AttributeType = fakeAttributeType,
+                Value = "hello"
+            };
+
+            var fakeAttribute3 = new ProductAttribute
+            {
+                AttributeType = fakeAttributeType,
+                Value = "0"
+            };
+
+            var fakeAttribute4 = new ProductAttribute
+            {
+                AttributeType = fakeAttributeType,
+                Value = "0"
+            };
+
+            this._fakePersistenceManager.Setup(
+                pm => pm.Find(It.IsAny<PersistenceCollectionSearcher<ProductAttribute>>()))
+                .Returns(new List<ProductAttribute>
+                {
+                    fakeAttribute1,
+                    fakeAttribute2,
+                    fakeAttribute3,
+                    fakeAttribute4
+                });
+
+            var actual = this._target.GetUniqueProductAttributes(fakeCategory, fakeAttributeType);
+
+            Assert.IsTrue(actual.Count() == 2);
+        }
     }
 }
