@@ -42,7 +42,7 @@ namespace Ketchup.Api
         /// <returns>The new <see cref="Basket"/>.</returns>
         public Basket CreateBasket(IEnumerable<BasketProduct> products)
         {
-            var basket = new Basket { Products = new Collection<BasketProduct>() };
+            var basket = new Basket { Products = new Collection<BasketProduct>(), Id = Guid.NewGuid() };
 
             var basketProducts = products.Select(product => new BasketProduct { Basket = basket, Product = product.Product, Quantity = product.Quantity });
 
