@@ -40,11 +40,11 @@ namespace Ketchup.Api
         /// </summary>
         /// <param name="products">The <see cref="Product"/>s to create the basket with.</param>
         /// <returns>The new <see cref="Basket"/>.</returns>
-        public Basket CreateBasket(IEnumerable<Product> products)
+        public Basket CreateBasket(IEnumerable<BasketProduct> products)
         {
             var basket = new Basket { Products = new Collection<BasketProduct>() };
 
-            var basketProducts = products.Select(product => new BasketProduct { Basket = basket, Product = product });
+            var basketProducts = products.Select(product => new BasketProduct { Basket = basket, Product = product.Product, Quantity = product.Quantity });
 
             basket.Products = new Collection<BasketProduct>(basketProducts.ToList());
 
@@ -60,7 +60,7 @@ namespace Ketchup.Api
         /// </summary>
         /// <param name="products">The <see cref="Product"/>s to create the basket with.</param>
         /// <returns>The new <see cref="Basket"/>.</returns>
-        public Basket CreateBasket(params Product[] products)
+        public Basket CreateBasket(params BasketProduct[] products)
         {
             return this.CreateBasket(products.AsEnumerable());
         }
@@ -85,10 +85,11 @@ namespace Ketchup.Api
         /// </summary>
         /// <param name="basket">The <see cref="Basket"/> to add a <see cref="Product"/> too.</param>
         /// <param name="productToAdd">The new <see cref="Product"/> for the <paramref name="basket"/>.</param>
+        /// <param name="quantity">The quantity of <see cref="Product"/> for the <paramref name="basket"/>.</param>
         /// <returns>The <see cref="Basket"/>.</returns>
-        public Basket AddProductToBasket(Basket basket, Product productToAdd)
+        public Basket AddProductToBasket(Basket basket, Product productToAdd, int quantity)
         {
-            var basketProduct = new BasketProduct { Basket = basket, Product = productToAdd };
+            var basketProduct = new BasketProduct { Basket = basket, Product = productToAdd, Quantity = quantity };
 
             basket.Products.Add(basketProduct);
 

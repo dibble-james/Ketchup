@@ -50,7 +50,7 @@ namespace Ketchup.UnitTests.Core.Api
         [TestMethod]
         public void TestCreateBasket()
         {
-            var product = new Product { Id = 1 };
+            var product = new BasketProduct { ProductId = 1 };
 
             var baskets = new List<Basket>();
 
@@ -82,7 +82,7 @@ namespace Ketchup.UnitTests.Core.Api
 
             this._fakePersistence.Setup(p => p.Add(It.IsAny<BasketProduct>())).Callback(() => { return; });
 
-            this._target.AddProductToBasket(basket, product);
+            this._target.AddProductToBasket(basket, product, 1);
 
             Assert.IsTrue(basket.Products.Any(bp => bp.Product == product));
         }

@@ -247,7 +247,7 @@ namespace Ketchup.Api
         public IEnumerable<ProductCategory> GetProductCategories(ProductCategory parentCategory)
         {
             var categories = this._persistence.Find(new PersistenceCollectionSearcher<ProductCategory>(
-                pc => pc.ParentCategory.Id == parentCategory.Id));
+                pc => pc.ParentCategory == parentCategory));
 
             return categories;
         }

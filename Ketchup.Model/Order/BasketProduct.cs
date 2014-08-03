@@ -27,6 +27,11 @@ namespace Ketchup.Model.Order
         public int ProductId { get; set; }
 
         /// <summary>
+        /// Gets or sets the quantity of <see cref="Product"/> in the <see cref="Basket"/>.
+        /// </summary>
+        public int Quantity { get; set; }
+
+        /// <summary>
         /// Gets or sets the <see cref="Basket"/> in the join.
         /// </summary>
         public virtual Basket Basket { get; set; }

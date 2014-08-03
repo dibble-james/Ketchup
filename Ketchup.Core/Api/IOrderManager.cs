@@ -22,14 +22,14 @@ namespace Ketchup.Api
         /// </summary>
         /// <param name="products">The <see cref="Product"/>s to create the basket with.</param>
         /// <returns>The new <see cref="Basket"/>.</returns>
-        Basket CreateBasket(IEnumerable<Product> products);
+        Basket CreateBasket(IEnumerable<BasketProduct> products);
 
         /// <summary>
         /// Build a new <see cref="Basket"/>.
         /// </summary>
         /// <param name="products">The <see cref="Product"/>s to create the basket with.</param>
         /// <returns>The new <see cref="Basket"/>.</returns>
-        Basket CreateBasket(params Product[] products);
+        Basket CreateBasket(params BasketProduct[] products);
 
         /// <summary>
         /// Retrieve a <see cref="Basket"/> using it's identifier.
@@ -46,8 +46,9 @@ namespace Ketchup.Api
         /// </summary>
         /// <param name="basket">The <see cref="Basket"/> to add a <see cref="Product"/> too.</param>
         /// <param name="productToAdd">The new <see cref="Product"/> for the <paramref name="basket"/>.</param>
+        /// <param name="quantity">The quantity of <see cref="Product"/> for the <paramref name="basket"/>.</param>
         /// <returns>The <see cref="Basket"/>.</returns>
-        Basket AddProductToBasket(Basket basket, Product productToAdd);
+        Basket AddProductToBasket(Basket basket, Product productToAdd, int quantity);
 
         /// <summary>
         /// Build a new <see cref="Order"/>.
