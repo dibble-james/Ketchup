@@ -204,5 +204,41 @@ namespace Ketchup.Api
 
             return orders;
         }
+
+        /// <summary>
+        /// The given <see cref="BasketProduct"/> is no longer required so take it out of the <see cref="M:BasketProduct.Basket"/>
+        /// </summary>
+        /// <param name="basketProductToRemove">The <see cref="BasketProduct"/> to remove.</param>
+        /// <returns>The <see cref="Basket"/> as it now stands.</returns>
+        public Basket RemoveFromBasket(BasketProduct basketProductToRemove)
+        {
+            var basketId = basketProductToRemove.BasketId;
+            
+            this._persistence.Remove(basketProductToRemove);
+
+            this._persistence.Commit();
+            
+            var basket = this._persistence.Find(
+                new PersistenceSearcher<Basket>(b => b.Id == basketId));
+
+            return basket;
+        }
+
+        /// <summary>
+        /// The given <see cref="BasketProduct"/> has changed so update it.
+        /// </summary>
+        /// <param name="basketProductToRemove">The <see cref="BasketProduct"/> to update.</param>
+        /// <returns>The <see cref="Basket"/> as it now stands.</returns>
+        public Basket UpdateBasket(BasketProduct basketProductToRemove)
+        {
+            this._persistence.Change(basketProductToRemove);
+
+            this._persistence.Commit();
+
+            var basket = this._persistence.Find(
+                new PersistenceSearcher<Basket>(b => b.Id == basketProductToRemove.BasketId));
+
+            return basket;
+        }
     }
 }

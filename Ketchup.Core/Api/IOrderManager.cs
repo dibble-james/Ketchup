@@ -51,6 +51,20 @@ namespace Ketchup.Api
         Basket AddProductToBasket(Basket basket, Product productToAdd, int quantity);
 
         /// <summary>
+        /// The given <see cref="BasketProduct"/> is no longer required so take it out of the <see cref="M:BasketProduct.Basket"/>
+        /// </summary>
+        /// <param name="basketProductToRemove">The <see cref="BasketProduct"/> to remove.</param>
+        /// <returns>The <see cref="Basket"/> as it now stands.</returns>
+        Basket RemoveFromBasket(BasketProduct basketProductToRemove);
+
+        /// <summary>
+        /// The given <see cref="BasketProduct"/> has changed so update it.
+        /// </summary>
+        /// <param name="basketProductToRemove">The <see cref="BasketProduct"/> to update.</param>
+        /// <returns>The <see cref="Basket"/> as it now stands.</returns>
+        Basket UpdateBasket(BasketProduct basketProductToRemove);
+
+        /// <summary>
         /// Build a new <see cref="Order"/>.
         /// </summary>
         /// <param name="basket">The <see cref="Product"/>s the new <see cref="Order"/> is for.</param>
