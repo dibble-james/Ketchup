@@ -38,13 +38,18 @@ namespace Ketchup.Api
         {
             var customer = new Customer
                            {
-                               Addresses = new Collection<Address> { address },
+                               Addresses = new Collection<Address>(),
                                Email = email,
                                FirstName = firstName,
                                LastName = lastName
                            };
 
             customer.SetNewId(Guid.NewGuid());
+
+            if(address != null)
+            {
+                customer.Addresses.Add(address);
+            }
 
             this._persistence.Add(customer);
 
@@ -66,6 +71,18 @@ namespace Ketchup.Api
             this._persistence.Change(customer);
 
             this._persistence.Commit();
+
+            return customer;
+        }
+
+        /// <summary>
+        /// Find a <see cref="Customer"/> by it's unique identifier.
+        /// </summary>
+        /// <param name="uniqueIdentifier">The unique identifier of the <see cref="Customer"/> to find.</param>
+        /// <returns>The <see cref="Customer"/> or null if one could not be found.</returns>
+        public Customer GetCustomer(Guid uniqueIdentifier)
+        {
+            var customer = this._persistence.Find(new PersistenceSearcher<Customer>(c => c.Id == uniqueIdentifier));
 
             return customer;
         }

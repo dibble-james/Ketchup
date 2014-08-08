@@ -5,7 +5,8 @@
 // --------------------------------------------------------------------------------------------------------------------
 namespace Ketchup.Api
 {
-    using Model.Customer;
+    using System;
+using Model.Customer;
 
     /// <summary>
     /// Implementing classes define methods to manage <see cref="Customer"/>s.
@@ -29,5 +30,12 @@ namespace Ketchup.Api
         /// <param name="newAddress">The new <see cref="Address"/> for the <paramref name="customer"/>.</param>
         /// <returns>The <see cref="Customer"/>.</returns>
         Customer AddAddress(Customer customer, Address newAddress);
+
+        /// <summary>
+        /// Find a <see cref="Customer"/> by it's unique identifier.
+        /// </summary>
+        /// <param name="uniqueIdentifier">The unique identifier of the <see cref="Customer"/> to find.</param>
+        /// <returns>The <see cref="Customer"/> or null if one could not be found.</returns>
+        Customer GetCustomer(Guid uniqueIdentifier);
     }
 }
