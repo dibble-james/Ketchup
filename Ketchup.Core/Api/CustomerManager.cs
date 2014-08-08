@@ -5,9 +5,9 @@
 // --------------------------------------------------------------------------------------------------------------------
 namespace Ketchup.Api
 {
+    using System;
     using System.Collections.ObjectModel;
     using JamesDibble.ApplicationFramework.Data.Persistence;
-    
     using Model.Customer;
 
     /// <summary>
@@ -43,6 +43,8 @@ namespace Ketchup.Api
                                FirstName = firstName,
                                LastName = lastName
                            };
+
+            customer.SetNewId(Guid.NewGuid());
 
             this._persistence.Add(customer);
 
