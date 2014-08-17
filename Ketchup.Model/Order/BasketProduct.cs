@@ -14,7 +14,7 @@ namespace Ketchup.Model.Order
     /// <summary>
     /// A model to join a <see cref="Product"/> to a <see cref="Basket"/>.
     /// </summary>
-    public class BasketProduct : IPersistedObject
+    public class BasketProduct : UniqueObject<int>
     {
         /// <summary>
         /// Gets or sets the ID of the <see cref="Basket"/> in the join.

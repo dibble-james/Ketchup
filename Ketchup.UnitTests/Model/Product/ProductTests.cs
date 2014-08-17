@@ -127,6 +127,45 @@ namespace Ketchup.UnitTests.Model.Product
         }
 
         [TestMethod]
+        public void TestActiveAtSpecificationsWithSameStartDate()
+        {
+            var now = DateTime.Now;
+
+            var productSpecification1 = new ProductSpecification
+            {
+                ActiveFrom = now.AddDays(-5),
+                ActiveUntil = DateTime.MaxValue
+            };
+
+            var productSpecification2 = new ProductSpecification
+            {
+                ActiveFrom = now.AddDays(-4),
+                ActiveUntil = DateTime.MaxValue
+            };
+
+            var productSpecification3 = new ProductSpecification
+            {
+                ActiveFrom = now.AddDays(-3),
+                ActiveUntil = DateTime.MaxValue
+            };
+
+            var product = new Product
+            {
+                ProductSpecifications =
+                    new Collection<ProductSpecification>
+                                  {
+                                      productSpecification1,
+                                      productSpecification2,
+                                      productSpecification3
+                                  }
+            };
+
+            var actual = product.ActiveAt(now.AddDays(-4));
+
+            Assert.AreEqual(productSpecification2, actual);
+        }
+
+        [TestMethod]
         public void TestActiveAtSpecification()
         {
             var productSpecification1 = new ProductSpecification

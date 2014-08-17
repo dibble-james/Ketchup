@@ -150,7 +150,6 @@ namespace Ketchup.Persistence.EntityFramework
             modelBuilder.Entity<Order>().HasRequired(o => o.ShippingAddress);
             modelBuilder.Entity<Order>().Property(o => o.OrderNumber).IsRequired();
 
-            modelBuilder.Entity<BasketProduct>().HasKey(bp => new { bp.BasketId, bp.ProductId });
             modelBuilder.Entity<BasketProduct>()
                 .HasRequired(bp => bp.Basket)
                 .WithMany(b => b.Products)
