@@ -57,9 +57,9 @@ namespace Ketchup.Model.Product
         {
             var active =
                     this.ProductSpecifications
-                        .OrderByDescending(ps => ps.ActiveUntil)
+                        .OrderBy(ps => ps.ActiveUntil)
                         .ThenByDescending(ps => ps.ActiveFrom)
-                        .FirstOrDefault(ps => ps.ActiveFrom <= context);
+                        .FirstOrDefault(ps => ps.ActiveFrom <= context && context <= ps.ActiveUntil);
 
             return active;
         }
