@@ -116,7 +116,7 @@ namespace Ketchup.Api
                             Basket = basket, 
                             Customer = customer, 
                             OrderNumber = orderNumber, 
-                            OrderDate = DateTime.Now,
+                            OrderDate = DateTime.UtcNow,
                             ShippingAddress = shippingAddress
                         };
 
